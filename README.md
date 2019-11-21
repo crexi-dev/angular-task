@@ -32,3 +32,5 @@ to create a service to pull in a random user and populate the profile page. You 
 
 Create a new page, a profile list. Pull in 10 random profiles to populate this list, and make each profile list item
 clickable, sending the user to a user details page with that user data. The UI is up to you, although it is recommended to use Angular Material components
+
+testing PR permissions.
