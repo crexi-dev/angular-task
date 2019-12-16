@@ -1,5 +1,17 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { UserProfile } from '../interfaces';
 
-const initProfile = createAction('[Profile] Init');
+export const initProfile = createAction(
+	'[Profile] - Init'
+);
 
-export const profileActions = { initProfile };
+export const successProfile = createAction(
+	'[User] - Get User',
+	props<{ payload: UserProfile }>()
+);
+
+export const errorProfile = createAction(
+	'[Profile] - Error',
+	props<Error>()
+);
+
