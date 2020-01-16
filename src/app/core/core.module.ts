@@ -6,6 +6,7 @@ import { AppStoreModule } from '@store/store.module';
 import { LayoutModule } from './layout/layout.module';
 import { moduleImportGuard } from './module-import-guard';
 import { RoutingModule } from './routing/routing.module';
+import { RandomUserGenService } from './services/random-user-gen/random-user-gen.service';
 
 @NgModule({
     declarations: [],
@@ -23,6 +24,7 @@ import { RoutingModule } from './routing/routing.module';
     ],
     providers: [
         Location,
+        RandomUserGenService,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader },
         { provide: 'Window', useValue: window }

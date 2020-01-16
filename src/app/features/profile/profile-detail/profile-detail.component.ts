@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
-import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { UserProfile } from '@interfaces';
+import { Observable } from 'rxjs';
+import { ProfileFacade } from '../store/profile.facade';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-profile-detail',
     styleUrls: ['./profile-detail.component.less'],
     templateUrl: './profile-detail.component.html'
 })
 export class ProfileDetailComponent implements OnInit {
 
-    user$ = this.store.select(getUserProfile);
+    public selectedUser$: Observable<UserProfile>;
 
-    constructor (private store: Store<AppState>) {}
+    constructor (private profileFacade: ProfileFacade) {}
 
-    ngOnInit () {
+    public ngOnInit (): void {
 
-        this.store.dispatch(profileActions.initProfile());
+        this.selectUser$();
 
+    }
+
+    private selectUser$ () {
+        this.selectedUser$ = this.profileFacade.selectUser$();
     }
 
 }

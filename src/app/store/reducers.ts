@@ -9,7 +9,9 @@ export interface AppState {
 export const APP_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>('App Reducers', {
     factory: () => {
 
-        return { routing: fromRouting.reducer };
+        return {
+            routing: fromRouting.reducer
+        };
 
     }
 });
