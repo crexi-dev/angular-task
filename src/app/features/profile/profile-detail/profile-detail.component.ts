@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
-import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router'
 
 @Component({
     selector: 'app-profile-detail',
@@ -11,14 +11,28 @@ import { getUserProfile } from '@store/selectors';
 })
 export class ProfileDetailComponent implements OnInit {
 
-    user$ = this.store.select(getUserProfile);
+    user$ = 'https://randomuser.me/api/';
+    user: any = []
 
-    constructor (private store: Store<AppState>) {}
+    constructor (private http: HttpClient,  private route: ActivatedRoute, private router: Router) {
+        
+        const id = this.route.snapshot.paramMap.get('id');
+        if(id!=null){ 
+            this.user = this.router.getCurrentNavigation().extras.state.data.user; 
+        }
+        else{
+            this.getJSON().subscribe(data => {
+                this.user = data.results[0]
+            })
+        }
+       
+    }
+    public getJSON(): Observable<any> {
+        return this.http.get(this.user$);
+    }
 
     ngOnInit () {
-
-        this.store.dispatch(profileActions.initProfile());
-
+    
     }
 
 }

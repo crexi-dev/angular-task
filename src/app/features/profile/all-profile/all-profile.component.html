@@ -1,8 +1,8 @@
 <crx-page>
     <div class="header">
-        <crx-header pageTitle="Profile Details"></crx-header>
+        <crx-header pageTitle="All Profiles"></crx-header>
     </div>
-    <mat-card class="card">
+    <mat-card (click)="navigate(user)" *ngFor="let user of user" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
             <mat-card-subtitle>{{user.name.first}} {{ user.name.last }}</mat-card-subtitle>
@@ -33,3 +33,4 @@
         </mat-card-content>
     </mat-card>
 </crx-page>
+
