@@ -4,8 +4,8 @@ const initProfile = createAction('[Profile] Init');
 
 export const profileActions = { initProfile };
 
-
 // export function search(form, limit = 100, searchFrom = 200) {
+//   let _url:string="https://randomuser.me/api/"
 //   let gender = '';
 //   if (form.gender !== 'any') gender = `&gender=${form.gender}`;
 
@@ -13,25 +13,13 @@ export const profileActions = { initProfile };
 //   const yearMin = currentYear - form.ageMin;
 //   const yearMax = currentYear - form.ageMax;
 
-//   return dispatch => axios({
-//     method: 'GET',
-//     url: `https://randomuser.me/api/?nat=US&results=${searchFrom}${gender}`,
-//   })
-//     .then((response) => {
-//       const filtered = response.data.results
-// 	//   console.log(filtered)
+//   return this.http.get<any>(this._url);
 
-	  
-// 	.filter(el => {
-// 		const dob = +el.dob.date.slice(0, 4);
-// 		return dob >= yearMax && dob <= yearMin;
-// 	})
-// 	.slice(0, limit);
+//   dispatch({
+// 	type: 'SEARCH_LIST_FILL',
+// 	payload: filtered,
+//   });
 
-// 		dispatch({
-// 			type: 'SEARCH_LIST_FILL',
-// 			payload: filtered,
-// 		});
-//     });
+//   });
 // }
 
