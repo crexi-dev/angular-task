@@ -32,3 +32,22 @@ export function getProfileReducer (state: ProfileState | undefined, action: Acti
     return reducer(state, action);
 
 }
+
+// const initialStateB = {
+//   searchResults: [],
+// };
+
+// const task = (state = initialStateB, action) => {
+//   switch (action.type) {
+//     case 'SEARCH_LIST_FILL':
+//       return {
+//         ...state,
+//         searchResults: action.payload,
+//       };
+
+//     default:
+//       return state;
+//   }
+// };
+
+// export default task;
