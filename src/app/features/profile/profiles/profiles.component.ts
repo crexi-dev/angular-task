@@ -19,7 +19,6 @@ export class ProfilesComponent implements OnInit {
     constructor (private store: Store<AppState>) { }
 
     ngOnInit () {
-      console.log("do i get here: ");
 
         this.store.dispatch(profileActions.loadRandomProfiles());
 
