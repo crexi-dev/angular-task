@@ -16,8 +16,11 @@ export class ProfileDetailComponent implements OnInit {
     constructor (private store: Store<AppState>) {}
 
     ngOnInit () {
+        console.log("ProfileDetailComponent was called!: ");
 
         this.store.dispatch(profileActions.initProfile());
+        this.store.dispatch(profileActions.loadRandomProfile());
+
 
     }
 
