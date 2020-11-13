@@ -1,0 +1,38 @@
+
+
+  <crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+    <div *ngIf="profiles$ | async as profiles">
+      <mat-card *ngFor="let profile of profiles">
+          <mat-card-title-group>
+              <mat-card-title>User Profile</mat-card-title>
+              <mat-card-subtitle><a class="profile-link" (click)="viewProfile(profile)">{{ profile.firstName }} {{ profile.lastName }}</a></mat-card-subtitle>
+              <img  (click)="viewProfile(profile)" class="circle" mat-card-md-image [src]="profile.picture" />
+          </mat-card-title-group>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <span>Phone: </span><span>{{ profile.phoneNumber }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>Cell: </span><span>{{ profile.cellNumber }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>State: </span><span>{{ profile.state }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>Email: </span><span>{{ profile.email }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        </mat-card-content>
+    </mat-card>
+   
+    </div>
+    
+</crx-page>

@@ -5,6 +5,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "allowJs": true,
     "forceConsistentCasingInFileNames": false,
     "importHelpers": true,
     "lib": [
