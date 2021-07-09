@@ -11,13 +11,13 @@ import { AppState } from '@store/reducers';
   styleUrls: ['./profile-list.component.less']
 })
 export class ProfileListComponent implements OnInit {
-  user$ = this.store.select(getUserProfile);
+  users$ = this.store.select(getUserProfile);
 
   constructor (private store: Store<AppState>) {}
 
   ngOnInit () {
 
-      this.store.dispatch(profileActions.initProfile());
+      this.store.dispatch(profileActions.tenProfiles());
       
   }
 

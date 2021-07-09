@@ -38,7 +38,16 @@ const reducer = createReducer(
 
         return { ...state, user };
 
-    })
+    }),
+    on(profileActions.tenProfiles, (state) => {
+        return {...state};
+    }),
+    on(profileActions.tenProfilesSuccess, (state, action) => {
+        const users: UserProfile
+        return {...state};
+    }),
+
+
 );
 
 
