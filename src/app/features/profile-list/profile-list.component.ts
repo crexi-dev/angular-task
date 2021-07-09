@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
-//import { getUserProfile } from '@store/selectors';
-//import { ProfileService } from '../profile/store/profile.service'
+import { getUserProfiles } from '@store/selectors';
+
+
 
 @Component({
   selector: 'app-profile-list',
@@ -11,9 +12,9 @@ import { AppState } from '@store/reducers';
   styleUrls: ['./profile-list.component.less']
 })
 export class ProfileListComponent implements OnInit {
-  users$ = this.store.select(getUserProfile);
+  users$ = this.store.select(getUserProfiles);
 
-  constructor (private store: Store<AppState>) {}
+  constructor (private store: Store<AppState>, ) {}
 
   ngOnInit () {
 
