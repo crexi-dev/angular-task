@@ -21,10 +21,27 @@ const reducer = createReducer(
     initialState,
     on(profileActions.initProfile, (state) => {
 
-        return { ...state, };
+        return { ...state };
 
-    })
+    }),
+    on(profileActions.initProfileSuccess, (state, { payload }: any) => {
+        let user = payload.results[0]
+     return { ...state,
+        ...{
+            cellNumber: user.cell,
+            city: user.location.city,
+            dateOfBirth: new Date(user.dob.date),
+            email: user.email,
+            firstName: user.name.first,
+            lastName: user.name.last,
+            phoneNumber: user.phone,
+            picture: user.picture.medium,
+            state: user.location.state
+        }
+    };
+})
 );
+       
 
 // tslint:disable only-arrow-functions
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
