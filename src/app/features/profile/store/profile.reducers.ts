@@ -1,6 +1,7 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
+//import { getUserProfile } from '@store/selectors';
 import { UserProfile } from '../interfaces';
 
 const dummyProfile: UserProfile = {
@@ -15,7 +16,10 @@ const dummyProfile: UserProfile = {
     state: 'CA'
 };
 
-const initialState: ProfileState = {};
+
+const initialState: ProfileState = {
+    
+};
 
 const reducer = createReducer(
     initialState,
@@ -38,14 +42,8 @@ const reducer = createReducer(
 
         return { ...state, user };
 
-    }),
-    on(profileActions.tenProfiles, (state) => {
-        return {...state};
-    }),
-    on(profileActions.tenProfilesSuccess, (state, action) => {
-        const users: UserProfile
-        return {...state};
-    }),
+    })
+    
 
 
 );

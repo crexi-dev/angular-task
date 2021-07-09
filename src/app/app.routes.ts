@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from '@core/layout/page-not-found';
 import { HomePageComponent } from '@features/home-page';
 import { ProfileDetailComponent } from '@features/profile/profile-detail';
-import { ProfileListComponent } from '@features/profile-list/profile-list.component'
+
 
 
 export const appRoutes: Routes = [
@@ -16,11 +16,7 @@ export const appRoutes: Routes = [
         data: { name: 'profileDetail' },
         path: 'profile/:id'
     },
-    {
-        component: ProfileListComponent,
-        data: { name: 'profileDetail' },
-        path: 'profile-list'
-    },
+    
     {
         component: PageNotFoundComponent,
         data: { name: 'pageNotFound' },

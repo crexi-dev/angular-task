@@ -8,6 +8,4 @@ export const getUserProfile = createSelector(getProfileState, ({ user }) => {
     return user;
 
 });
-export const getUserProfiles = createSelector(getProfileState, ({ users }) => {
-    return users;
-});
+

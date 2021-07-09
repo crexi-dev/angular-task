@@ -3,6 +3,7 @@ import { LayoutModule } from '@core/layout/layout.module';
 import { HomePageComponent } from './home-page';
 import { ProfileModule } from './profile/profile.module';
 
+
 @NgModule({
     declarations: [
         HomePageComponent
