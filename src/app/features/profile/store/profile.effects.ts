@@ -1,26 +1,26 @@
-// import {Actions, createEffect, ofType} from '@ngrx/effects';
-// import {Injectable} from '@angular/core';
-// import {ProfileService} from './profile.service'
-// import {catchError, map, mergeMap} from 'rxjs/operators';
-// //import {profileActions} from './profile.actions'
-// import { EMPTY } from 'rxjs';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {Injectable} from '@angular/core';
+import {ProfileService} from './profile.service'
+import {catchError, map, mergeMap} from 'rxjs/operators';
+import { of } from 'rxjs';
 
-// @Injectable()
-// export class ProfileEffects {
-//   loadProfiles$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType('[Profile] Init'),
-//       mergeMap(() => this.profileService.getProfiles().pipe(
-//         map((profile: any) => ({
-//             type: '[profile] Init Profile Success', payload: profile
-//         })),
-//         catchError(() => EMPTY)
-//       ))
-//     )
-//   );
-        
+//import { EMPTY } from 'rxjs';
 
-//   constructor(private actions$: Actions, private profileService: ProfileService) {
-// }
-// }
+
+@Injectable()
+export class ProfileEffects {
+    
+    initProfile$ = createEffect(() => this.actions$.pipe(
+        ofType('[Profile] Init Profile'),
+        mergeMap(() => this.profileService.getRandomProfile()
+        .pipe(
+            map((data: any) => ({ type: '[Profile] Init Profile Success', payload: data })),
+            catchError(() => of({ type: '[Profile] Init Profile Error' }))
+        ))
+        )
+    );     
+
+  constructor(private actions$: Actions, private profileService: ProfileService) {
+}
+}
 
