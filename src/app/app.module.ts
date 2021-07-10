@@ -5,12 +5,16 @@ import { FeaturesModule } from '@features/features.module';
 import { AppComponent } from './app.component';
 
 
+
+
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        
+       
         
     ],
     imports: [

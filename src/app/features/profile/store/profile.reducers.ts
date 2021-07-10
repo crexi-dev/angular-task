@@ -42,7 +42,14 @@ const reducer = createReducer(
 
         return { ...state, user };
 
+    }),
+    on(profileActions.tenProfiles, (state) => {
+        return { ...state };
+    }),
+    on(profileActions.tenProfilesSuccess, (state, { profiles }) => {
+        return { ...state, profiles };
     })
+
     
 
 
