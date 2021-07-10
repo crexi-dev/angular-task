@@ -9,3 +9,6 @@ export const getUserProfile = createSelector(getProfileState, ({ user }) => {
 
 });
 
+export const getUserProfileList = createSelector(getProfileState, ({ users }) => {
+    return users;
+});
