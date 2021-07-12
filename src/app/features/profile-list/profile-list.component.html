@@ -1,24 +1,23 @@
 <crx-page>
     <div class="header">
-        <crx-header pageTitle="View Profiles"></crx-header>
+        <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <mat-card *ngIf="users$ | async as users" class="card">
+    <mat-card *ngIf="users$ | async as user" class="card">
         <mat-card-title-group>
-            <mat-card-title>Profiles</mat-card-title>
-            <mat-card-subtitle>Select a profile</mat-card-subtitle>
+            <mat-card-title>User Profile</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+            <img class="circle" mat-card-md-image [src]="" />
         </mat-card-title-group>
         <mat-card-content>
             <mat-list>
-                <ng-container *ngFor="let user of users">
-                    <mat-list-item class="item-link" (click)="goToProfile(user)">
-                        <img class="circle" mat-card-md-image [src]="user.picture" />
-                        <span>{{ user.firstName }} {{ user.lastName }}</span>
-                        <span>Phone: {{ user.phoneNumber }}</span>
-                        <span>{{ user.email }}</span>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                </ng-container>
+               
             </mat-list>
         </mat-card-content>
     </mat-card>
 </crx-page>
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile Details"></crx-header>
+    </div>
+    
+    

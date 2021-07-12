@@ -5,9 +5,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
 import { ProfileListComponent } from '../profile-list/profile-list.component';
+import { ProfileEffects } from './store/profile.effects';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { ProfileListComponent } from '../profile-list/profile-list.component';
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer)
+        StoreModule.forFeature('profile', getProfileReducer),
+        EffectsModule.forFeature([ ProfileEffects ]),
     ]
 })
 export class ProfileModule { }

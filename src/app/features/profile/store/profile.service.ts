@@ -13,4 +13,6 @@ export class ProfileService {
   getRandomProfiles(): Observable<any>{
     return this.http.get(this.apiUrl);
    }
+
+   
 }

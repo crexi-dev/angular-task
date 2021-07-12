@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from '@core/core.module';
 import { FeaturesModule } from '@features/features.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -20,6 +22,7 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserModule,
         CoreModule,
+        HttpClientModule,
         FeaturesModule
     ]
 })

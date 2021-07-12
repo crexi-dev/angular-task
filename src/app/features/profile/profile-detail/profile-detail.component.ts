@@ -22,6 +22,7 @@ export class ProfileDetailComponent implements OnInit {
         this.profileService.getRandomProfiles()
         .subscribe(
             user => this.store.dispatch(profileActions.initProfileSuccess({ profile: user.results[0] })), 
+        
         )
 
     }
