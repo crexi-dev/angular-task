@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { profileActions } from '@store/actions';
+import { RoutingService } from '@core/routing';
 import { selectUserList } from '@store/selectors';
 import { UserProfile } from '../interfaces';
-import { Router } from '@angular/router';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,7 +22,7 @@ export class ProfileListContainerComponent implements OnInit {
 
     public userList$: Observable<UserProfile[]> = this.store.select(selectUserList);
 
-    constructor (private router: Router, private store: Store<{userList: UserProfile[]}>) {}
+    constructor (private routingService: RoutingService, private store: Store<{userList: UserProfile[]}>) {}
 
     public ngOnInit (): void {
 
@@ -32,7 +32,7 @@ export class ProfileListContainerComponent implements OnInit {
 
     public openProfile (id: string): void {
 
-        this.router.navigateByUrl(`/profile/${id}`);
+        this.routingService.toUrl(`/profile/${id}`);
 
     }
 
