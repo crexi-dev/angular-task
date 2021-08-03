@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { selectUserProfile } from '@store/selectors';
 
 @Component({
     selector: 'app-profile-detail',
@@ -11,7 +11,7 @@ import { getUserProfile } from '@store/selectors';
 })
 export class ProfileDetailComponent implements OnInit {
 
-    user$ = this.store.select(getUserProfile);
+    user$ = this.store.select(selectUserProfile);
 
     constructor (private store: Store<AppState>) {}
 
