@@ -16,6 +16,11 @@ export const appRoutes: Routes = [
         path: 'profile'
     },
     {
+        component: ProfileDetailComponent,
+        data: { name: 'profileDetail' },
+        path: 'profile/:id'
+    },
+    {
         component: PageNotFoundComponent,
         data: { name: 'pageNotFound' },
         path: '404'
