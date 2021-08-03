@@ -15,16 +15,21 @@ import { getProfileReducer } from './store/profile.reducers';
 import { LayoutModule } from '@core/layout/layout.module';
 import { ProfileDetailComponent } from './profile-detail';
 import { ProfileEffects } from './store/profile.effects';
+import { ProfileListContainerComponent, ProfileListPresenterComponent } from './profile-list';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListContainerComponent,
+        ProfileListPresenterComponent
     ],
     entryComponents: [
         ProfileDetailComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListContainerComponent,
+        ProfileListPresenterComponent
     ],
     imports: [
         CommonModule,
