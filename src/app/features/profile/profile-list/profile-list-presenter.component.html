@@ -42,7 +42,8 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button attr.aria-label="Open Profile" matTooltip="Open Profile">
+                    <button mat-icon-button attr.aria-label="Open Profile" matTooltip="Open Profile"
+                        (click)="openProfile(element.id)">
                         <mat-icon color="primary" aria-label="Open Profile" aria-hidden="false">person</mat-icon>
                     </button>
                 </td>

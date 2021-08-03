@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { profileActions } from '@store/actions';
 import { selectUserList } from '@store/selectors';
 import { UserProfile } from '../interfaces';
+import { Router } from '@angular/router';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,6 +14,7 @@ import { UserProfile } from '../interfaces';
     template: `
         <app-profile-list-presenter
             [userList]="userList$ | async"
+            (emitOpenProfile)="openProfile($event)"
         ></app-profile-list-presenter>
     `
 })
@@ -20,11 +22,17 @@ export class ProfileListContainerComponent implements OnInit {
 
     public userList$: Observable<UserProfile[]> = this.store.select(selectUserList);
 
-    constructor (private store: Store<{userList: UserProfile[]}>) {}
+    constructor (private router: Router, private store: Store<{userList: UserProfile[]}>) {}
 
     public ngOnInit (): void {
 
         this.store.dispatch(profileActions.loadProfileList());
+
+    }
+
+    public openProfile (id: string): void {
+
+        this.router.navigateByUrl(`/profile/${id}`);
 
     }
 

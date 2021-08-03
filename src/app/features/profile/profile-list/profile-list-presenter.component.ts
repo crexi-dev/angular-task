@@ -24,4 +24,10 @@ export class ProfileListPresenterComponent {
         'action'
     ];
 
+    public openProfile (id: string): void {
+
+        this.emitOpenProfile.emit(id);
+
+    }
+
 }
