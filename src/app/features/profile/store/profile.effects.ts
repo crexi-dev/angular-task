@@ -6,7 +6,8 @@ import { map, mergeMap, catchError, withLatestFrom } from 'rxjs/operators';
 
 import { profileActions } from '@store/actions';
 import { ProfileService } from '../profile.service';
-import { UserProfile, ProfileState } from '@interfaces';
+import { RoutingService } from '@core/routing';
+import { ProfileState, UserProfile } from '@interfaces';
 import { Store } from '@ngrx/store';
 import { selectUserList } from '@store/selectors';
 
@@ -57,13 +58,38 @@ export class ProfileEffects {
                 return action.userList.pipe(
                     map((userList) => {
 
-                        const user = userList.find((user: UserProfile) => {
+                        let user: UserProfile = {
+                            cellNumber: '',
+                            city: '',
+                            dateOfBirth: '',
+                            email: '',
+                            firstName: '',
+                            id: '',
+                            lastName: '',
+                            phoneNumber: '',
+                            picture: '',
+                            state: ''
+                        };
 
-                            return user.id === action.selectedUserId;
+                        if (userList && userList.length) {
 
-                        });
+                            user = userList.find((user: UserProfile) => {
 
-                        return profileActions.loadProfileSuccess({ user });
+                                return user.id === action.selectedUserId;
+
+                            });
+
+                            return profileActions.loadProfileSuccess({ user });
+
+                        } else {
+
+                            // TODO: Replace alert with toast
+                            alert('Unable to load the profile with the specified id. Loading a random profile.');
+                            this.routerService.toUrl('/profile');
+
+                            return profileActions.loadProfileError({ user });
+
+                        }
 
                     })
                 );
@@ -102,6 +128,7 @@ export class ProfileEffects {
     constructor (
         private actions$: Actions,
         private profileService: ProfileService,
+        private routerService: RoutingService,
         private store: Store<ProfileState>
     ) { }
 
