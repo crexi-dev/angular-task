@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
@@ -60,4 +60,24 @@ export class ProfileService {
         );
 
     }
+
+    /**
+     * Get a list of 10 randomized profiles. Use `shareReplay` to turn cold observable hot.
+     */
+    public getProfileList (): Observable<UserProfile[]> {
+
+        let params = new HttpParams();
+        params = params.append('results', '10');
+
+        return this.httpClient.get<IProfileDTO>(this.url, { params }).pipe(
+            map((profileDTO) => {
+
+                return this.mapProfileDtoToUserProfile(profileDTO.results);
+
+            }),
+            shareReplay()
+        );
+
+    }
+
 }
