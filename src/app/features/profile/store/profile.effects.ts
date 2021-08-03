@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, mergeMap, catchError, withLatestFrom } from 'rxjs/operators';
 
 import { profileActions } from '@store/actions';
 import { ProfileService } from '../profile.service';
+import { UserProfile, ProfileState } from '@interfaces';
+import { Store } from '@ngrx/store';
+import { selectUserList } from '@store/selectors';
 
 @Injectable()
 export class ProfileEffects {
@@ -26,6 +29,41 @@ export class ProfileEffects {
                     catchError(() => {
 
                         return EMPTY;
+
+                    })
+                );
+
+            }
+
+        ));
+
+    });
+
+    public loadProfileWithId$ = createEffect(() => {
+
+        return this.actions$.pipe(
+            ofType(profileActions.loadProfileWithId),
+            withLatestFrom((action) => {
+
+                const selectedProfileState = {
+                    selectedUserId: action.selectedUserId,
+                    userList: this.store.select(selectUserList)
+                };
+                return selectedProfileState;
+
+            }),
+            mergeMap((action) => {
+
+                return action.userList.pipe(
+                    map((userList) => {
+
+                        const user = userList.find((user: UserProfile) => {
+
+                            return user.id === action.selectedUserId;
+
+                        });
+
+                        return profileActions.loadProfileSuccess({ user });
 
                     })
                 );
@@ -63,7 +101,8 @@ export class ProfileEffects {
 
     constructor (
         private actions$: Actions,
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private store: Store<ProfileState>
     ) { }
 
 }

@@ -25,6 +25,11 @@ const reducer = createReducer(
         return { ...state, user: dummyProfile };
 
     }),
+    on(profileActions.loadProfileWithId, (state, { selectedUserId }) => {
+
+        return { ...state, user: state.user, selectedUserId };
+
+    }),
     on(profileActions.loadRandomProfile, (state) => {
 
         return { ...state, user: state.user };

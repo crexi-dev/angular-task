@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { UserProfile } from '@interfaces';
 
 const initProfile = createAction('[Profile] Init');
+const loadProfileWithId = createAction('[Profile] Load Profile', props<{ selectedUserId: string }>());
 const loadProfileSuccess = createAction('[Profile] Load Profile Success', props<{ user: UserProfile }>());
 const loadRandomProfile = createAction('[Profile] Load Random Profile');
 const loadProfileList = createAction('[Profile] Load Profiles');
@@ -13,5 +14,6 @@ export const profileActions = {
     loadProfileList,
     loadProfileListSuccess,
     loadProfileSuccess,
+    loadProfileWithId,
     loadRandomProfile
 };
