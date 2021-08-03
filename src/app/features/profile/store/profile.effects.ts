@@ -10,6 +10,32 @@ import { ProfileService } from '../profile.service';
 @Injectable()
 export class ProfileEffects {
 
+    public loadProfileList$ = createEffect(() => {
+
+        return this.actions$.pipe(
+            ofType(profileActions.loadProfileList),
+            mergeMap(() => {
+
+                return this.profileService.getProfileList()
+                .pipe(
+                    map((userList) => {
+
+                        return profileActions.loadProfileListSuccess({ userList });
+
+                    }),
+                    catchError(() => {
+
+                        return EMPTY;
+
+                    })
+                );
+
+            }
+
+        ));
+
+    });
+
     public loadRandomProfile$ = createEffect(() => {
 
         return this.actions$.pipe(

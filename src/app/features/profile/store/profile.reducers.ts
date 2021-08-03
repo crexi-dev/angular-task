@@ -34,6 +34,16 @@ const reducer = createReducer(
 
         return { ...state, user };
 
+    }),
+    on(profileActions.loadProfileList, (state) => {
+
+        return { ...state, userList: state.userList };
+
+    }),
+    on(profileActions.loadProfileListSuccess, (state, { userList }) => {
+
+        return { ...state, userList };
+
     })
 );
 
