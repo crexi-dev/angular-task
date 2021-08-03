@@ -17,7 +17,7 @@ export class ProfileDetailComponent implements OnInit {
 
     ngOnInit () {
 
-        this.store.dispatch(profileActions.initProfile());
+        this.store.dispatch(profileActions.loadRandomProfile());
 
     }
 
