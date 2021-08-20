@@ -1,0 +1,19 @@
+<!-- <mat-list *ngIf="user$ | async as user">
+    <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+    <app-profile-detail></app-profile-detail>
+</mat-list> -->
+
+
+<mat-list *ngFor="let user of users$">
+
+    <mat-list-item>
+        <div class="textproperty" (click)="toProfileDetail(user)"> 
+            <img class="circle" [src]="user.picture"/>
+            {{ user.firstName }} {{ user.lastName }}
+        </div>
+    </mat-list-item>
+    <div *ngIf="user.visible">
+        <app-profile-detail [user$]="user" ></app-profile-detail>
+    </div>
+
+</mat-list> 

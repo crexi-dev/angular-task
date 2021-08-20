@@ -14,7 +14,8 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserModule,
         CoreModule,
-        FeaturesModule
+        FeaturesModule,
+        
     ]
 })
 export class AppModule { }
