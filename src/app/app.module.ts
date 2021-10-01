@@ -3,13 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from '@core/core.module';
 import { FeaturesModule } from '@features/features.module';
 import { AppComponent } from './app.component';
+import { ProfileSheetComponent } from './features/profile/profile-sheet/profile-sheet.component';
 
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        ProfileSheetComponent
     ],
     imports: [
         BrowserModule,

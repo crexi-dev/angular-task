@@ -7,16 +7,20 @@ import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
+import { ProfileSheetComponent } from '@features/profile/profile-sheet/profile-sheet.component';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileSheetComponent
     ],
     entryComponents: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileSheetComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileSheetComponent
     ],
     imports: [
         CommonModule,

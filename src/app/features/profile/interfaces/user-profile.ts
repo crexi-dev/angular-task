@@ -9,3 +9,7 @@ export interface UserProfile {
     picture: string;
     state: string;
 }
+
+export interface IUsersSheet {
+    users: UserProfile[];
+}
