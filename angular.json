@@ -27,11 +27,14 @@
               "src/content"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/custom-theme.scss",
               "src/styles.less"
             ],
             "stylePreprocessorOptions": {
-                "includePaths": ["src/less"]
+              "includePaths": [
+                "src/less"
+              ]
             },
             "scripts": []
           },
@@ -97,6 +100,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -128,6 +132,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-task"
 }
