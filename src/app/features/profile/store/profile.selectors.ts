@@ -1,10 +1,18 @@
-import { ProfileState } from '@interfaces';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ProfileState } from "@interfaces";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-export const getProfileState = createFeatureSelector<ProfileState>('profile');
+export const getProfileState = createFeatureSelector<ProfileState>("profile");
 
-export const getUserProfile = createSelector(getProfileState, ({ user }) => {
+export const getUserProfiles = createSelector(
+    getProfileState,
+    (state: ProfileState) => state.users
+);
 
-    return user;
-
-});
+export const getSelectedUserProfile = createSelector(
+    getProfileState,
+    (state: ProfileState) => {
+        return state.users.length > 0
+            ? state.users[state.selectedUser || 0]
+            : null;
+    }
+);

@@ -1,8 +1,8 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
 
+/*
 const dummyProfile: UserProfile = {
     cellNumber: '888-888-8888',
     city: 'Los Angeles',
@@ -14,15 +14,20 @@ const dummyProfile: UserProfile = {
     picture: '/content/img/default_user.png',
     state: 'CA'
 };
+*/
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    selectedUser: null,
+    users: [] 
+};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => {
-
-        return { ...state, user: dummyProfile };
-
+    on(profileActions.initProfilesSuccess, (state, { profiles }) => {
+        return { ...state, users: profiles, selectedUser: 0 };
+    }),
+    on(profileActions.selectProfile, (state, { index }) => {
+        return { ...state, selectedUser: index };
     })
 );
 

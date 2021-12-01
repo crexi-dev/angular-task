@@ -1,0 +1,12 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile Listing"></crx-header>
+    </div>
+
+    <mat-list>
+        <mat-list-item *ngFor="let user of users$ | async, let i = index" (click)="showProfileDetail(user, i)">
+            <img matListAvatar [src]="user?.picture">
+            <h3 mat-line> {{ user?.firstName }} {{ user?.lastName }} </h3>
+        </mat-list-item>
+    </mat-list>
+</crx-page>
