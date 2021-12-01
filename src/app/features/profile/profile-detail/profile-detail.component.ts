@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserProfile } from '@interfaces';
 import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
@@ -25,7 +24,6 @@ export class ProfileDetailComponent implements OnInit {
     ngOnInit () {
         const routeParams = this.route.snapshot.paramMap;
         const id: string = routeParams.get('id');
-        let user: UserProfile;
         if (id !== '') {
             this.store.dispatch(profileActions.loadProfileById({id}));
         } else {
