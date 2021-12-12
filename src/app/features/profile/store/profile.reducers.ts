@@ -1,12 +1,20 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+import { profileActions, profileListActions } from '@store/actions';
 
 const initialState: ProfileState = {};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.loadSuccess, (state, { user }) => ({ ...state, user }))
+    on(profileActions.loadSuccess, (state, { user }) => ({ ...state, user })),
+    on(profileActions.select, (state, action) =>  {
+        return { 
+            ...state, 
+            user: state.users[action.id] 
+        }
+    }),
+
+    on(profileListActions.loadSuccess, (state, { users }) => ({...state, users }))
 );
 
 // tslint:disable only-arrow-functions

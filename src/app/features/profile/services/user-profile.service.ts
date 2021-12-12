@@ -22,7 +22,7 @@ export class UserProfileService {
 
     public getUserProfiles(count: number): Observable<UserProfile[]> {
 
-        return this.http$.get<any>(this.url).pipe(
+        return this.http$.get<any>(`${this.url}/?results=${count}`).pipe(
             map((data: any) => data.results.map((element: any) => new UserProfileModel(element)))
         );
 

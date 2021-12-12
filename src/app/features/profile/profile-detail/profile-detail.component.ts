@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RoutingService } from '@core/routing';
 import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
@@ -13,12 +14,21 @@ export class ProfileDetailComponent implements OnInit {
 
     user$ = this.store.select(getUserProfile);
 
-    constructor (private store: Store<AppState>) {}
+    constructor (
+        private store: Store<AppState>, 
+        private routingSvc: RoutingService
+    ) {}
 
     ngOnInit () {
-
-        this.store.dispatch(profileActions.load());
-
+        const userId = this.routingSvc.getRouteParam('id')
+        if (userId) {
+            this.store.dispatch(profileActions.select({id: +userId}));
+        } else {
+            this.store.dispatch(profileActions.load());
+        }
     }
 
+    public gotoList() {
+        this.routingSvc.toRoute(['profile-list']);
+    }
 }

@@ -1,0 +1,14 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+    <div class="content">
+        <mat-card class="card" *ngFor="let user of users$ | async; index as id" (click)="userClick(id)">
+            <mat-card-title-group>
+                <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+                <mat-card-subtitle>{{ user.city }}, {{ user.state }}</mat-card-subtitle>
+                <img class="circle" mat-card-md-image [src]="user.picture" />
+            </mat-card-title-group>
+        </mat-card>
+    </div>
+</crx-page>
