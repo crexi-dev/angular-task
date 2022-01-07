@@ -30,7 +30,6 @@ export class ProfileDetailComponent implements OnInit {
         const userId = this.routingService.getRouteParam('id');
         let action = userId ? profileActions.select({ id: +userId }) : profileActions.load();
 
-        console.log(profileActions.select({ id: +userId }), profileActions.load());
         this.store.dispatch(action);
 
     }
