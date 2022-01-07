@@ -20,6 +20,7 @@ const reducer = createReducer(
 
     }),
     on(profileListActions.loadSuccess, (state, { users }) => {
+
         return ({ ...state, users });
 
     })

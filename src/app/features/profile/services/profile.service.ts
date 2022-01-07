@@ -11,22 +11,22 @@ import { UserProfileModel } from '../models/profile.model';
 export class UserProfileService {
 
     private url = 'https://randomuser.me/api';
-    constructor (private http$: HttpClient) { }
+    constructor(private http$: HttpClient) { }
 
-    public getUserProfile (): Observable<UserProfile> {
+    public getUserProfile(): Observable<UserProfile> {
 
-      return this.getUserProfiles(1).pipe(
-      map((users: UserProfile[]) => users[0])
-    );
+        return this.getUserProfiles(1).pipe(
+            map((users: UserProfile[]) => users[0])
+        );
 
-  }
+    }
 
-    public getUserProfiles (count: number): Observable<UserProfile[]> {
+    public getUserProfiles(count: number): Observable<UserProfile[]> {
 
-      return this.http$.get<any>(`${this.url}/?results=${count}`).pipe(
-      map((data: any) => data.results.map((element: any) => new UserProfileModel(element)))
-    );
+        return this.http$.get<any>(`${this.url}/?results=${count}`).pipe(
+            map((data: any) => data.results.map((element: any) => new UserProfileModel(element)))
+        );
 
-  }
+    }
 
 }
