@@ -36,6 +36,7 @@ export class ProfileEffects {
     });
 
     public loadProfileList$ = createEffect(() => {
+
         return this.actions$.pipe(
             ofType(profileListActions.load),
             withLatestFrom(this.store$.select(getUserProfiles)),
