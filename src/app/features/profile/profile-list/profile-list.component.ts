@@ -22,7 +22,7 @@ export class ProfileListComponent implements OnInit {
 
     }
 
-    public userClick(id: number) {
+    public selectProfile(id: number) {
 
         this.routingService.toRoute(['profile', id]);
 
