@@ -1,0 +1,21 @@
+.card {
+  width: 90%;
+  margin: 5% auto;
+  padding: 0;
+  max-width: 375px;
+
+  mat-list {
+    padding: 0;
+
+    mat-list-item {
+      & + mat-list-item {
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    mat-list-item:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+  }
+}

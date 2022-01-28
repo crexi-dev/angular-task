@@ -1,0 +1,18 @@
+<crx-page>
+  <div class="header">
+      <crx-header pageTitle="Profiles"></crx-header>
+  </div>
+  <mat-card class="card">
+    <mat-list>
+      <mat-list-item *ngIf="error || !users">
+        <h3 matLine *ngIf="error">ERROR: {{ error }}</h3>
+        <h3 matLine *ngIf="!users && !error"> loading</h3>
+      </mat-list-item>
+      <mat-list-item *ngFor="let user of users" (click)="viewProfile(user)">
+        <img matListAvatar [src]="user.picture" [alt]="user.firstName">
+        <h3 matLine>{{ user.firstName }} {{ user.lastName }}</h3>
+        <mat-icon>navigate_next</mat-icon>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</crx-page>

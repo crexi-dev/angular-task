@@ -4,8 +4,8 @@
     </div>
     <mat-card *ngIf="user$ | async as user" class="card">
         <mat-card-title-group>
-            <mat-card-title>User Profile</mat-card-title>
-            <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+            <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+            <mat-card-subtitle>User Profile</mat-card-subtitle>
             <img class="circle" mat-card-md-image [src]="user.picture" />
         </mat-card-title-group>
         <mat-card-content>
@@ -32,4 +32,8 @@
             </mat-list>
         </mat-card-content>
     </mat-card>
+    <div class="footer-nav">
+        <a (click)="goTo('/profiles')">Back To List</a>
+        <div class="uid" *ngIf="user$ | async as user">{{ user.id }}</div>
+    </div>
 </crx-page>

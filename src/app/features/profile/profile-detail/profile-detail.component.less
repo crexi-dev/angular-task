@@ -1,8 +1,41 @@
 .card {
     width: 90%;
-    margin: 5%;
+    margin: 5% auto;
+    padding: 0;
+    max-width: 375px;
 }
 
 .circle {
     border-radius: 100%;
+}
+
+.uid {
+    font-size: smaller;
+    opacity: 0.5;
+    margin: 15px 0;
+}
+.footer-nav {
+    text-align: center;
+}
+a:hover {
+    cursor: pointer;
+}
+:host ::ng-deep .mat-list-item {
+    &:hover {
+        background-color: #eee;
+    }
+    .mat-list-item-content { 
+        display: flex;
+        justify-content: space-between!important;
+    }
+} 
+mat-card {
+    padding: 0;
+    mat-card-title-group {
+        padding: 16px;
+        border-bottom: 1px solid #ddd;
+    }
+    mat-list {
+        padding-top: 0;
+    }
 }
