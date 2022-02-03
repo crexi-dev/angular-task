@@ -1,0 +1,42 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile Details"></crx-header>
+    </div>
+    <mat-card class="card">
+        <mat-card-title-group>
+            <mat-card-title>Profiles</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+            <ng-container *ngIf="isLoading$ | async">
+               Show is Loading
+            </ng-container>
+            <ng-container *ngIf="profiles$ | async as profiles">
+                <mat-table [dataSource]="profiles">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="firstName">
+                        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="lastName">
+                        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="phoneNumber">
+                        <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns; let rowIndex = index;" (click)="rowCLick(rowIndex)"></mat-row>
+                </mat-table>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
+</crx-page>

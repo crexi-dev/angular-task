@@ -15,20 +15,67 @@ const dummyProfile: UserProfile = {
     state: 'CA'
 };
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    user: null,
+    entities: {},
+    isLoading: false,
+    ids: [],
+    page: 1,
+    limit: 10, // this is default limit but it can be changed whe dispatch action
+    error: null,
+};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => {
+    on(profileActions.initProfile, (state, {id}) => {
+        return {
+            ...state,
+            user: state.entities[id] || dummyProfile
+        };
+    }),
+    on(profileActions.searchProfile, (state, {page, limit}) => {
+        return {
+            ...state,
+            ids: [],
+            entities: {},
+            error: null,
+            page: page || state.page,
+            limit: limit || state.limit,
+            isLoading: true,
+        };
+    }),
+    on(profileActions.searchProfileSuccess, (state, { entities }) => {
+        const result: { ids: string[], entities: { [key: string]: UserProfile } }
+            = entities.reduce((acc, entity, index) => {
+                const id = `${index}`;
 
-        return { ...state, user: dummyProfile };
+                acc.entities = {...acc.entities, [id]: entity}
+                acc.ids.push(id);
 
-    })
+                return acc;
+            },
+            { ids: [], entities: {} }
+        );
+
+        return {
+            ...state,
+            ...result,
+            isLoading: false,
+        };
+    }),
+    on(profileActions.searchProfileFailed, (state, { error }) => {
+
+        return {
+            ...state,
+            error: error,
+            entities: {},
+            ids: [],
+            isLoading: false,
+        };
+    }),
 );
 
-// eslint-disable  prefer-arrow/prefer-arrow-functions
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
 
     return reducer(state, action);
-
 }
