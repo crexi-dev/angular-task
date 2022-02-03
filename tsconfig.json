@@ -20,6 +20,7 @@
     "paths": {
         "@auth/*": ["src/app/core/auth/*"],
         "@core/*": ["src/app/core/*"],
+        "@api/*": ["src/app/api/*"],
         "@features/*": ["src/app/features/*"],
         "@interfaces": ["src/app/app.interfaces"],
         "@store/*": ["src/app/store/*"],
