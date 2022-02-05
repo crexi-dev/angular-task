@@ -29,7 +29,7 @@ export class ProfileService {
     return {     
       cellNumber: data.cell,
       city: data.location?.city,
-      dateOfBirth: data.dob,
+      dateOfBirth: data.dob?.date,
       email: data.email,
       firstName: data.name?.first,
       lastName: data.name?.last,
