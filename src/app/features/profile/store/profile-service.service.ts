@@ -28,14 +28,14 @@ export class ProfileService {
   private dataMapper(data: any): UserProfile {    
     return {     
       cellNumber: data.cell,
-      city: data.location.city,
+      city: data.location?.city,
       dateOfBirth: data.dob,
       email: data.email,
-      firstName: data.name.first,
-      lastName: data.name.last,
+      firstName: data.name?.first,
+      lastName: data.name?.last,
       phoneNumber: data.phone,
-      picture: data.picture.medium,
-      state: data.location.sate
+      picture: data.picture?.medium,
+      state: data.location?.sate
     }
   }
 }

@@ -19,11 +19,12 @@ export class ProfileDetailComponent implements OnInit {
     constructor (private store: Store<AppState>, private route: ActivatedRoute) {}
 
     ngOnInit () {
-        this.user$ = this.store.select(getUserProfile);
-        const id = this.route.snapshot.paramMap.get('id');
+        this.user$ = this.store.select(getUserProfile);       
+        const id = this.route.snapshot.paramMap.get('id');        
+        
         if (id) {
             this.store.dispatch(profileActions.setSelectedProfileById({ id }));
-        }
-        else this.store.dispatch(profileActions.getRandomProfile())     
+        }        
+        else this.store.dispatch(profileActions.getRandomProfile()); 
     }
 }
