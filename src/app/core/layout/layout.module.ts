@@ -14,7 +14,7 @@ import { PageNotFoundComponent } from './page-not-found';
         FooterComponent,
         HeaderComponent,
         PageComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
     ],
     entryComponents: [
         PageNotFoundComponent

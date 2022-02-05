@@ -1,0 +1,18 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+    <div class="profiles-grid">
+        <mat-card *ngFor="let user of list$ | async; let i = index" [routerLink]="'/profile/' + i" class="card">
+            <mat-card-title-group>
+                <mat-card-title>User Profile {{i + 1}}</mat-card-title>
+                <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+                <img class="circle" mat-card-sm-image [src]="user.picture" />
+            </mat-card-title-group>       
+        </mat-card>
+    </div>
+    
+</crx-page>
+
+
+<!-- TODO: LOADER -->
