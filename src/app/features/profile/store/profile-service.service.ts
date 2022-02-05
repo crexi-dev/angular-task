@@ -2,30 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { UserProfile } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  
+
   // TODO:NULL CHECKS
 
   constructor(private http: HttpClient) { }
 
   getProfileList(count: number): Observable<UserProfile[]>{
-    return this.http.get<{ info: any, results: UserProfile[] }>('https://randomuser.me/api/?results=' + count)
+    return this.http.get<{ info: any, results: UserProfile[] }>(environment.profileUrl + count)
       .pipe(map(response => response.results.map(this.dataMapper)));
   }
 
   getRandomProfile(): Observable<UserProfile>{    
     const seed = new Date().getTime();
-    return this.http.get<{ info: any, results: UserProfile[] }>('https://randomuser.me/api/?seed=' + seed)
+    return this.http.get<{ info: any, results: UserProfile[] }>(environment.profileUrl + seed)
       .pipe(map(response => this.dataMapper(response.results[0])));
   }
 
   private dataMapper(data: any): UserProfile {    
     return {
+      id: '',
       cellNumber: data.cell,
       city: data.location.city,
       dateOfBirth: data.dob,
