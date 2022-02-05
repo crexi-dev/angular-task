@@ -1,5 +1,4 @@
-export interface UserProfile {
-    id: string;
+export interface UserProfile {   
     cellNumber: string;
     city: string;
     dateOfBirth: string;

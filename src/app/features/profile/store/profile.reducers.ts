@@ -3,8 +3,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { UserProfile } from '../interfaces';
 
-const dummyProfile: UserProfile = {
-    id: '',
+const dummyProfile: UserProfile = {    
     cellNumber: '888-888-8888',
     city: 'Los Angeles',
     dateOfBirth: 'Jan 1st, 1966',
