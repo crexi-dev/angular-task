@@ -1,3 +1,5 @@
+<div *ngIf="!currentUser?.id">User id not found so here is a random profile!</div>
+
 <mat-card *ngIf="currentUser" class="card">
     <mat-card-title-group>
         <mat-card-title>User Profile</mat-card-title>

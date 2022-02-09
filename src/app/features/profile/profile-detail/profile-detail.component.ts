@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions/actions';
 import { AppState } from '@store/reducers/reducers';
-import { getUserProfile } from '@store/selectors/global.selectors';
 import {BaseComponent} from "../../../components/base.component";
 import {GlobalService} from "../../../services/global.service";
 import {FetchedUser} from "../../../models/FetchedUser.model";
@@ -18,6 +16,7 @@ export class ProfileDetailComponent extends BaseComponent implements OnInit {
     user!: User;
 
     constructor (
+        // @ts-ignore
         private store: Store<AppState>,
         private globalService: GlobalService
     ) {

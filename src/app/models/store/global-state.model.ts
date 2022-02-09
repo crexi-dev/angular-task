@@ -1,3 +1,4 @@
+import { User } from "../User.model";
 
 export interface IGlobalState {
     global: {

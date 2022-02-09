@@ -16,6 +16,7 @@ export class UserProfileDetailComponent extends BaseComponent implements OnInit 
     id: string = '';
 
     constructor(
+        //@ts-ignore
         private store: Store<IGlobalState>,
         private route: ActivatedRoute,
     ) {
@@ -47,7 +48,6 @@ export class UserProfileDetailComponent extends BaseComponent implements OnInit 
     }
 
     findUser(users: User[], id: string): User | null {
-        let user;
         if (id) {
 
             const filteredUser = this.users?.filter((user => user.id === id));
@@ -57,7 +57,7 @@ export class UserProfileDetailComponent extends BaseComponent implements OnInit 
                 return null;
             }
         } else {
-            let idx = Math.ceil(Math.random() * 10);
+            let idx = Math.floor(Math.random() * 10);
             if (idx < this.users?.length) {
                 return this.users[idx];
 

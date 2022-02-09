@@ -2,9 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from "../base.component";
 import {Store} from "@ngrx/store";
 import {IGlobalState} from "../../models/store/global-state.model";
-import {GlobalService} from "../../services/global.service";
-import {FetchedUser} from "../../models/FetchedUser.model";
-import {ConverterUtil} from "../../utils/converter.utils";
 import {User} from "../../models/User.model";
 import {Router} from "@angular/router";
 
@@ -17,8 +14,8 @@ export class UserProfileListComponent extends BaseComponent implements OnInit, O
     users: User[];
 
     constructor(
+        //@ts-ignore
         private store: Store<IGlobalState>,
-        private globalService: GlobalService,
         private router: Router
     ) {
         super(store);

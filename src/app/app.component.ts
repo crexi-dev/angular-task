@@ -13,6 +13,7 @@ import {GlobalService} from "./services/global.service";
 })
 export class AppComponent extends BaseComponent implements OnInit, OnDestroy {
     constructor(
+        //@ts-ignore
         private store: Store<IGlobalState>,
         private globalService: GlobalService
     ) {
