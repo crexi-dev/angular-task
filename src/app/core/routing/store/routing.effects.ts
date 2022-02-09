@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { routingActions } from '@store/actions';
+import { routingActions } from '@store/actions/actions';
 import { map, tap } from 'rxjs/operators';
 import { RoutingService } from '../routing.service';
 

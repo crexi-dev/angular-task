@@ -1,6 +1,6 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+import { profileActions } from '@store/actions/actions';
 import { UserProfile } from '../interfaces';
 
 const dummyProfile: UserProfile = {

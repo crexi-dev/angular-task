@@ -1,9 +1,10 @@
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { RouteHistoryMember } from '@interfaces';
 import { createReducer, on } from '@ngrx/store';
-import { routingActions } from '@store/actions';
+import { routingActions } from '@store/actions/actions';
 
 export interface State {
+    global: any;
     currentRoute: ActivatedRouteSnapshot;
     history: RouteHistoryMember[];
     inProgress: boolean;
@@ -15,6 +16,11 @@ export interface State {
 }
 
 export const initialState: State = {
+    global: {
+      ApiData: {
+          GetData: null
+      }
+    },
     currentRoute: null,
     history: [],
     inProgress: false,

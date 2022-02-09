@@ -14,8 +14,8 @@ import {
 } from '@angular/router';
 import { RouteData, RouteHistoryMember } from '@interfaces';
 import { Store } from '@ngrx/store';
-import { routingActions } from '@store/actions';
-import { AppState } from '@store/reducers';
+import { routingActions } from '@store/actions/actions';
+import { AppState } from '@store/reducers/reducers';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 

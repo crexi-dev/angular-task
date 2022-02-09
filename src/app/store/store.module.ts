@@ -3,7 +3,7 @@ import { RoutingEffects } from '@core/routing/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { APP_REDUCER_TOKEN, metaReducers } from './reducers';
+import { APP_REDUCER_TOKEN, metaReducers } from './reducers/reducers';
 
 @NgModule({
     imports: [
