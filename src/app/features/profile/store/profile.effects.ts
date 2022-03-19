@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
-import { catchError, map, mergeMap } from "rxjs/operators";
+import { catchError, map, mergeMap, tap } from "rxjs/operators";
 import { profileActions } from "./profile.actions";
 import { ProfileService } from "./profile.service";
 
@@ -14,10 +14,23 @@ export class ProfileEffects {
 		mergeMap(() => this.profileService.getProfile()
 			.pipe(
 				map(user => (profileActions.getRandomProfileSuccess({ user }))),
-				catchError(() => of(profileActions.getRandomProfileError()))
+				catchError((error) => {
+					return of(profileActions.getRandomProfileError())
+				})
 			))
-	)
-	);
+	));
+
+	loadProfile$ = createEffect(() => this.actions$.pipe(
+		ofType(profileActions.getProfile),
+		tap(console.log),
+		mergeMap(({ id }) => this.profileService.getProfile(id)
+			.pipe(
+				map(user => (profileActions.getRandomProfileSuccess({ user }))),
+				catchError((error) => {
+					return of(profileActions.getRandomProfileError())
+				})
+			))
+	));
 
 	constructor(
 		private actions$: Actions,

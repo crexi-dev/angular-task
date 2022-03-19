@@ -4,6 +4,7 @@ import { profileActions } from '@store/actions';
 import { UserProfile } from '../interfaces';
 
 const dummyProfile: UserProfile = {
+	id:'12345',
 	cellNumber: '888-888-8888',
 	city: 'Los Angeles',
 	dateOfBirth: 'Jan 1st, 1966',
