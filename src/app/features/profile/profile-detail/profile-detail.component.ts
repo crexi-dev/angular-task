@@ -5,20 +5,19 @@ import { AppState } from '@store/reducers';
 import { getUserProfile } from '@store/selectors';
 
 @Component({
-    selector: 'crx-profile-detail',
-    styleUrls: ['./profile-detail.component.less'],
-    templateUrl: './profile-detail.component.html'
+	selector: 'crx-profile-detail',
+	styleUrls: ['./profile-detail.component.less'],
+	templateUrl: './profile-detail.component.html'
 })
 export class ProfileDetailComponent implements OnInit {
 
-    user$ = this.store.select(getUserProfile);
+	user$ = this.store.select(getUserProfile);
 
-    constructor (private store: Store<AppState>) {}
+	constructor(private store: Store<AppState>) {	}
 
-    ngOnInit () {
-
-        this.store.dispatch(profileActions.initProfile());
-
-    }
+	ngOnInit() {
+		this.store.dispatch(profileActions.initProfile());
+		this.store.dispatch(profileActions.getRandomProfile());
+	}
 
 }
