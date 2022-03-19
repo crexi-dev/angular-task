@@ -17,6 +17,7 @@ export class ProfilesService {
 			.pipe(map(res => this.chooseRandom(res.results.map(r => apiResultToUserProfile(r)))))
 	}
 
+	// CODE FROM https://www.tutorialspoint.com/javascript-how-to-pick-random-elements-from-an-array
 	private chooseRandom(array: UserProfile[], num = 10) {
 		const res = [];
 		for(let i = 0; i < num;) {

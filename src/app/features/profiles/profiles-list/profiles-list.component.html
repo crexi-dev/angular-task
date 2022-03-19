@@ -1,1 +1,29 @@
-<p *ngFor="let user of users$ | async">{{user | json}}</p>
+<crx-page>
+	<!-- HEADER -->
+	<div class="header">
+		<crx-header pageTitle="User Profile List"></crx-header>
+	</div>
+	<!-- BODY -->
+	<mat-card class="card">
+		<!-- BODY TITLE -->
+		<mat-card-title-group>
+			<mat-card-title>Active Users</mat-card-title>
+		</mat-card-title-group>
+		<!-- BODY CONTENT -->
+		<mat-card-content>
+			<!-- USER LIST -->
+			<mat-list>
+				<!-- USER -->
+				<ng-container *ngFor="let user of users$ | async">
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="['..', 'profile', user.id]">
+						<img matListAvatar [src]="user.picture" alt="...">
+						<h3 matLine> {{user.firstName}} {{user.lastName}} </h3>
+						<h4 matLine> Phone: {{user.phoneNumber}}</h4>
+						<h4 matLine> Email: {{user.email}}</h4>
+					</mat-list-item>
+				</ng-container>
+			</mat-list>
+		</mat-card-content>
+	</mat-card>
+</crx-page>
