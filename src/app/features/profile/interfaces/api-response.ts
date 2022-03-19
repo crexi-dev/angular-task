@@ -10,7 +10,7 @@ interface Info {
 	version: string;
 }
 
-interface ApiResult {
+export interface ApiResult {
 	gender: string;
 	name: Name;
 	location: ApiLocation;

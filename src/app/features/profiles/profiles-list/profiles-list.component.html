@@ -1,1 +1,1 @@
-<p>profiles-list works!</p>
+<p *ngFor="let user of users$ | async">{{user | json}}</p>

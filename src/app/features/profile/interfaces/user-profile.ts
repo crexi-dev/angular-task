@@ -1,3 +1,5 @@
+import { ApiResult } from "@interfaces";
+
 export interface UserProfile {
 	id: string;
 	cellNumber: string;
@@ -9,4 +11,19 @@ export interface UserProfile {
 	phoneNumber: string;
 	picture: string;
 	state: string;
+}
+
+export function apiResultToUserProfile(result: ApiResult): UserProfile {
+	return {
+		id: result.name.first + result.name.last,
+		cellNumber: result.phone ,
+		city: result.location.city ,
+		dateOfBirth: result.dob.date ,
+		email: result.email ,
+		firstName: result.name.first ,
+		lastName: result.name.last ,
+		phoneNumber: result.phone ,
+		picture: result.picture.medium ,
+		state: result.location.state ,
+	}
 }
