@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@core/layout/layout.module';
 import { EffectsModule } from '@ngrx/effects';
@@ -26,6 +27,7 @@ import { getProfileReducer } from './store/profile.reducers';
 		MatCardModule,
 		MatDividerModule,
 		MatListModule,
+		MatSnackBarModule,
 		StoreModule.forFeature('profile', getProfileReducer),
 		EffectsModule.forFeature([ProfileEffects])
 	]

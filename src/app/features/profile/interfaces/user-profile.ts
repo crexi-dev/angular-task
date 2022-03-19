@@ -13,6 +13,11 @@ export interface UserProfile {
 	state: string;
 }
 
+/**
+ * Converts an `ApiResult` into a `UserProfile`
+ * @param result 
+ * @returns `UserProfile`
+ */
 export function apiResultToUserProfile(result: ApiResult): UserProfile {
 	return {
 		id: result.name.first + result.name.last,

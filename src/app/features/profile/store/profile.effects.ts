@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, mergeMap, tap } from "rxjs/operators";
@@ -22,7 +23,6 @@ export class ProfileEffects {
 
 	loadProfile$ = createEffect(() => this.actions$.pipe(
 		ofType(profileActions.getProfile),
-		tap(console.log),
 		mergeMap(({ id }) => this.profileService.getProfile(id)
 			.pipe(
 				map(user => (profileActions.getProfileSuccess({ user }))),
@@ -32,8 +32,16 @@ export class ProfileEffects {
 			))
 	));
 
+	profileError$ = createEffect(() => this.actions$.pipe(
+		ofType(profileActions.getProfileError),
+		tap(() => {
+			this._snackBar.open('An Error Occurred Getting the profile', 'Error')
+		})
+	), { dispatch: false });
+
 	constructor(
 		private actions$: Actions,
-		private profileService: ProfileService
+		private profileService: ProfileService,
+		private _snackBar: MatSnackBar
 	) { }
 }

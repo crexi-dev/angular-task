@@ -9,6 +9,9 @@ const getProfile = createAction('[Profile] Get Profile By Id', props<{ id: strin
 const getProfileSuccess = createAction('[Profile] Get Profile Success', props<{ user: UserProfile}>());
 const getProfileError = createAction('[Profile] Get Profile Error');
 
+/**
+ * Profile Actions
+ */
 export const profileActions = {
 	initProfile,
 	getRandomProfile,

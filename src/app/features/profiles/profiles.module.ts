@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -18,11 +20,13 @@ import { RouterModule } from '@angular/router';
 	],
 	imports: [
 		CommonModule,
+		BrowserAnimationsModule,
 		LayoutModule,
 		RouterModule,
 		MatCardModule,
 		MatDividerModule,
 		MatListModule,
+		MatSnackBarModule,
 		StoreModule.forFeature('profiles', getProfilesReducer),
 		EffectsModule.forFeature([ProfilesEffects])
 

@@ -1,3 +1,4 @@
+// OBTAINED USING https://json2typescript.com/ AND THE EXAMPLE RESPONSE FROM API
 export interface ApiResponse {
 	results: ApiResult[];
 	info: Info;

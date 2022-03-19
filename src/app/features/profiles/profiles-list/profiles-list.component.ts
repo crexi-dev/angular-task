@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ProfilesState } from '../interfaces';
 import { profilesActions } from '../store/profiles.actions';
-import { getProfiles } from '../store/profiles.selectors';
+import { getAllProfiles } from '../store/profiles.selectors';
 
 @Component({
 	selector: 'crx-profiles-list',
@@ -11,7 +11,7 @@ import { getProfiles } from '../store/profiles.selectors';
 })
 export class ProfilesListComponent implements OnInit {
 
-	users$ = this.store.select(getProfiles);
+	users$ = this.store.select(getAllProfiles);
 
 	constructor(private store: Store<ProfilesState>) { }
 
