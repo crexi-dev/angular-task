@@ -1,5 +1,6 @@
 import { UserProfile } from './user-profile';
 
 export interface ProfileState {
-    user?: UserProfile;
+	user?: UserProfile;
+	users?: UserProfile[];
 }
