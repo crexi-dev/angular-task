@@ -13,9 +13,9 @@ export class ProfileEffects {
 		ofType(profileActions.getRandomProfile),
 		mergeMap(() => this.profileService.getProfile()
 			.pipe(
-				map(user => (profileActions.getRandomProfileSuccess({ user }))),
+				map(user => (profileActions.getProfileSuccess({ user }))),
 				catchError((error) => {
-					return of(profileActions.getRandomProfileError())
+					return of(profileActions.getProfileError())
 				})
 			))
 	));
@@ -25,9 +25,9 @@ export class ProfileEffects {
 		tap(console.log),
 		mergeMap(({ id }) => this.profileService.getProfile(id)
 			.pipe(
-				map(user => (profileActions.getRandomProfileSuccess({ user }))),
+				map(user => (profileActions.getProfileSuccess({ user }))),
 				catchError((error) => {
-					return of(profileActions.getRandomProfileError())
+					return of(profileActions.getProfileError())
 				})
 			))
 	));

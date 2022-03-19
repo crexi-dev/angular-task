@@ -3,6 +3,7 @@ import { UserProfile } from '../interfaces';
 
 const initProfile = createAction('[Profile] Init');
 
+// GET PROFILE 
 const getRandomProfile = createAction('[Profile] Get Random Profile');
 const getProfile = createAction('[Profile] Get Profile', props<{ id: string}>());
 const getProfileSuccess = createAction('[Profile] Get Random Profile Success', props<{ user: UserProfile}>());
@@ -12,6 +13,6 @@ export const profileActions = {
 	initProfile,
 	getRandomProfile,
 	getProfile,
-	getRandomProfileSuccess: getProfileSuccess,
-	getRandomProfileError: getProfileError,
+	getProfileSuccess,
+	getProfileError,
 };

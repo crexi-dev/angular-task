@@ -23,7 +23,7 @@ const reducer = createReducer(
 	on(profileActions.initProfile, (state) => {
 		return { ...state, user: dummyProfile };
 	}),
-	on(profileActions.getRandomProfileSuccess, (state, { user }) => ({ ...state, user }))
+	on(profileActions.getProfileSuccess, (state, { user }) => ({ ...state, user }))
 );
 
 // eslint-disable  prefer-arrow/prefer-arrow-functions
