@@ -6,11 +6,19 @@ const initialState: ProfileState = {};
 
 const reducer = createReducer(
     initialState,
+
     on(profileActions.initProfile, (state, {user} ) => {
 
         return { ...state, user: user };
 
-    })
+    }),
+
+    on(profileActions.initProfileList, (state, {users} ) => {
+
+        return { ...state, users: users };
+
+    }),
+
 );
 
 // eslint-disable  prefer-arrow/prefer-arrow-functions

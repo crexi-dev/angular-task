@@ -14,6 +14,21 @@ export class ProfileService {
     constructor(private http: HttpClient) { }
 
     /**
+     * Retrieve a list of user profiles
+     */
+     list() {
+        return this.http
+        .get<RandomUserApiResponse>( this.apiRoot, { params: { results: 10} } )
+        .pipe<UserProfile[]>(
+            map(
+                response => response.results.map( 
+                    randomUser => this.formatUserProfile( randomUser ) 
+                )
+            )
+        );
+    }
+
+    /**
      * Retrieve a single user profile
      */
     retrieve() {

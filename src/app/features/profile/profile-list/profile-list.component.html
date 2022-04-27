@@ -1,0 +1,20 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile Details"></crx-header>
+    </div>
+    <mat-card *ngIf="users$ | async as users" class="card">
+        <mat-card-title-group>
+            <mat-card-title>User Profiles</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+            <mat-nav-list>
+                <ng-container *ngFor="let user of users">
+                    <a mat-list-item>
+                        <span>{{user.firstName}} {{user.lastName}}</span>
+                    </a>
+                    <mat-divider></mat-divider>
+                </ng-container>
+            </mat-nav-list>
+        </mat-card-content>
+    </mat-card>
+</crx-page>
