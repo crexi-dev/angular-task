@@ -8,8 +8,8 @@
         </mat-card-title-group>
         <mat-card-content>
             <mat-nav-list>
-                <ng-container *ngFor="let user of users">
-                    <a mat-list-item>
+                <ng-container *ngFor="let user of users; index as i">
+                    <a mat-list-item routerLink="/profile/{{i+1}}">
                         <span>{{user.firstName}} {{user.lastName}}</span>
                     </a>
                     <mat-divider></mat-divider>

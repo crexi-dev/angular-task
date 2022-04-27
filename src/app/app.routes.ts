@@ -5,10 +5,15 @@ import { ProfileDetailComponent } from '@features/profile/profile-detail';
 import { ProfileListComponent } from '@features/profile/profile-list';
 
 export const appRoutes: Routes = [
+    {   
+        path: 'profile', 
+        redirectTo: 'profile/', 
+        pathMatch: 'full'
+    },
     {
         component: ProfileDetailComponent,
         data: { name: 'profileDetail' },
-        path: 'profile'
+        path: 'profile/:id'
     },
     {
         component: ProfileListComponent,
