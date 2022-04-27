@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
 import { getUserProfile } from '@store/selectors';
+import { ProfileService } from '../profile.service';
 
 @Component({
     selector: 'crx-profile-detail',
@@ -13,11 +14,16 @@ export class ProfileDetailComponent implements OnInit {
 
     user$ = this.store.select(getUserProfile);
 
-    constructor (private store: Store<AppState>) {}
+    constructor (
+        private service: ProfileService,
+        private store: Store<AppState>
+    ) {}
 
     ngOnInit () {
 
-        this.store.dispatch(profileActions.initProfile());
+        this.service
+            .retrieve()
+            .subscribe( user => this.store.dispatch( profileActions.initProfile({user}) ) )
 
     }
 
