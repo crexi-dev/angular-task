@@ -2,9 +2,9 @@ import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 
-const initialState: ProfileState = {};
+export const initialState: ProfileState = {};
 
-const reducer = createReducer(
+export const reducer = createReducer(
     initialState,
     on(profileActions.initProfile, (state, {profile}) => {
         return { ...state, user: profile };
