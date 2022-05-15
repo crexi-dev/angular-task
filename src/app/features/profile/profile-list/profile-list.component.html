@@ -1,0 +1,16 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+    <div class="center">
+        <button (click)="randomize()" mat-raised-button>Randomize List</button>
+    </div>
+
+    <mat-card *ngFor="let user of users$ | async as users; let i = index" class="card">
+        <mat-card-title-group routerLink="/profile/{{i + 1}}">
+            <mat-card-title>Randomly Generated User Profile {{i + 1}}</mat-card-title>
+            <mat-card-subtitle>{{ user.name.first }} {{ user.name.last }}</mat-card-subtitle>
+            <img class="circle" mat-card-md-image [src]="user.picture.large" />
+        </mat-card-title-group>
+    </mat-card>
+</crx-page>
