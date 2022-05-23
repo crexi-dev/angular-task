@@ -1,0 +1,1 @@
+<p *ngFor="let user of userList$ | async; let i = index" [routerLink]="['/profile', i]">{{ user.firstName }}</p>

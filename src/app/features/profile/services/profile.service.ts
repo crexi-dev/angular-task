@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { APIResponse, UserProfile } from '@interfaces';
 import { Observable } from 'rxjs';
@@ -15,6 +15,15 @@ export class ProfileService {
 
   fetchUserProfile(): Observable<UserProfile[]> {
     return this.http.get<APIResponse>(this.BASE_URL)
+      .pipe(map(({ results }) => results.map(user => APIUserToUserProfile(user))));
+  };
+
+  fetchUsereProfiles(): Observable<UserProfile[]> {
+    const params = new HttpParams({
+      fromObject: {results: 10 }
+   })
+
+    return this.http.get<APIResponse>(this.BASE_URL, { params })
       .pipe(map(({ results }) => results.map(user => APIUserToUserProfile(user))));
   }
 }

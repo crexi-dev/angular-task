@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
 import { getUserProfile } from '@store/selectors';
 
@@ -10,16 +9,12 @@ import { getUserProfile } from '@store/selectors';
     templateUrl: './profile-detail.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileDetailComponent implements OnInit {
+export class ProfileDetailComponent {
 
     user$ = this.store.select(getUserProfile);
 
-    constructor (private store: Store<AppState>) {}
-
-    ngOnInit () {
-
-        this.store.dispatch(profileActions.initProfile());
-
-    }
+    constructor (
+      private store: Store<AppState>,
+    ) {}
 
 }
