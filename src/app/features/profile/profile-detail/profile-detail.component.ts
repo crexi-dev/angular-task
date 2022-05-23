@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
@@ -7,7 +7,8 @@ import { getUserProfile } from '@store/selectors';
 @Component({
     selector: 'crx-profile-detail',
     styleUrls: ['./profile-detail.component.less'],
-    templateUrl: './profile-detail.component.html'
+    templateUrl: './profile-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileDetailComponent implements OnInit {
 
