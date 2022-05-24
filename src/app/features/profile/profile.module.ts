@@ -11,6 +11,7 @@ import { ProfileEffects } from './store/profile.effects';
 import { getProfileReducer } from './store/profile.reducers';
 import { ProfileListComponent } from './profile-list/profile-list.component';
 import { RouterModule } from '@angular/router';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
         StoreModule.forFeature('profile', getProfileReducer),
         EffectsModule.forFeature([ProfileEffects]),
         RouterModule,
+        MatTableModule,
     ]
 })
 export class ProfileModule { }

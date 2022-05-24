@@ -1,1 +1,22 @@
-<p *ngFor="let user of userList$ | async; let i = index" [routerLink]="['/profile', i]">{{ user.firstName }}</p>
+<crx-page>
+  <div class="header">
+    <crx-header pageTitle="Profile List"></crx-header>
+</div>
+  <mat-table [dataSource]="userList$ | async">
+    <ng-container matColumnDef="avatar">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row;" > 
+        <img class="user-avatar" [src]="row.picture"/>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row;" > {{row.firstName}} {{row.lastName}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="['avatar', 'name']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['avatar', 'name']; let i = index" [routerLink]="['/profile', i]"></mat-row>
+  </mat-table>
+</crx-page>
