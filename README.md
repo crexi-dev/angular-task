@@ -26,7 +26,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Running unit tests
 
-Unit testing has been removed from this project so it does not distract from the task at hand.
+Because this challenge is designed to evaluate your ability with NGRX, unit testing is not required. If you feel that adding unit tests helps, you can add any package you feel comfortable with.
 
 ## Linting
 
