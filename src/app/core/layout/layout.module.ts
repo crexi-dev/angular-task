@@ -16,9 +16,6 @@ import { PageNotFoundComponent } from './page-not-found';
         PageComponent,
         PageNotFoundComponent
     ],
-    entryComponents: [
-        PageNotFoundComponent
-    ],
     exports: [
         AppLogoComponent,
         FooterComponent,
