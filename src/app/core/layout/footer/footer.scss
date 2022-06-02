@@ -1,11 +1,11 @@
-@import 'utils/index';
+@import 'utils';
 
 :host {
     display: block;
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: @white;
+    background: $white;
 }
 
 .spacer {
@@ -13,7 +13,7 @@
 }
 
 .footer {
-    border-top: 1px solid @colorBorder;
+    border-top: 1px solid $colorBorder;
 
     .footer-nav {
         color: #333;
@@ -51,7 +51,7 @@
     }
 
     .trustpilot {
-        border-top: 1px solid @colorBorder;
+        border-top: 1px solid $colorBorder;
         padding: 8px 0 4px;
         width: 100%;
         text-align: center;
@@ -65,7 +65,7 @@
 
 .footer-bottom {
     color: #333;
-    background: @lightGray;
+    background: $lightGray;
     font-size: 14px;
     line-height: 1.29;
     padding: 24px 40px 48px;
@@ -96,7 +96,7 @@
     }
 }
 
-@media @notMobile {
+@media #{$notMobile} {
     .footer {
         display: flex;
         justify-content: space-between;
@@ -144,7 +144,7 @@
     }
 }
 
-@media @desktop {
+@media #{$desktop} {
     .footer {
         padding: 40px 35px 34px;
 

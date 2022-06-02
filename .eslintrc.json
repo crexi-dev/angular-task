@@ -1,10 +1,10 @@
 {
     "root": true,
-    "ignorePatterns": ["**/*"],
     "overrides": [
         {
             "files": ["*.ts"],
             "extends": [
+                "plugin:@angular-eslint/recommended",
                 "plugin:@angular-eslint/template/process-inline-templates"
             ],
             "rules": {
@@ -26,7 +26,7 @@
                 ],
                 "@angular-eslint/use-pipe-transform-interface": ["off"], // currently broken
                 "@typescript-eslint/adjacent-overload-signatures": ["off"],
-                "@typescript-eslint/ban-types": ["warn"],
+                "@typescript-eslint/ban-types": ["error"],
                 "@typescript-eslint/member-ordering": ["off"],
                 "@typescript-eslint/naming-convention": [
                     "error",
@@ -46,7 +46,7 @@
                     }
                 ],
                 "@typescript-eslint/no-empty-interface": ["off"],
-                "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "_" }],
+                "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
                 "arrow-body-style": ["error", "as-needed"],
                 "array-bracket-spacing": ["error"],
                 "arrow-parens": ["error"],
@@ -71,13 +71,13 @@
                 "key-spacing": ["error", { "afterColon": true, "beforeColon": false }],
                 "linebreak-style": ["error"],
                 "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
-                "max-len": ["warn", 120, { "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": true }],
+                "max-len": ["error", 120, { "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": true }],
                 "new-parens": ["error"],
                 "no-caller": ["error"],
                 "no-case-declarations": ["off"],
                 "no-empty": ["error", { "allowEmptyCatch": true }],
                 "no-eval": ["error"],
-                "no-extra-boolean-cast": ["warn"],
+                "no-extra-boolean-cast": ["error"],
                 "no-multiple-empty-lines": [
                     "error",
                     {
@@ -104,6 +104,12 @@
                 "space-infix-ops": ["error"],
                 "spaced-comment": ["error"]
             }
+        },
+        {
+            "files": ["*.html"],
+            "plugins": ["@angular-eslint/template"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
         }
     ]
 }

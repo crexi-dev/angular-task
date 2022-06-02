@@ -1,4 +1,4 @@
-@import 'utils/index';
+@import 'utils';
 
 :host {
     display: inline-block;
@@ -26,16 +26,15 @@ img {
     .logo {
         height: 100%;
 
-        @media @tabletLandscapeDownForHeader {
+        @media #{$tabletLandscapeDownForHeader} {
             justify-content: center;
         }
     }
 
     img {
-        height: 100%; // Necessary for svg to scale in IE11
         max-height: 39px;
 
-        @media @mobile {
+        @media #{$mobile} {
             max-height: 25px;
         }
     }
@@ -48,7 +47,7 @@ img {
         img {
             height: 39px;
 
-            @media @tabletPortraitDown {
+            @media #{$tabletPortraitDown} {
                 height: 25px;
             }
         }
@@ -59,7 +58,7 @@ img {
     img {
         max-height: 55px;
 
-        @media @mobile {
+        @media #{$mobile} {
             max-height: 35px;
         }
     }

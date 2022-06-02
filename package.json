@@ -6,9 +6,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "prepare": "husky install",
+    "prettier-write": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@angular/animations": "13.3.11",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.7",
+    "@angular-eslint/builder": "13.2.1",
     "@angular-eslint/eslint-plugin": "13.2.1",
     "@angular-eslint/eslint-plugin-template": "13.2.1",
     "@angular-eslint/template-parser": "13.2.1",
@@ -43,12 +44,9 @@
     "@typescript-eslint/parser": "5.18.0",
     "eslint": "8.12.0",
     "eslint-config-prettier": "8.4.0",
-    "jest": "27.5.1",
-    "jest-fetch-mock": "^3.0.3",
-    "jest-preset-angular": "11.1.1",
+    "husky": "^7.0.4",
     "lint-staged": "^12.3.1",
     "prettier": "2.6.2",
-    "ts-jest": "27.1.4",
     "ts-node": "9.1.1",
     "typescript": "~4.6.4"
   },
@@ -57,5 +55,12 @@
     "url": "git+https://github.com/crexi-dev/angular-task.git"
   },
   "author": "Neil Soult",
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.10.0"
+  },
+  "lint-staged": {
+    "**/*": "npm run prettier-write"
+  },
   "license": "UNLICENSED"
 }

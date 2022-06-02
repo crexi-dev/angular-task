@@ -1,13 +1,13 @@
-@import 'utils/index';
+@import 'utils';
 
 .header-wrapper {
-    height: @headerHeight;
-    border-bottom: solid 1px @colorBorder;
+    height: $headerHeight;
+    border-bottom: solid 1px $colorBorder;
 }
 
 .page-wrapper {
-    background-color: @background-light-gray;
-    min-height: calc(100vh - @headerHeight + 1px);
+    background-color: $background-light-gray;
+    min-height: calc(100vh - $headerHeight + 1px);
     position: relative;
     overflow: auto;
     transition: opacity .25s ease-in;
@@ -30,7 +30,7 @@
     width: 100vw;
     height: 100vh;
 
-    .relative();
+    @include relative();
     &::before {
         content: '';
         z-index: 1;
@@ -39,6 +39,6 @@
         transform: translate(50%, -50%);
         background: no-repeat center/contain url(/content/img/spinner.svg);
 
-        .absolute(50%, 50%);
+        @include absolute(50%, 50%);
     }
 }

@@ -4,6 +4,6 @@
 @import 'colors';
 
 //borders
-@borderLight: 1px solid @colorBorder;
-@borderLightGrey: 1px solid @lightGray;
-@radius: 2px;
+$borderLight: 1px solid $colorBorder;
+$borderLightGrey: 1px solid $lightGray;
+$radius: 2px;

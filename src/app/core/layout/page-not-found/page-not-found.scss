@@ -1,12 +1,12 @@
-@import 'utils/index';
+@import 'utils';
 
 .full-screen-page-with-header {
     display: block;
-    height: calc(100vh~'-'@headerHeight);
+    height: calc(100vh - $headerHeight);
     position: relative;
 
-    @media @mobile {
-        height: calc(100vh~'-' @headerHeight);
+    @media #{$mobile} {
+        height: calc(100vh - $headerHeight);
     }
 }
 
@@ -18,13 +18,13 @@
         margin:0;
         font-size: 20px;
         font-weight: 600;
-        color: @textSecondaryGray;
+        color: $textSecondaryGray;
     }
 
     h2 {
         font-size: 42px;
         font-weight: 600;
-        color: @blackOriginal;
+        color: $blackOriginal;
     }
 
 }
@@ -40,7 +40,7 @@
     }
 }
 
-@media @mobile {
+@media #{$mobile} {
 	.text-section{
 		padding-top: 21px;
 	}

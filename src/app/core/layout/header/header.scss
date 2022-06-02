@@ -1,19 +1,19 @@
-@import 'utils/index';
+@import 'utils';
 
 :host {
     position: fixed;
     top: 0;
-    height: @headerHeight;
+    height: $headerHeight;
     min-width:320px;
-    background-color: @white;
+    background-color: $white;
     width: 100%;
     z-index: 1035;
     padding: 0 12px 0 28px;
     display: flex;
     flex-wrap: nowrap;
-    border-bottom: 1px solid @grayAlt;
+    border-bottom: 1px solid $grayAlt;
     align-items: center;
-    color: @darkGray;
+    color: $darkGray;
     flex-direction: row;
     justify-content: flex-end;
 }
@@ -29,7 +29,7 @@
     transform: translateX(-50%) translateY(-50%);
 
     span {
-        color: @darkGray;
+        color: $darkGray;
         font-size: 24px;
         font-weight: 400;
         line-height: 1;
@@ -39,7 +39,7 @@
     }
 }
 
-@media @tabletPortraitDown {
+@media #{$tabletPortraitDown} {
     :host {
         justify-content: space-between;
         padding: 0 10px;
@@ -56,7 +56,7 @@
     }
 }
 
-@media @mobile {
+@media #{$mobile} {
     .title {
         width: auto;
     }
