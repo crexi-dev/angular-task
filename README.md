@@ -34,6 +34,7 @@ Run `ng lint` to execute [ESLint](https://github.com/typescript-eslint/typescrip
 
 ## Available routes:
 home page (default route: `/`)
+user profile page (route: `/profile-list`)
 user profile page (route: `/profile`)
 
 
