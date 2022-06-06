@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
 import { ProfileListComponent } from './profile-list/profile-list.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { ProfileListComponent } from './profile-list/profile-list.component';
         LayoutModule,
         MatCardModule,
         MatDividerModule,
+        FlexLayoutModule,
         MatTableModule,
         MatListModule,
         StoreModule.forFeature('profile', getProfileReducer)

@@ -20,10 +20,21 @@ $crexi-warn: mat.define-palette(mat.$red-palette);
 // Create the theme object (a Sass map containing all of the palettes).
 $crexi-theme: mat.define-light-theme($crexi-primary, $crexi-accent, $crexi-warn);
 $crexi-typography: mat.define-typography-config(
-    $font-family: '"proxima-nova"'
+    $font-family:'Open Sans',
 );
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($crexi-theme);
 @include mat.all-component-typographies($crexi-typography);
+
+
+// Custom Global
+
+.max-960{
+    max-width: 960px;
+}
+
+.w-100 {
+    width: 100%;
+}
