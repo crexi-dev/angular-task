@@ -4,9 +4,11 @@ import { profileActions } from '@store/actions';
 import { map, exhaustMap } from 'rxjs/operators';
 import { UserProfile } from '../interfaces';
 import { ProfileService } from '../services/profile.service';
-
+import { Logger, LogLevel } from 'src/app/shared/logger';
 @Injectable()
 export class ProfileEffects {
+
+    logger = new Logger('ProfileEffects', LogLevel.DEBUG);
 
     loadProfiles$ = createEffect(() =>
         this.actions$.pipe(
@@ -14,7 +16,9 @@ export class ProfileEffects {
             exhaustMap(() =>
                 this.profileService.getProfiles().pipe(
                     map((response: any) => {
+
                         const userProfiles = this.convertRawDataToUserProfiles(response['results']);
+                        this.logger.debug('Successfully retrieved Users', userProfiles);
                         return profileActions.loadProfilesSuccess({ userProfiles });
 
                     })
@@ -28,7 +32,13 @@ export class ProfileEffects {
     ) { }
 
 
+
+
+
+
+    // Helper function
     convertRawDataToUserProfiles(result: any[]) {
+
         const newProfile: UserProfile[] = [];
         result.forEach((user) => {
 
@@ -39,6 +49,7 @@ export class ProfileEffects {
                 dateOfBirth: 'Jan 1st, 1966',
                 email: user.email,
                 firstName: user.name.first,
+                id: user.login.username,
                 lastName: user.name.last,
                 phoneNumber: user.phone,
                 picture: user.picture.thumbnail,

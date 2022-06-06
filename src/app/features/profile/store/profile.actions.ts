@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { UserProfile } from '../interfaces';
 
 const initProfile = createAction('[Profile] Init');
 
@@ -9,8 +10,12 @@ const loadProfilesSuccess = createAction(
     props<any>()
 );
 
+// Select User Profile
+const selectUserProfile = createAction('[Profile] Select User Profile', props<UserProfile>());
+
 export const profileActions = {
     initProfile,
     loadProfiles,
-    loadProfilesSuccess
+    loadProfilesSuccess,
+    selectUserProfile
 };

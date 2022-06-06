@@ -9,6 +9,7 @@ const dummyProfile: UserProfile = {
     dateOfBirth: 'Jan 1st, 1966',
     email: 'test@crexi.com',
     firstName: 'First Name',
+    id: 'dummy',
     lastName: 'Last Name',
     phoneNumber: '999-999-9999',
     picture: '/content/img/default_user.png',
@@ -24,14 +25,21 @@ const reducer = createReducer(
     initialState,
     on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile })),
 
+    // Load Profile
+    on(profileActions.loadProfiles, (state) => ({
+        ...state,
+        isLoading: true
+    })),
+
+    // Load Profile SUCCESS
     on(profileActions.loadProfilesSuccess, (state, result) => ({
         ...state,
         users: result
     })),
 
-    on(profileActions.loadProfiles, (state) => ({
+    on(profileActions.selectUserProfile, (state, selectedUserProfile) => ({
         ...state,
-        isLoading: true
+        user: selectedUserProfile
     }))
 );
 
