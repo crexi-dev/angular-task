@@ -34,7 +34,9 @@ const reducer = createReducer(
     // Load Profile SUCCESS
     on(profileActions.loadProfilesSuccess, (state, result) => ({
         ...state,
-        users: result
+        // The first item of a random list is inherently random....right?
+        user: result.userProfiles[0],
+        users: result.userProfiles
     })),
 
     on(profileActions.selectUserProfile, (state, selectedUserProfile) => ({

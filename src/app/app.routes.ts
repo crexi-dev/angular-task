@@ -11,6 +11,7 @@ export const appRoutes: Routes = [
         path: 'profile-list'
     },
     {
+        canActivate: [UserProfileGuard],
         component: ProfileDetailComponent,
         data: { name: 'profileDetail' },
         path: 'profile'

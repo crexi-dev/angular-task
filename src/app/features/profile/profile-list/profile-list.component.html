@@ -4,7 +4,7 @@
     </div>
 
     <div fxLayout="row" fxLayoutAlign="center">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table max-960 mt-5">
+        <table mat-table [dataSource]="profiles$ | async" class="mat-elevation-z8 demo-table max-960 mt-5">
             <!-- Position Column -->
             <ng-container matColumnDef="firstName">
                 <th mat-header-cell *matHeaderCellDef>First Name</th>
