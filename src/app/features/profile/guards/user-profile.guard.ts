@@ -15,9 +15,9 @@ export class UserProfileGuard implements CanActivate {
     logger = new Logger('UserProfileGuard', LogLevel.DEBUG);
     profiles$: Observable<any>;
 
-    constructor(private store: Store<AppState>, private router: Router) { }
+    constructor (private store: Store<AppState>, private router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot):
+    canActivate (route: ActivatedRouteSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
         this.profiles$ = this.store.select((store) => store.profiles.users);
@@ -35,13 +35,8 @@ export class UserProfileGuard implements CanActivate {
                 if (foundUser) {
 
                     this.logger.debug('Found user', foundUser);
-                    // Set that user in the store
+                    // Update the selected user in the store
                     this.store.dispatch(profileActions.selectUserProfile(foundUser));
-
-                } else {
-
-                    // User does not exist in our pool ( of course in )
-                    return false;
 
                 }
 
@@ -57,7 +52,7 @@ export class UserProfileGuard implements CanActivate {
 
                 } else {
 
-                    this.logger.debug('No users exist');
+                    this.logger.debug('No users exist, load profiles ( which sets a selects a random user by default)');
                     this.store.dispatch(profileActions.loadProfiles());
 
                 }
