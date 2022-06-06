@@ -15,14 +15,27 @@ const dummyProfile: UserProfile = {
     state: 'CA'
 };
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    isLoading: false,
+    users: []
+};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile })),
+
+    on(profileActions.loadProfilesSuccess, (state, result) => ({
+        ...state,
+        users: result
+    })),
+
+    on(profileActions.loadProfiles, (state) => ({
+        ...state,
+        isLoading: true
+    }))
 );
 
-export function getProfileReducer (state: ProfileState | undefined, action: Action) {
+export function getProfileReducer(state: ProfileState | undefined, action: Action) {
 
     return reducer(state, action);
 
