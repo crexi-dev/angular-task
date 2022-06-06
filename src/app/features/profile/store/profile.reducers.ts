@@ -6,7 +6,7 @@ import { UserProfile } from '../interfaces';
 const dummyProfile: UserProfile = {
     cellNumber: '888-888-8888',
     city: 'Los Angeles',
-    dateOfBirth: 'Jan 1st, 1966',
+    dateOfBirth: new Date('Jan 1st, 1966'),
     email: 'test@crexi.com',
     firstName: 'First Name',
     id: 'dummy',

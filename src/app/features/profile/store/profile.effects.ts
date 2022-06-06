@@ -31,11 +31,6 @@ export class ProfileEffects {
         private profileService: ProfileService
     ) { }
 
-
-
-
-
-
     // Helper function
     convertRawDataToUserProfiles(result: any[]) {
 
@@ -46,7 +41,7 @@ export class ProfileEffects {
             newProfile.push({
                 cellNumber: user.cell,
                 city: user.location.city,
-                dateOfBirth: 'Jan 1st, 1966',
+                dateOfBirth: new Date(user.dob.date),
                 email: user.email,
                 firstName: user.name.first,
                 id: user.login.username,
@@ -55,9 +50,11 @@ export class ProfileEffects {
                 picture: user.picture.thumbnail,
                 state: user.location.state
             });
-        })
+
+        });
 
         return newProfile;
 
     }
+
 }

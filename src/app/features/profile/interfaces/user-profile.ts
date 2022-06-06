@@ -2,7 +2,7 @@ export interface UserProfile {
     id: string;
     cellNumber: string;
     city: string;
-    dateOfBirth: string;
+    dateOfBirth: Date;
     email: string;
     firstName: string;
     lastName: string;
