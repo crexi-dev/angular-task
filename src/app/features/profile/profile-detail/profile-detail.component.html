@@ -5,6 +5,9 @@
     <mat-card *ngIf="user$ | async as user" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
+            <button mat-fab color="primary" aria-label="Refresh to load new user" (click)="loadNewUser()">
+                <mat-icon>autorenew</mat-icon>
+              </button>
             <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
             <img class="circle" mat-card-md-image [src]="user.picture" />
         </mat-card-title-group>
