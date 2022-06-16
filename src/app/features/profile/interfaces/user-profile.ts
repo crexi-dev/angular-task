@@ -11,6 +11,10 @@ export interface UserProfile {
     state: string;
 }
 
+export interface ILoadUserPayload {
+    page: number;
+    pageSize: number
+}
 export interface UserProfileResponse {
     results: IUserProfileResults[];
 }

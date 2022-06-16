@@ -7,6 +7,7 @@ import { profileActions } from '@store/actions';
 export const adapter: EntityAdapter<UserProfile> = createEntityAdapter<UserProfile>();
 const initialState: ProfileState  = adapter.getInitialState({
     // additional entity state properties
+    currentPage: 0,
     error: null,
     isLoading: false
 });
@@ -21,7 +22,8 @@ const reducer = createReducer(
 
     on(profileActions.loadUserProfileError, (state, { error }) => ({ ...state, error })),
 
-    on(profileActions.loadUserProfileListSucess, (state, { userProfiles }) => adapter.addMany(userProfiles, state))
+    on(profileActions.loadUserProfileListSucess, (state, { userProfiles, page, pageSize }) => 
+        adapter.addMany(userProfiles, { ...state, currentPage: page, pageSize }))
 
 );
 

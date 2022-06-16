@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IUserProfileResults, UserProfile, UserProfileResponse } from '../interfaces';
+import { ILoadUserPayload, IUserProfileResults, UserProfile, UserProfileResponse } from '../interfaces';
 
 @Injectable()
 export class ProfileService {
@@ -23,16 +23,16 @@ export class ProfileService {
                 id: userResults.login.uuid,
                 lastName: userResults.name.last,
                 phoneNumber: userResults.phone,
-                picture: userResults.picture.thumbnail
+                picture: userResults.picture.medium
             };
 
         }));
 
     }
 
-    getUserProfileList () : Observable<UserProfile[]> {
+    getUserProfileList (userRequest: ILoadUserPayload) : Observable<UserProfile[]> {
 
-        return this.http.get<UserProfileResponse>('https://randomuser.me/api/?page=3&results=10&seed=abc')
+        return this.http.get<UserProfileResponse>(`https://randomuser.me/api/?page=${userRequest.page + 1}&results=${userRequest.pageSize}&seed=abc`)
         .pipe(map((res) => this.getFormattedUserProfileList(res?.results)));
 
     }
@@ -56,7 +56,7 @@ export class ProfileService {
                 id: userProfileList[i].login.uuid,
                 lastName: userProfileList[i].name.last,
                 phoneNumber: userProfileList[i].phone,
-                picture: userProfileList[i].picture.thumbnail
+                picture: userProfileList[i].picture.medium
             });
             
         }

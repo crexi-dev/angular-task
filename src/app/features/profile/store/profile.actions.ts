@@ -1,3 +1,4 @@
+import { ILoadUserPayload } from './../interfaces/user-profile';
 import { createAction, props } from '@ngrx/store';
 import { UserProfile } from '../interfaces';
 
@@ -5,11 +6,15 @@ const initProfile = createAction('[Profile] Init');
 
 const loadUserProfile = createAction('[Profile] load User profile');
 
-const loadUserProfileList = createAction('[Profile] load User profile List');
+const loadUserProfileList = createAction(
+    '[Profile] load User profile List',
+    props<{ usersRequest: ILoadUserPayload }>()
+);
 
 const loadUserProfileListSucess = createAction(
     '[Profile] load User profile List Success',
-    props<{ userProfiles: UserProfile[] }>()
+    props<{ userProfiles: UserProfile[], page: number,
+        pageSize: number }>()
 );
 
 const loadUserProfileSuccess = createAction(
