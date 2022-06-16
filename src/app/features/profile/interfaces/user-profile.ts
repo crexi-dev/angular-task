@@ -1,4 +1,5 @@
 export interface UserProfile {
+    id: string;
     cellNumber: string;
     city: string;
     dateOfBirth: string;
@@ -11,7 +12,7 @@ export interface UserProfile {
 }
 
 export interface UserProfileResponse {
-    results: IUserProfileResults[]
+    results: IUserProfileResults[];
 }
 
 export interface IUserProfileResults {
@@ -22,11 +23,11 @@ export interface IUserProfileResults {
     id: IUserId;
     location: IUserLocation;
     login: IUserLogin;
-    name: IUserName
-    nat: string
-    phone: string
-    picture: IPicture
-    registered: IRegistered
+    name: IUserName;
+    nat: string;
+    phone: string;
+    picture: IPicture;
+    registered: IRegistered;
 }
 
 interface IUserDOB {
@@ -41,17 +42,17 @@ interface IUserId {
 
 interface IUserLocation {
     city: string;
-    coordinates: ICoordinates
-    country: string
-    postcode: number
-    state: string
-    street: IStreet
+    coordinates: ICoordinates;
+    country: string;
+    postcode: number;
+    state: string;
+    street: IStreet;
     timezone: ITimezone;
 }
 
 interface ICoordinates {
     latitude: string;
-    longitude: string
+    longitude: string;
 }
 
 interface IStreet {
@@ -65,27 +66,27 @@ interface ITimezone {
 
 interface IUserLogin {
     uuid: string;
-    username: string, 
-    password: string, 
-    salt: string, 
-    md5: string,
-    sha1: string
-    sha256: string
+    username: string;
+    password: string; 
+    salt: string;
+    md5: string;
+    sha1: string;
+    sha256: string;
 }
 
 interface IUserName {
-    title: string, 
-    first: string, 
-    last: string
+    title: string;
+    first: string; 
+    last: string;
 }
 
 interface IPicture {
     large: string;
-    medium: string, 
+    medium: string;
     thumbnail: string;
 }
 
 interface IRegistered {
-    date: string, 
-    age: 3
+    date: string;
+    age: number;
 }

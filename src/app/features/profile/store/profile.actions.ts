@@ -7,6 +7,11 @@ const loadUserProfile = createAction('[Profile] load User profile');
 
 const loadUserProfileList = createAction('[Profile] load User profile List');
 
+const loadUserProfileListSucess = createAction(
+    '[Profile] load User profile List Success',
+    props<{ userProfiles: UserProfile[] }>()
+);
+
 const loadUserProfileSuccess = createAction(
     '[Profile] load User profile Success', 
     props<{ userProfile: UserProfile }>()
@@ -21,6 +26,6 @@ export const profileActions = {
     loadUserProfile, 
     loadUserProfileError, 
     loadUserProfileList,
+    loadUserProfileListSucess,
     loadUserProfileSuccess
-    
 };

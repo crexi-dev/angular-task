@@ -20,6 +20,7 @@ export class ProfileService {
                 dateOfBirth: userResults.dob.date,
                 email: userResults.email,
                 firstName: userResults.name.first,
+                id: userResults.login.uuid,
                 lastName: userResults.name.last,
                 phoneNumber: userResults.phone,
                 picture: userResults.picture.thumbnail
@@ -52,6 +53,7 @@ export class ProfileService {
                 dateOfBirth: userProfileList[i].dob.date,
                 email: userProfileList[i].email,
                 firstName: userProfileList[i].name.first,
+                id: userProfileList[i].login.uuid,
                 lastName: userProfileList[i].name.last,
                 phoneNumber: userProfileList[i].phone,
                 picture: userProfileList[i].picture.thumbnail

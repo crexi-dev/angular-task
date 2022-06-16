@@ -1,11 +1,15 @@
+import { UserProfile } from './../interfaces/user-profile';
 import { ProfileState } from '@interfaces';
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 
-const initialState: ProfileState = {
+export const adapter: EntityAdapter<UserProfile> = createEntityAdapter<UserProfile>();
+const initialState: ProfileState  = adapter.getInitialState({
+    // additional entity state properties
     error: null,
     isLoading: false
-};
+});
 
 const reducer = createReducer(
     initialState,
@@ -15,7 +19,9 @@ const reducer = createReducer(
     on(profileActions.loadUserProfileSuccess, (state, { userProfile }) => (
         { ...state, isLoading: false, user: userProfile })),
 
-    on(profileActions.loadUserProfileError, (state, { error }) => ({ ...state, error }))
+    on(profileActions.loadUserProfileError, (state, { error }) => ({ ...state, error })),
+
+    on(profileActions.loadUserProfileListSucess, (state, { userProfiles }) => adapter.addMany(userProfiles, state))
 
 );
 

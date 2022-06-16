@@ -26,7 +26,7 @@ export class ProfileEffects {
         ofType(profileActions.loadUserProfileList),
         switchMap(() => this.profileService.getUserProfileList()
         .pipe(
-            map((usersProfileList) => profileActions.loadUserProfileSuccess({ userProfile: usersProfileList[0] })),
+            map((usersProfileList) => profileActions.loadUserProfileListSucess({ userProfiles: usersProfileList })),
             catchError(() => of(profileActions.loadUserProfileError({ error: 'Unable to load users!' })))
         ))
     ));

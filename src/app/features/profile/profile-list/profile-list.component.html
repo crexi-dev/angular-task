@@ -2,6 +2,8 @@
   <div class="header">
     <crx-header pageTitle="Profile List"></crx-header>
 </div>
-  <p>profile-list works!</p>
+  <div *ngFor="let userProfile of usersProfile$ | async">
+    {{userProfile.id}} {{userProfile.city}}
+  </div>
 </crx-page>
 
