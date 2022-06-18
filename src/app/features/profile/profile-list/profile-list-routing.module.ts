@@ -4,8 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {
+        path: '',
         component: ProfileListComponent,
-        path: ''
+        children: [
+            {
+                path: 'profile-details',
+                loadChildren: () => import('src/app/features/profile/profile-list/profile-list-details/profile-list-details.module')
+                    .then((m) => m.ProfileListDetailsModule)
+            }
+        ]
     }
 ];
 

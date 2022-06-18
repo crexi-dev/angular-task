@@ -7,4 +7,6 @@ export interface ProfileState extends EntityState<UserProfile> {
     error?: string;
     currentPage?: number;
     pageSize?: number;
+    sortBy?: string;
+    sortOrder?: string;
 }

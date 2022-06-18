@@ -1,8 +1,10 @@
 import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { UserProfile } from '../interfaces';
+import { IUsersTableConfig, UserProfile } from '../interfaces';
 import { profileActions } from '../store/profile.actions';
 import {  getUserProfileList } from '../store/profile.selectors';
 
@@ -21,11 +23,21 @@ export class ProfileListComponent implements OnInit  {
     pageSize = 10;
     pageSizeOptions: number[] = [5, 10, 25, 100];
     currentPage: number = 0;
+    public tableConfig: IUsersTableConfig[] = [
+        { key: 'firstName', value: 'First Name' },
+        { key: 'lastName', value: 'Last Name' },
+        { key: 'dateOfBirth', value: 'Date Of Birth' },
+        { key: 'city', value: 'City' },
+        { key: 'phoneNumber', value: 'Phone Number' }
+    ];
 
-    public displayedColumns = ['firstName', 'lastName', 'dateOfBirth', 'city', 'phoneNumber'];
+    public displayedColumns = this.tableConfig.map((config) => config.key);
+
     public usersProfile$: Observable<UserProfile[]> = this.store.select(getUserProfileList);
+    
+    sortByControl = new FormControl(null);
 
-    constructor (private store: Store) { }
+    constructor (private store: Store, private router: Router, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit (): void {
 
@@ -35,6 +47,13 @@ export class ProfileListComponent implements OnInit  {
                 pageSize: this.pageSize
             }
         }));
+
+        this.sortByControl.valueChanges.subscribe((config: IUsersTableConfig) => {
+
+            console.log(config);
+            this.store.dispatch(profileActions.sortUsers({ sortBy: config?.key, sortOrder: 'asc' }));
+            
+        });
 
     }
 
@@ -54,6 +73,7 @@ export class ProfileListComponent implements OnInit  {
 
         // TODO - enhance navigation
         console.log(userProfile);
+        this.router.navigate(['profile-details'], { relativeTo: this.activatedRoute });
 
     }
 

@@ -1,47 +1,63 @@
 <crx-page>
   <div class="header">
     <crx-header pageTitle="Profile List"></crx-header>
-</div>
+  </div>
 
-  <table mat-table [dataSource]="usersProfile$ | async" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+  <div class="profile-list-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort By</mat-label>
+      <mat-select [formControl]="sortByControl">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let config of tableConfig" [value]="config">{{config.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+      
+    <table mat-table [dataSource]="usersProfile$ | async" class="mat-elevation-z8">
   
-    <!-- First Name Column -->
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef> First Name </th>
-      <td mat-cell *matCellDef="let element"> {{element?.firstName}}</td>
-    </ng-container>
-
-    <!-- Last Name Column -->
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef> Last Name </th>
-      <td mat-cell *matCellDef="let element"> {{element?.lastName}}</td>
-    </ng-container>
-
-     <!-- Date of Birth Column -->
-     <ng-container matColumnDef="dateOfBirth">
-      <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-      <td mat-cell *matCellDef="let element"> {{element?.dateOfBirth | date}}</td>
-    </ng-container>
-  
-    <!-- City Column -->
-    <ng-container matColumnDef="city">
-      <th mat-header-cell *matHeaderCellDef> City </th>
-      <td mat-cell *matCellDef="let element"> {{element?.city}} </td>
-    </ng-container>
-  
-    <!-- Phone Number -->
-    <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-      <td mat-cell *matCellDef="let element"> {{element?.phoneNumber}} </td>
-    </ng-container>
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
     
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
-  </table>
-  <mat-paginator [length]="paginatorLength" [pageSize]="pageSize"  
-  [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element?.firstName}}</td>
+      </ng-container>
+  
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element?.lastName}}</td>
+      </ng-container>
+  
+      <!-- Date of Birth Column -->
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element?.dateOfBirth | date}}</td>
+      </ng-container>
+    
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element?.city}} </td>
+      </ng-container>
+    
+      <!-- Phone Number -->
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+        <td mat-cell *matCellDef="let element"> {{element?.phoneNumber}} </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick(row)"></tr>
+    </table>
+    <mat-paginator [length]="paginatorLength" [pageSize]="pageSize"  
+    [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+    
+    <div class="user-details">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  
 </crx-page>
 

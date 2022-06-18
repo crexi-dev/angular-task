@@ -26,11 +26,17 @@ const loadUserProfileError = createAction(
     props<{ error: string }>()
 );
 
+const sortUsers = createAction(
+    '[Profile] Sort Users Profile list', 
+    props<{ sortBy: string, sortOrder: string; }>()
+);
+
 export const profileActions = { 
     initProfile, 
     loadUserProfile, 
     loadUserProfileError, 
     loadUserProfileList,
     loadUserProfileListSucess,
-    loadUserProfileSuccess
+    loadUserProfileSuccess,
+    sortUsers
 };

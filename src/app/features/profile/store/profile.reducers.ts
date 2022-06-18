@@ -22,6 +22,8 @@ const reducer = createReducer(
 
     on(profileActions.loadUserProfileError, (state, { error }) => ({ ...state, error })),
 
+    on(profileActions.sortUsers, (state, { sortBy, sortOrder }) => ({ ...state, sortBy, sortOrder })),
+
     on(profileActions.loadUserProfileListSucess, (state, { userProfiles, page, pageSize }) => 
         adapter.addMany(userProfiles, { ...state, currentPage: page, pageSize }))
 

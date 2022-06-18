@@ -11,6 +11,11 @@ export interface UserProfile {
     state: string;
 }
 
+export interface IUsersTableConfig {
+    key: string;
+    value: string;
+}
+
 export interface ILoadUserPayload {
     page: number;
     pageSize: number
