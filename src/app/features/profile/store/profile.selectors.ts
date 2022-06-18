@@ -28,12 +28,27 @@ export const getUserProfileList = createSelector(
     (allEntity, pageSize, currentPage, sortBy, sortOrder) => { 
         
         const currentIndex = currentPage * pageSize;
+        const allUsers = JSON.parse(JSON.stringify(allEntity));
         if(sortBy && sortOrder === 'asc') {
 
-            allEntity.sort((userA: any, userB: any) => userA[`${sortBy}`].toLowerCase() > userB[`${sortBy}`].toLowerCase() ? 1 : -1);
+            allUsers.sort((userA: any, userB: any) => userA[`${sortBy}`]?.toLowerCase() > userB[`${sortBy}`]?.toLowerCase() ? 1 : -1);
         
+        } else if(sortBy && sortOrder === 'desc') {
+
+            allUsers.sort((userA: any, userB: any) => userB[`${sortBy}`]?.toLowerCase() > userA[`${sortBy}`]?.toLowerCase() ? 1 : -1);
+            
         }
-        return allEntity?.slice(currentIndex, currentIndex + pageSize);;
+        return allUsers?.slice(currentIndex, currentIndex + pageSize);;
 
     }
+);
+
+export const selectUserEntities = createSelector(
+    getProfileState,
+    (state) => state.entities
+);
+
+export const getUsersById = (userId: string) => createSelector(
+    selectUserEntities,
+    (userEntities) => userId && userEntities && userEntities[userId]
 );

@@ -8,7 +8,7 @@ const routes: Routes = [
         component: ProfileListComponent,
         children: [
             {
-                path: 'profile-details',
+                path: 'profile-details/:profileId',
                 loadChildren: () => import('src/app/features/profile/profile-list/profile-list-details/profile-list-details.module')
                     .then((m) => m.ProfileListDetailsModule)
             }

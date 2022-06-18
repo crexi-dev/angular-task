@@ -5,9 +5,10 @@ import { ProfileDetailComponent } from '@features/profile/profile-detail';
 
 export const appRoutes: Routes = [
     {
+        data: { name: 'ProfileList' },
         loadChildren: () => import('src/app/features/profile/profile-list/profile-list.module')
         .then((m) => m.ProfileListModule),
-        path: 'profileList'
+        path: 'profile-list'
     },
     {
         component: ProfileDetailComponent,
