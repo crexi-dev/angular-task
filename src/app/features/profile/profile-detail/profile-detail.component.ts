@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { profileActions } from '@store/actions';
@@ -10,7 +10,7 @@ import { getUserProfile } from '@store/selectors';
     styleUrls: ['./profile-detail.component.scss'],
     templateUrl: './profile-detail.component.html'
 })
-export class ProfileDetailComponent implements OnInit {
+export class ProfileDetailComponent implements OnInit, OnDestroy {
 
     user$ = this.store.select(getUserProfile);
 
@@ -28,8 +28,16 @@ export class ProfileDetailComponent implements OnInit {
         
     }
 
-    goProfileList() {
+    goProfileList () {
+
         this.router.navigate(['profile-list']);
+    
+    }
+
+    ngOnDestroy (): void {
+
+        this.store.dispatch(profileActions.resetUserProfile());
+    
     }
 
 }

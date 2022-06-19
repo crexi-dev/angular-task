@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import {  getUserProfileList } from '../store/profile.selectors';
     styleUrls: ['./profile-list.component.scss'],
     templateUrl: './profile-list.component.html'
 })
-export class ProfileListComponent implements OnInit  {
+export class ProfileListComponent implements OnInit, OnDestroy  {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     
@@ -101,6 +101,12 @@ export class ProfileListComponent implements OnInit  {
 
         this.router.navigate(['profile-details', userProfile.id], { relativeTo: this.activatedRoute });
 
+    }
+
+    ngOnDestroy (): void {
+
+        this.store.dispatch(profileActions.resetUsersList());
+    
     }
 
 }

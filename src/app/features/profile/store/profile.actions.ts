@@ -31,6 +31,9 @@ const sortUsers = createAction(
     props<{ sortBy: string, sortOrder: string; }>()
 );
 
+const resetUsersList = createAction('[Profile] reset users profile list');
+const resetUserProfile = createAction('[Profile] reset users profile');
+
 export const profileActions = { 
     initProfile, 
     loadUserProfile, 
@@ -38,5 +41,7 @@ export const profileActions = {
     loadUserProfileList,
     loadUserProfileListSucess,
     loadUserProfileSuccess,
+    resetUserProfile,
+    resetUsersList,
     sortUsers
 };

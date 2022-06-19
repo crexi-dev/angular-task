@@ -2,38 +2,40 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <button (click)="goProfileList()" mat-raised-button color="primary">Go to Profile List</button>
-    <mat-card *ngIf="user$ | async as user" class="card">
-        <mat-card-title-group>
-            <mat-card-title>User Profile</mat-card-title>
-            <button mat-fab color="primary" aria-label="Refresh to load new user" (click)="loadNewUser()">
-                <mat-icon>autorenew</mat-icon>
-              </button>
-            <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture" />
-        </mat-card-title-group>
-        <mat-card-content>
-            <mat-list>
-                <mat-list-item>
-                    <span>Phone: </span><span>{{ user.phoneNumber }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Cell: </span><span>{{ user.cellNumber }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>City: </span><span>{{ user.city }}, {{ user.state }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Email: </span><span>{{ user.email }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
-    </mat-card>
+    <div class="details-container">
+        <button (click)="goProfileList()" mat-raised-button color="accent" class="profile-lst-btn">Go to Profile List</button>
+        <mat-card *ngIf="user$ | async as user" class="card">
+            <mat-card-title-group>
+                <mat-card-title>User Profile</mat-card-title>
+                <button mat-fab color="accent" aria-label="Refresh to load new user" (click)="loadNewUser()">
+                    <mat-icon>autorenew</mat-icon>
+                </button>
+                <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+                <img class="circle" mat-card-md-image [src]="user.picture" />
+            </mat-card-title-group>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item>
+                        <span>Phone: </span><span>{{ user.phoneNumber }}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <span>Cell: </span><span>{{ user.cellNumber }}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <span>City: </span><span>{{ user.city }}, {{ user.state }}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <span>Email: </span><span>{{ user.email }}</span>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </crx-page>
