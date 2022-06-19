@@ -9,7 +9,7 @@ const initialState: ProfileState  = adapter.getInitialState({
     // additional entity state properties
     currentPage: 0,
     error: null,
-    isLoading: false
+    isLoading: true
 });
 
 const reducer = createReducer(
@@ -20,12 +20,12 @@ const reducer = createReducer(
     on(profileActions.loadUserProfileSuccess, (state, { userProfile }) => (
         { ...state, isLoading: false, user: userProfile })),
 
-    on(profileActions.loadUserProfileError, (state, { error }) => ({ ...state, error })),
+    on(profileActions.loadUserProfileError, (state, { error }) => ({ ...state, error, isLoading: false })),
 
     on(profileActions.sortUsers, (state, { sortBy, sortOrder }) => ({ ...state, sortBy, sortOrder })),
 
     on(profileActions.loadUserProfileListSucess, (state, { userProfiles, page, pageSize }) => 
-        adapter.addMany(userProfiles, { ...state, currentPage: page, pageSize }))
+        adapter.addMany(userProfiles, { ...state, currentPage: page, isLoading: false, pageSize }))
 
 );
 

@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@core/layout/layout.module';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatListModule,
         MatIconModule,
         MatTableModule,
+        MatButtonModule,
         MatPaginatorModule,
         MatSelectModule,
         ProfileListRoutingModule,

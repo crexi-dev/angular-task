@@ -3,5 +3,23 @@
         <crx-header pageTitle="Home"></crx-header>
     </div>
     <h1> Welcome to Crexi! </h1>
+    <div class="user-wrapper-widget-container">
+        <mat-card>
+            <mat-card-title>Random User Profile</mat-card-title>
+            <mat-card-actions>
+                <!-- <button mat-raised-button color="accent">Go To User Profile</button> -->
+                <a mat-raised-button color="accent" [routerLink]="['/profile']">Go To User Profile</a>
+
+            </mat-card-actions>
+        </mat-card>
+        <mat-card>
+            <mat-card-title>User Profile List</mat-card-title>
+            <mat-card-actions>
+                <a mat-raised-button color="accent" [routerLink]="['/profile-list']">Go To Profile List</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    
+
     <crx-footer></crx-footer>
 </crx-page>

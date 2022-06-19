@@ -2,8 +2,9 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from '@interfaces';
 import { Store } from '@ngrx/store';
-import { getUsersById } from '@store/selectors';
+import { getLoading, getUsersById } from '@store/selectors';
 import { Observable } from 'rxjs';
+import { filter, first } from 'rxjs/operators';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +26,21 @@ export class ProfileListDetailsComponent implements OnInit  {
     ngOnInit (): void {
 
         this.user$ = this.store.select(getUsersById(this.userProfileId));
+
+        this.store.select(getLoading).pipe(filter((isLoading) => !isLoading)).subscribe((isLoading) => {
+
+            this.user$.pipe(first()).
+            subscribe((user) => {
+
+                if(!user) {
+
+                    this.router.navigate(['profile']);
+                
+                }
+                    
+            });
+            
+        });
     
     }
 

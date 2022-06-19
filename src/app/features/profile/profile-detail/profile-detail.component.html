@@ -2,6 +2,7 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
+    <button (click)="goProfileList()" mat-raised-button color="primary">Go to Profile List</button>
     <mat-card *ngIf="user$ | async as user" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>

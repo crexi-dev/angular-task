@@ -80,7 +80,6 @@ export class ProfileListComponent implements OnInit  {
                     this.isProfileDetailsOpen$.next(false);
                 
                 }
-                console.log(e);
             
             })
         ).subscribe();
@@ -89,7 +88,6 @@ export class ProfileListComponent implements OnInit  {
 
     onPageChange (events: PageEvent) {
 
-        console.log(events);
         this.store.dispatch(profileActions.loadUserProfileList({
             usersRequest: {
                 page: events.pageIndex,
@@ -101,8 +99,6 @@ export class ProfileListComponent implements OnInit  {
 
     onRowClick (userProfile: UserProfile) {
 
-        // TODO - enhance navigation
-        console.log(userProfile);
         this.router.navigate(['profile-details', userProfile.id], { relativeTo: this.activatedRoute });
 
     }

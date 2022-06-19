@@ -13,6 +13,7 @@ export const pageSize = createSelector(getProfileState, (state) => state.pageSiz
 export const currentPage = createSelector(getProfileState, (state) => state.currentPage);
 export const sortBy = createSelector(getProfileState, (state) => state.sortBy);
 export const sortOrder = createSelector(getProfileState, (state) => state.sortOrder);
+export const getLoading = createSelector(getProfileState, (state) => state.isLoading);
 
 export const getAllUserProfile = createSelector(
     getProfileState,
