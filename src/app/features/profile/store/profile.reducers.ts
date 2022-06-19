@@ -1,5 +1,4 @@
-import { UserProfile } from './../interfaces/user-profile';
-import { ProfileState } from '@interfaces';
+import { ProfileState, UserProfile } from '@interfaces';
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';

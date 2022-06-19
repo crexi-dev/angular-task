@@ -5,7 +5,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
-import { IUsersTableConfig, UserProfile } from '../interfaces';
+import { IUsersTableConfig, UserProfile } from '@interfaces';
 import { profileActions } from '../store/profile.actions';
 import {  getUserProfileList } from '../store/profile.selectors';
 

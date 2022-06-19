@@ -1,4 +1,4 @@
-import { ProfileState } from '@interfaces';
+import { ProfileState, UserProfile } from '@interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { adapter } from './profile.reducers';
 
@@ -29,14 +29,14 @@ export const getUserProfileList = createSelector(
     (allEntity, pageSize, currentPage, sortBy, sortOrder) => { 
         
         const currentIndex = currentPage * pageSize;
-        const allUsers = JSON.parse(JSON.stringify(allEntity));
+        const allUsers: UserProfile[] = JSON.parse(JSON.stringify(allEntity));
         if(sortBy && sortOrder === 'asc') {
 
-            allUsers.sort((userA: any, userB: any) => userA[`${sortBy}`]?.toLowerCase() > userB[`${sortBy}`]?.toLowerCase() ? 1 : -1);
+            allUsers.sort((userA, userB) => userA[`${sortBy}`]?.toLowerCase() > userB[`${sortBy}`]?.toLowerCase() ? 1 : -1);
         
         } else if(sortBy && sortOrder === 'desc') {
 
-            allUsers.sort((userA: any, userB: any) => userB[`${sortBy}`]?.toLowerCase() > userA[`${sortBy}`]?.toLowerCase() ? 1 : -1);
+            allUsers.sort((userA, userB) => userB[`${sortBy}`]?.toLowerCase() > userA[`${sortBy}`]?.toLowerCase() ? 1 : -1);
             
         }
         return allUsers?.slice(currentIndex, currentIndex + pageSize);;

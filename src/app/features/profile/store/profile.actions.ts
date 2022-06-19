@@ -1,6 +1,6 @@
-import { ILoadUserPayload } from './../interfaces/user-profile';
+import { ILoadUserPayload } from '@interfaces';
 import { createAction, props } from '@ngrx/store';
-import { UserProfile } from '../interfaces';
+import { UserProfile } from '@interfaces';
 
 const initProfile = createAction('[Profile] Init');
 

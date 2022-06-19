@@ -1,4 +1,8 @@
-export interface UserProfile {
+interface IObjectKeys {
+    [key: string]: string;
+}
+
+export interface UserProfile extends IObjectKeys {
     id: string;
     cellNumber: string;
     city: string;

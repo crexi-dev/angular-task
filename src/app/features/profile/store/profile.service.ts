@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ILoadUserPayload, IUserProfileResults, UserProfile, UserProfileResponse } from '../interfaces';
+import { ILoadUserPayload, IUserProfileResults, UserProfile, UserProfileResponse } from '@interfaces';
 
 @Injectable()
 export class ProfileService {

@@ -1,5 +1,5 @@
 import { EntityState } from '@ngrx/entity';
-import { UserProfile } from './user-profile';
+import { UserProfile } from '@interfaces';
 
 export interface ProfileState extends EntityState<UserProfile> { 
     user?: UserProfile;
