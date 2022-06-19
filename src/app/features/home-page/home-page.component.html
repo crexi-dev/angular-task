@@ -6,6 +6,11 @@
     <div class="user-wrapper-widget-container">
         <mat-card>
             <mat-card-title>Random User Profile</mat-card-title>
+            <mat-card-content>
+                <p>
+                    Task 1: The user profile page is currently loaded with dummy data. Use the public API at Random User Generator (Docs) to pull in a random user and populate the profile page. You should get the relevant data from the API to fill a ProfileStore.
+                </p>
+            </mat-card-content>
             <mat-card-actions>
                 <a mat-raised-button color="accent" [routerLink]="['/profile']">Go To User Profile</a>
 
@@ -13,6 +18,12 @@
         </mat-card>
         <mat-card>
             <mat-card-title>User Profile List</mat-card-title>
+            <mat-card-content>
+                <p>
+                    Task 2: Create a new page, a profile list. Pull in 10 random profiles to populate this list, storing them in the state, and make each profile list item clickable, sending the user to a user details page with that user data. The user profile page route should be adjusted to take an optional id param, which if missing will show a random user (step 1)
+                </p>
+            </mat-card-content>
+            
             <mat-card-actions>
                 <a mat-raised-button color="accent" [routerLink]="['/profile-list']">Go To Profile List</a>
             </mat-card-actions>

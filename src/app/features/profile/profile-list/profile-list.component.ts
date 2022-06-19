@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { IUsersTableConfig, UserProfile } from '../interfaces';
 import { profileActions } from '../store/profile.actions';
 import {  getUserProfileList } from '../store/profile.selectors';
@@ -38,6 +38,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
     
     public sortByControl = new FormControl(null);
     public isProfileDetailsOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    private onDestory$ = new Subject<void>();
 
     constructor (
         private store: Store, 
@@ -61,7 +62,9 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
             }
         }));
 
-        this.sortByControl.valueChanges.subscribe((config: IUsersTableConfig) => {
+        this.sortByControl.valueChanges
+        .pipe(takeUntil(this.onDestory$))
+        .subscribe((config: IUsersTableConfig) => {
 
             this.store.dispatch(profileActions.sortUsers({ sortBy: config?.key, sortOrder: 'asc' }));
             
@@ -81,7 +84,8 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
                 
                 }
             
-            })
+            }),
+            takeUntil(this.onDestory$)
         ).subscribe();
 
     }
@@ -106,6 +110,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
     ngOnDestroy (): void {
 
         this.store.dispatch(profileActions.resetUsersList());
+        this.onDestory$.next();
     
     }
 

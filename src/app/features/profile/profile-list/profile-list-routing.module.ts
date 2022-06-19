@@ -4,15 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {
-        path: '',
-        component: ProfileListComponent,
         children: [
             {
-                path: 'profile-details/:profileId',
-                loadChildren: () => import('src/app/features/profile/profile-list/profile-list-details/profile-list-details.module')
-                    .then((m) => m.ProfileListDetailsModule)
+                loadChildren: () => 
+                    import('src/app/features/profile/profile-list/profile-list-details/profile-list-details.module')
+                    .then((m) => m.ProfileListDetailsModule),
+                path: 'profile-details/:profileId'
             }
-        ]
+        ],
+        component: ProfileListComponent,
+        path: ''
     }
 ];
 
