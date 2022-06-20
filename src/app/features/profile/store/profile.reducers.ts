@@ -26,9 +26,11 @@ const reducer = createReducer(
     on(profileActions.loadUserProfileListSucess, (state, { userProfiles, page, pageSize }) => 
         adapter.addMany(userProfiles, { ...state, currentPage: page, isLoading: false, pageSize })),
 
-    on(profileActions.resetUsersList, (state) => adapter.removeAll({ ...state, error: null, isLoading: true })),
+    on(profileActions.resetUsersList, (state) => 
+        adapter.removeAll({ ...state, error: null, isLoading: true, sortBy: null, sortOrder: null })),
 
-    on(profileActions.resetUserProfile, (state) => ({ ...state, error: null, isLoading: true, user: null }))    
+    on(profileActions.resetUserProfile, (state) => (
+        { ...state, error: null, isLoading: true, sortBy: null, sortOrder: null, user: null }))    
 
 );
 
