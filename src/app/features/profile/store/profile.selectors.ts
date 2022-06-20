@@ -2,6 +2,10 @@ import { ProfileState, UserProfile } from '@interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { adapter } from './profile.reducers';
 
+// selector's in general memorize the data and emit only when the value changes 
+// so, it's always advisable to have selector for individual fields and then combine them as we needed 
+// it will give use better performance and avoid unnecessary emits 
+
 // adapter that fetches all the user's profile 
 const {
     selectAll

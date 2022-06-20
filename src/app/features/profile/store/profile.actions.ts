@@ -38,7 +38,7 @@ const sortUsers = createAction(
     props<{ sortBy: string, sortOrder: string; }>()
 );
 
-// action to reset the users list when the page get destoryed 
+// action to reset the users list when the page get destroyed 
 const resetUsersList = createAction('[Profile] reset users profile list');
 
 // action to reset the single user when the page get destroyed
