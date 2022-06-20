@@ -20,7 +20,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     
     // MatPaginator Inputs
-    public paginatorLength = 1000; // hard coding this for the timebeing
+    public paginatorLength = 1000; // hard coding this for the time being
     public pageSize = 10;
     public pageSizeOptions: number[] = [5, 10, 25, 100];
     public currentPage: number = 0;
@@ -38,7 +38,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
     
     public sortByControl = new FormControl(null);
     public isProfileDetailsOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    private onDestory$ = new Subject<void>();
+    private onDestroy$ = new Subject<void>();
 
     constructor (
         private store: Store, 
@@ -63,7 +63,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
         }));
 
         this.sortByControl.valueChanges
-        .pipe(takeUntil(this.onDestory$))
+        .pipe(takeUntil(this.onDestroy$))
         .subscribe((config: IUsersTableConfig) => {
 
             this.store.dispatch(profileActions.sortUsers({ sortBy: config?.key, sortOrder: 'asc' }));
@@ -85,7 +85,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
                 }
             
             }),
-            takeUntil(this.onDestory$)
+            takeUntil(this.onDestroy$)
         ).subscribe();
 
     }
@@ -110,7 +110,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
     ngOnDestroy (): void {
 
         this.store.dispatch(profileActions.resetUsersList());
-        this.onDestory$.next();
+        this.onDestroy$.next();
     
     }
 
