@@ -34,10 +34,16 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
 
     public displayedColumns = this.tableConfig.map((config) => config.key);
 
+    // get user profile list from selector 
     public usersProfile$: Observable<UserProfile[]> = this.store.select(getUserProfileList);
     
+    // setup the form control for sort selection 
     public sortByControl = new FormControl(null);
+
+    // flag to monitor the detail page is open or not
     public isProfileDetailsOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+    // subject that helps to destroy all the subscription when we get out of this page 
     private onDestroy$ = new Subject<void>();
 
     constructor (
@@ -55,6 +61,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
         
         }
 
+        // load profile list based on the paginator configuration 
         this.store.dispatch(profileActions.loadUserProfileList({
             usersRequest: {
                 page: this.currentPage,
@@ -62,6 +69,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
             }
         }));
 
+        // monitor the sort selection and dispatch the action to sort the data 
         this.sortByControl.valueChanges
         .pipe(takeUntil(this.onDestroy$))
         .subscribe((config: IUsersTableConfig) => {
@@ -70,6 +78,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
             
         });
 
+        // Navigation logic to check if the page is on details view or the list view 
         this.router.events.pipe(
             filter((e): e is NavigationEnd => e instanceof NavigationEnd),
             map((e) => {
@@ -90,6 +99,7 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
 
     }
 
+    // dispatch an action to load more data with the paginator configuration 
     onPageChange (events: PageEvent) {
 
         this.store.dispatch(profileActions.loadUserProfileList({
@@ -101,12 +111,14 @@ export class ProfileListComponent implements OnInit, OnDestroy  {
 
     }
 
+    // redirect to profile details view upon clicking on table row
     onRowClick (userProfile: UserProfile) {
 
         this.router.navigate(['profile-details', userProfile.id], { relativeTo: this.activatedRoute });
 
     }
 
+    // destroy subscription and reset all global store
     ngOnDestroy (): void {
 
         this.store.dispatch(profileActions.resetUsersList());

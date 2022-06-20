@@ -4,6 +4,7 @@ import { HomePageComponent } from '@features/home-page';
 import { ProfileDetailComponent } from '@features/profile/profile-detail';
 
 export const appRoutes: Routes = [
+    // lazy load the profile list page view 
     {
         data: { name: 'ProfileList' },
         loadChildren: () => import('src/app/features/profile/profile-list/profile-list.module')

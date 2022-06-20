@@ -12,30 +12,35 @@ import { getUserProfile } from '@store/selectors';
 })
 export class ProfileDetailComponent implements OnInit, OnDestroy {
 
-    user$ = this.store.select(getUserProfile);
+    // Get user profile data from selector 
+    public user$ = this.store.select(getUserProfile);
 
     constructor (private store: Store<AppState>, private router: Router) {}
 
     ngOnInit () {
 
+        // Dispatch an action to load the random users 
         this.store.dispatch(profileActions.loadUserProfile());
 
     }
     
     loadNewUser () {
 
+        // Dispatch an action to load new random users
         this.store.dispatch(profileActions.loadUserProfile());
         
     }
 
     goProfileList () {
 
+        // Redirect to profile list 
         this.router.navigate(['profile-list']);
     
     }
 
     ngOnDestroy (): void {
 
+        // dispatch an action to clear the store when the page get destroyed 
         this.store.dispatch(profileActions.resetUserProfile());
     
     }

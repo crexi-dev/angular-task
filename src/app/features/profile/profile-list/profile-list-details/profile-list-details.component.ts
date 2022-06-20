@@ -14,24 +14,28 @@ import { filter, first, takeUntil } from 'rxjs/operators';
 })
 export class ProfileListDetailsComponent implements OnInit, OnDestroy  {
 
-    private userProfileId: string;
     public user$: Observable<UserProfile>;
-    private onDestory$ = new Subject<void>();
+    private userProfileId: string;
+    private onDestroy$ = new Subject<void>();
 
     constructor (private router: Router, private activatedRoute: ActivatedRoute, private store: Store) {
- 
+        
+        // fetch profileId from the router params and assign it to local variable
         this.userProfileId = this.activatedRoute.snapshot.paramMap.get('profileId');
     
     }
 
     ngOnInit (): void {
 
+        // get user profile data from selector 
         this.user$ = this.store.select(getUsersById(this.userProfileId));
 
+        // validate and see if any data exist for the selected user id 
+        // if no match exist the redirect to random user profile data page
         this.store.select(getLoading)
         .pipe(
             filter((isLoading) => !isLoading),
-            takeUntil(this.onDestory$)
+            takeUntil(this.onDestroy$)
         ).subscribe(() => {
 
             this.user$.pipe(first()).
@@ -49,15 +53,17 @@ export class ProfileListDetailsComponent implements OnInit, OnDestroy  {
     
     }
 
+    // redirect back to profile list page 
     goToProfileList () {
 
         this.router.navigate(['profile-list']);
     
     }
 
+    // destroy all the subscription 
     ngOnDestroy (): void {
 
-        this.onDestory$.next();
+        this.onDestroy$.next();
     
     }
 

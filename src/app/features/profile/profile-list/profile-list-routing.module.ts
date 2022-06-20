@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         children: [
+            // lazy load the profile details view 
             {
                 loadChildren: () => 
                     import('src/app/features/profile/profile-list/profile-list-details/profile-list-details.module')
