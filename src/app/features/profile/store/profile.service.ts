@@ -4,11 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ILoadUserPayload, IUserProfileResults, UserProfile, UserProfileResponse } from '@interfaces';
 
+// In order to keep the effects file optimized and well maintainable,
+// we need to move the API call/business logic to the service layer  
 @Injectable()
 export class ProfileService {
     
     constructor (private http: HttpClient) {}
 
+    // API call to get sinle random users 
     getUserProfile () : Observable<UserProfile> {
 
         return this.http.get<UserProfileResponse>('https://randomuser.me/api/').pipe(map((res) => {
@@ -30,6 +33,7 @@ export class ProfileService {
 
     }
 
+    // API call to get list of random users 
     getUserProfileList (userRequest: ILoadUserPayload) : Observable<UserProfile[]> {
 
         return this.http.get<UserProfileResponse>(`https://randomuser.me/api/?page=${userRequest.page + 1}&results=${userRequest.pageSize}&seed=abc`)
@@ -37,6 +41,7 @@ export class ProfileService {
 
     }
 
+    // Business logic to map the raw data with the user profile contracts 
     private getFormattedUserProfileList (userProfileList: IUserProfileResults[]):  UserProfile[] {
 
         if(!userProfileList?.length) {

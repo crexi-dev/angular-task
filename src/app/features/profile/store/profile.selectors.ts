@@ -2,24 +2,38 @@ import { ProfileState, UserProfile } from '@interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { adapter } from './profile.reducers';
 
+// adapter that fetches all the user's profile 
 const {
     selectAll
 } = adapter.getSelectors();
 
 export const getProfileState = createFeatureSelector<ProfileState>('profile');
 
+// selector to get single random user
 export const getUserProfile = createSelector(getProfileState, ({ user }) => user);
+
+// selector to get page size
 export const pageSize = createSelector(getProfileState, (state) => state.pageSize);
+
+// selector to get current page
 export const currentPage = createSelector(getProfileState, (state) => state.currentPage);
+
+// selector to get sort by configuration
 export const sortBy = createSelector(getProfileState, (state) => state.sortBy);
+
+// selector to get sort order
 export const sortOrder = createSelector(getProfileState, (state) => state.sortOrder);
+
+// selector to get loading state
 export const getLoading = createSelector(getProfileState, (state) => state.isLoading);
 
+// selector to get all users profile
 export const getAllUserProfile = createSelector(
     getProfileState,
     selectAll
 );
 
+// the selector that get user's profile list and does sorting based on the user's selection
 export const getUserProfileList = createSelector(
     getAllUserProfile,
     pageSize,
@@ -44,11 +58,13 @@ export const getUserProfileList = createSelector(
     }
 );
 
+// fetch all the entities for profile list 
 export const selectUserEntities = createSelector(
     getProfileState,
     (state) => state.entities
 );
 
+// fetch selected user data from entities dictionary 
 export const getUsersById = (userId: string) => createSelector(
     selectUserEntities,
     (userEntities) => userId && userEntities && userEntities[userId]
