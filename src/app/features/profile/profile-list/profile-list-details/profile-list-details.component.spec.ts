@@ -7,7 +7,7 @@ import { ProfileListDetailsComponent } from './profile-list-details.component';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileListDetailsComponent', () => {
 
@@ -28,9 +28,9 @@ describe('ProfileListDetailsComponent', () => {
                 {
                     provide: ActivatedRoute,
                     useValue: {
-                        snapshot: {paramMap: convertToParamMap({
+                        snapshot: { paramMap: convertToParamMap({
                             id: 'test'
-                        })}
+                        }) }
                     }
                 },
                 provideMockStore()
