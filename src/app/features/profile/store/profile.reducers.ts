@@ -19,7 +19,22 @@ const initialState: ProfileState = {};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile })),
+    on(profileActions.getUserCustomProfileSuccess, (state, { payload }) => (
+        {
+            ...state, user: {
+                cellNumber: payload[0]?.cell,
+                city: payload[0]?.location.city,
+                dateOfBirth: payload[0]?.dob.date,
+                email: payload[0]?.email,
+                firstName: payload[0]?.name.first,
+                lastName: payload[0]?.name.last,
+                phoneNumber: payload[0]?.phone,
+                picture: payload[0]?.picture.large,
+                state: payload[0]?.nat
+            }
+        }
+    ))
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
