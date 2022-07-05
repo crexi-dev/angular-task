@@ -1,0 +1,13 @@
+<div class="header">
+    <crx-header pageTitle="User List"></crx-header>
+</div>
+<mat-nav-list *ngIf="userProfileList$ | async as profiles" class="user-list__container">
+    <mat-list-item
+        *ngFor="let profile of profiles"
+        [routerLink]="['profile', profile?.id]"
+        [routerLinkActive]="['active']"
+    >
+        <div matLine>{{ profile.firstName }} {{ profile.lastName }}</div>
+        <p matLine>{{ profile.email }}</p>
+    </mat-list-item>
+</mat-nav-list>

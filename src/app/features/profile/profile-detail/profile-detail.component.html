@@ -1,13 +1,15 @@
-<crx-page>
-    <div class="header">
-        <crx-header pageTitle="Profile Details"></crx-header>
-    </div>
-    <mat-card *ngIf="user$ | async as user" class="card">
+<div class="header">
+    <crx-header pageTitle="Profile Details"></crx-header>
+</div>
+<div class="profile-details__container">
+    <button mat-stroked-button color="primary" [routerLink]="['/profiles']">Back to UserList</button>
+    <mat-card *ngIf="userDetails$ | async as user" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
             <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture" />
+            <img mat-card-md-image [src]="user.picture.thumbnail" />
         </mat-card-title-group>
+
         <mat-card-content>
             <mat-list>
                 <mat-list-item>
@@ -32,4 +34,4 @@
             </mat-list>
         </mat-card-content>
     </mat-card>
-</crx-page>
+</div>

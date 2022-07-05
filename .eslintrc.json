@@ -97,7 +97,7 @@
                 "quotes": ["error", "single", { "allowTemplateLiterals": true }],
                 "quote-props": ["error", "as-needed"],
                 "semi": ["error"],
-                "sort-keys": ["error", "asc", { "caseSensitive": false, "natural": true }],
+                "sort-keys": ["off", "asc", { "caseSensitive": false, "natural": true }],
                 "space-before-blocks": ["error"],
                 "space-before-function-paren": ["error"],
                 "space-in-parens": ["error"],

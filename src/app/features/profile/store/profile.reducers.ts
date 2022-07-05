@@ -1,28 +1,22 @@
-import { ProfileState } from '@interfaces';
+import { IUserProfileListState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
 
-const dummyProfile: UserProfile = {
-    cellNumber: '888-888-8888',
-    city: 'Los Angeles',
-    dateOfBirth: 'Jan 1st, 1966',
-    email: 'test@crexi.com',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    phoneNumber: '999-999-9999',
-    picture: '/content/img/default_user.png',
-    state: 'CA'
+const initialState: IUserProfileListState = {
+    data: [],
+    loading: false,
+    loaded: false
 };
-
-const initialState: ProfileState = {};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.loadProfiles, (state) => ({ ...state, loading: true })),
+    on(profileActions.loadProfilesSuccess, (state, payload) =>
+        ({ ...state, ...payload, loading: false, loaded: true })),
+    on(profileActions.loadProfilesFail, (state) => ({ ...state, loading: false, loaded: false }))
 );
 
-export function getProfileReducer (state: ProfileState | undefined, action: Action) {
+export function getProfileReducer (state: IUserProfileListState | undefined, action: Action) {
 
     return reducer(state, action);
 

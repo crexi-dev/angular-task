@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { getUserDetailsById } from '@store/selectors';
+import { Observable } from 'rxjs';
+import { IUserProfile } from '../interfaces';
 
 @Component({
     selector: 'crx-profile-detail',
@@ -11,13 +12,14 @@ import { getUserProfile } from '@store/selectors';
 })
 export class ProfileDetailComponent implements OnInit {
 
-    user$ = this.store.select(getUserProfile);
+    userDetails$: Observable<IUserProfile>;
 
     constructor (private store: Store<AppState>) {}
 
     ngOnInit () {
 
-        this.store.dispatch(profileActions.initProfile());
+        // selecting the details by Id from /profiles/profile/:id route
+        this.userDetails$ = this.store.select(getUserDetailsById);
 
     }
 

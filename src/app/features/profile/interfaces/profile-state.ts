@@ -1,5 +1,7 @@
-import { UserProfile } from './user-profile';
+import { IUserProfile } from './user-profile';
 
-export interface ProfileState {
-    user?: UserProfile;
+export interface IUserProfileListState {
+    data: IUserProfile[];
+    loading: boolean;
+    loaded: boolean;
 }

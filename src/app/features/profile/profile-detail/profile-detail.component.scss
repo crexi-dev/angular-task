@@ -1,8 +1,12 @@
-.card {
-    width: 90%;
-    margin: 5%;
-}
+.profile-details__container {
+    display: flex;
+    flex-direction: column;
+    padding: 70px;
 
-.circle {
-    border-radius: 100%;
+    button {
+        margin: 44px 0;
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+    }
 }
