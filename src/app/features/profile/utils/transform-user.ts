@@ -1,5 +1,5 @@
 import { Profile, ProfileResponse, UserProfile } from '@interfaces';
-import { getReadableBirthday } from '@features/profile/utils/get-readable-birthday';
+import { getReadableBirthday } from '@features/profile/utils';
 
 export function transformUser (user: ProfileResponse) : UserProfile {
 
