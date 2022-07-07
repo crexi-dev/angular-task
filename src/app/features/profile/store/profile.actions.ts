@@ -10,8 +10,24 @@ const initProfileSuccess = createAction(
 
 const initProfileFailure = createAction('[Profile] Init Profile Failure');
 
+const initProfiles = createAction(
+    `[Profile] Init Profiles`,
+    props<{ count: number}>()
+);
+
+const initProfilesSuccess = createAction(
+    '[Profile] Init Profiles Success',
+    props<{ profiles: UserProfile[]}>()
+);
+
+const initProfilesFailure = createAction('[Profile] Init Profiles Failure');
+
 export const profileActions = {
     initProfile,
     initProfileFailure,
+    initProfiles,
+    initProfilesFailure,
+    initProfilesSuccess,
     initProfileSuccess
+
 };

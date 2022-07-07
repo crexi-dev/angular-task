@@ -7,9 +7,9 @@ const initialState: ProfileState = {};
 const reducer = createReducer(
     initialState,
 
-    on(profileActions.initProfile, (state) => ({ ...state })),
+    on(profileActions.initProfileSuccess, (state, { profile }) => ({ ...state, user: profile })),
 
-    on(profileActions.initProfileSuccess, (state, { profile }) => ({ ...state, user: profile }))
+    on(profileActions.initProfilesSuccess, (state, { profiles }) => ({ ...state, profiles }))
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {

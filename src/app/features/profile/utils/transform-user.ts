@@ -1,9 +1,13 @@
 import { Profile, ProfileResponse, UserProfile } from '@interfaces';
 import { getReadableBirthday } from '@features/profile/utils';
 
-export function transformUser (user: ProfileResponse) : UserProfile {
+export function transformProfileResponse (user: ProfileResponse): UserProfile[] {
 
-    const profile: Profile = user.results[0];
+    return user.results.map(transformUser);
+
+}
+
+function transformUser (profile: Profile): UserProfile {
 
     return {
         cellNumber: profile.cell,
