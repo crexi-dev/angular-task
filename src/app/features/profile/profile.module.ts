@@ -12,19 +12,16 @@ import { ProfileEffects } from '@features/profile/store/profile.effects';
 import { UserListComponent } from './user-list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
-import { UserComponent } from '@features/profile/user';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
         ProfileDetailComponent,
-        UserListComponent,
-        UserComponent
+        UserListComponent
     ],
     exports: [
         ProfileDetailComponent,
-        UserListComponent,
-        UserComponent
+        UserListComponent
     ],
     imports: [
         CommonModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+import { profileActions, routingActions } from '@store/actions';
 import { AppState } from '@store/reducers';
 import { getUserProfiles } from '@store/selectors';
 import { UserProfile } from '@interfaces';
@@ -20,6 +20,14 @@ export class UserListComponent implements OnInit {
     ngOnInit (): void {
 
         this.store.dispatch(profileActions.initProfiles({ count: 10 }));
+
+    }
+
+    navigateToProfile (id: string) {
+
+        this.store.dispatch(routingActions.go({
+            path: ['profile', id]
+        }));
 
     }
 
