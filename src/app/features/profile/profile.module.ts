@@ -9,13 +9,18 @@ import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from '@features/profile/store/profile.effects';
+import { UserListComponent } from './user-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        UserListComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        UserListComponent
     ],
     imports: [
         CommonModule,
@@ -24,7 +29,9 @@ import { ProfileEffects } from '@features/profile/store/profile.effects';
         MatDividerModule,
         MatListModule,
         StoreModule.forFeature('profile', getProfileReducer),
-        EffectsModule.forFeature([ProfileEffects])
+        EffectsModule.forFeature([ProfileEffects]),
+        MatGridListModule,
+        MatButtonModule
     ]
 })
 export class ProfileModule { }
