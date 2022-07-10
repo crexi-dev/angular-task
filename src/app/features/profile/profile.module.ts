@@ -12,15 +12,19 @@ import { ProfileEffects } from '@features/profile/store/profile.effects';
 import { UserListComponent } from './user-list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { UserComponent } from '@features/profile/user';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
         ProfileDetailComponent,
-        UserListComponent
+        UserListComponent,
+        UserComponent
     ],
     exports: [
         ProfileDetailComponent,
-        UserListComponent
+        UserListComponent,
+        UserComponent
     ],
     imports: [
         CommonModule,
@@ -31,7 +35,8 @@ import { MatButtonModule } from '@angular/material/button';
         StoreModule.forFeature('profile', getProfileReducer),
         EffectsModule.forFeature([ProfileEffects]),
         MatGridListModule,
-        MatButtonModule
+        MatButtonModule,
+        RouterModule
     ]
 })
 export class ProfileModule { }

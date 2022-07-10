@@ -12,7 +12,7 @@
             </mat-card-content>
 
             <mat-card-actions class="user-actions">
-                <button mat-raised-button color="primary">VIEW USER</button>
+                <button mat-raised-button color="primary" [routerLink]="['/profiles', user.id]">VIEW USER</button>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>

@@ -3,6 +3,7 @@ import { PageNotFoundComponent } from '@core/layout/page-not-found';
 import { HomePageComponent } from '@features/home-page';
 import { ProfileDetailComponent } from '@features/profile/profile-detail';
 import { UserListComponent } from '@features/profile/user-list/user-list.component';
+import { UserComponent } from '@features/profile/user';
 
 export const appRoutes: Routes = [
     {
@@ -14,6 +15,11 @@ export const appRoutes: Routes = [
         component: UserListComponent,
         data: { name: 'userList' },
         path: 'profiles'
+    },
+    {
+        component: UserComponent,
+        data: { name: 'user' },
+        path: 'profiles/:id'
     },
     {
         component: PageNotFoundComponent,

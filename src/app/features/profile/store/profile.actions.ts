@@ -22,12 +22,17 @@ const initProfilesSuccess = createAction(
 
 const initProfilesFailure = createAction('[Profile] Init Profiles Failure');
 
+const selectUser = createAction(
+    `[Profile] Select User`,
+    props<{ id: string}>()
+);
+
 export const profileActions = {
     initProfile,
     initProfileFailure,
     initProfiles,
     initProfilesFailure,
     initProfilesSuccess,
-    initProfileSuccess
-
+    initProfileSuccess,
+    selectUser
 };
