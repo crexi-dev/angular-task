@@ -8,12 +8,6 @@ export class ProfileService {
 
     readonly RANDOM_USER_URL = 'https://randomuser.me/api/';
 
-    fetchUser (): Observable<ProfileResponse> {
-
-        return this.httpClient.get<ProfileResponse>(this.RANDOM_USER_URL);
-
-    }
-
     fetchUsers (count: number): Observable<ProfileResponse> {
 
         const params: HttpParams = new HttpParams().set('results', count);

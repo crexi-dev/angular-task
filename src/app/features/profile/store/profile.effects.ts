@@ -10,17 +10,6 @@ import { ProfileResponse } from '@interfaces';
 @Injectable()
 export class ProfileEffects {
 
-    getProfile$ = createEffect(() => this.actions$.pipe(
-        ofType(profileActions.initProfile),
-        switchMap(() => this.profileService.fetchUser()
-        .pipe(
-            map((user: ProfileResponse) => profileActions.initProfileSuccess({
-                profile: transformProfileResponse(user)[0]
-            })),
-            catchError(() => of(profileActions.initProfileFailure()))
-        ))
-    ));
-
     getProfiles$ = createEffect(() => this.actions$.pipe(
         ofType(profileActions.initProfiles),
         switchMap(({ count }) => this.profileService.fetchUsers(count)

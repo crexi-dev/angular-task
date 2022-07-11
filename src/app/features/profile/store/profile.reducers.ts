@@ -20,13 +20,9 @@ const profileInitialState: ProfileState = profileAdapter.getInitialState({
 const reducer = createReducer(
     profileInitialState,
 
-    on(profileActions.initProfileSuccess, (state, { profile }) => ({ ...state, user: profile })),
-
     on(profileActions.initProfilesSuccess, (state, { profiles }) => profileAdapter.setAll(profiles,{
         ...state
-    })),
-
-    on(profileActions.selectUser, (state, { id }) => ({ ...state, selectedId: id }))
+    }))
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {

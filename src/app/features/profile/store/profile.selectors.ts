@@ -14,15 +14,17 @@ const getProfileEntities = createSelector(
     (state: ProfileState) => selectEntities(state)
 );
 
+export const getUserProfiles = createSelector(getProfileState, (state: ProfileState) => selectAll(state));
+
 export const getUserProfile = createSelector(
     getRoutingState,
-    getProfileState,
     getProfileEntities,
-    (routingState: State, { user }, entities) => {
+    getUserProfiles,
+    (routingState: State, entities, profiles) => {
 
         if (routingState.name === 'randomProfileDetail') {
 
-            return user;
+            return profiles[0];
 
         }
 
@@ -36,5 +38,3 @@ export const shouldLoadRandomUser = createSelector(
     getRoutingState,
     (routingState: State) => routingState.name === 'randomProfileDetail'
 );
-
-export const getUserProfiles = createSelector(getProfileState, (state: ProfileState) => selectAll(state));
