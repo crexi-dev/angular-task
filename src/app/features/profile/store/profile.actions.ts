@@ -13,14 +13,8 @@ const fetchProfilesSuccess = createAction(
 
 const fetchProfilesFailure = createAction('[Profile] Fetch Profiles Failure');
 
-const selectUser = createAction(
-    `[Profile] Select User`,
-    props<{ id: string}>()
-);
-
 export const profileActions = {
     fetchProfiles,
     fetchProfilesFailure,
-    fetchProfilesSuccess,
-    selectUser
+    fetchProfilesSuccess
 };

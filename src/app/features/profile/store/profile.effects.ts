@@ -17,7 +17,13 @@ export class ProfileEffects {
             map((user: ProfileResponse) => profileActions.fetchProfilesSuccess({
                 profiles: transformProfileResponse(user)
             })),
-            catchError(() => of(profileActions.fetchProfilesFailure()))
+            catchError((err) => {
+
+                // would usually potentially display an error banner
+                console.error(err);
+                return of(profileActions.fetchProfilesFailure());
+
+            })
         ))
     ));
 
