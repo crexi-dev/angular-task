@@ -1,19 +1,17 @@
-<mat-grid-list [cols]="3">
-    <mat-grid-tile *ngFor="let user of users$ | async">
-        <mat-card class="mat-elevation-z7">
-            <mat-card-header>
-                <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
-            </mat-card-header>
+<div class="card-grid">
+    <mat-card class="mat-elevation-z7" *ngFor="let user of users$ | async">
+        <mat-card-header>
+            <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+        </mat-card-header>
 
-            <img mat-card-image [src]="user.picture" alt="profile-image" />
+        <img mat-card-image [src]="user.picture" alt="profile-image" />
 
-            <mat-card-content class="user-content">
-                <p>{{ user.city }}, {{ user.state }}</p>
-            </mat-card-content>
+        <mat-card-content class="user-content">
+            <p>{{ user.city }}, {{ user.state }}</p>
+        </mat-card-content>
 
-            <mat-card-actions class="user-actions">
-                <button mat-raised-button color="primary" (click)="navigateToProfile(user.id)">VIEW USER</button>
-            </mat-card-actions>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+        <mat-card-actions class="user-actions">
+            <button mat-raised-button color="primary" (click)="navigateToProfile(user.id)">VIEW USER</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
