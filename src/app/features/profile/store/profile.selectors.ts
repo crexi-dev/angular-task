@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { profileAdapter } from '@features/profile/store/profile.reducers';
 import { ProfileState } from '@interfaces';
 import { State } from '@core/routing/store/routing.reducers';
+import { ROUTE_NAMES } from '@core/routing';
 
 export const getProfileState = createFeatureSelector<ProfileState>('profile');
 
@@ -22,7 +23,7 @@ export const getUserProfile = createSelector(
     getUserProfiles,
     (routingState: State, entities, profiles) => {
 
-        if (routingState.name === 'randomProfileDetail') {
+        if (routingState.name === ROUTE_NAMES.randomProfileDetail) {
 
             return profiles[0];
 
@@ -36,5 +37,5 @@ export const getUserProfile = createSelector(
 
 export const shouldLoadRandomUser = createSelector(
     getRoutingState,
-    (routingState: State) => routingState.name === 'randomProfileDetail'
+    (routingState: State) => routingState.name === ROUTE_NAMES.randomProfileDetail
 );
