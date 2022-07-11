@@ -20,12 +20,11 @@ export const getUserProfiles = createSelector(getProfileState, (state: ProfileSt
 export const getUserProfile = createSelector(
     getRoutingState,
     getProfileEntities,
-    getUserProfiles,
-    (routingState: State, entities, profiles) => {
+    (routingState: State, entities) => {
 
         if (routingState.name === ROUTE_NAMES.randomProfileDetail) {
 
-            return profiles[0];
+            return entities[Object.keys(entities)[0]];
 
         }
 
