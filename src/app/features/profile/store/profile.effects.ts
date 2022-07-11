@@ -11,13 +11,13 @@ import { ProfileResponse } from '@interfaces';
 export class ProfileEffects {
 
     getProfiles$ = createEffect(() => this.actions$.pipe(
-        ofType(profileActions.initProfiles),
+        ofType(profileActions.fetchProfiles),
         switchMap(({ count }) => this.profileService.fetchUsers(count)
         .pipe(
-            map((user: ProfileResponse) => profileActions.initProfilesSuccess({
+            map((user: ProfileResponse) => profileActions.fetchProfilesSuccess({
                 profiles: transformProfileResponse(user)
             })),
-            catchError(() => of(profileActions.initProfilesFailure()))
+            catchError(() => of(profileActions.fetchProfilesFailure()))
         ))
     ));
 

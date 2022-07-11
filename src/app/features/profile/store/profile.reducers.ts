@@ -20,7 +20,7 @@ const profileInitialState: ProfileState = profileAdapter.getInitialState({
 const reducer = createReducer(
     profileInitialState,
 
-    on(profileActions.initProfilesSuccess, (state, { profiles }) => profileAdapter.setAll(profiles,{
+    on(profileActions.fetchProfilesSuccess, (state, { profiles }) => profileAdapter.setAll(profiles,{
         ...state
     }))
 );

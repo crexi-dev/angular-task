@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
 
     ngOnInit (): void {
 
-        this.store.dispatch(profileActions.initProfiles({ count: 10 }));
+        this.store.dispatch(profileActions.fetchProfiles({ count: 10 }));
 
     }
 

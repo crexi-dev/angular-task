@@ -34,7 +34,7 @@ export class ProfileDetailComponent implements OnDestroy, OnInit {
             takeUntil(this.onDestroy$),
             tap(() => {
 
-                this.store.dispatch(profileActions.initProfiles({ count: 1 }));
+                this.store.dispatch(profileActions.fetchProfiles({ count: 1 }));
 
             })
         ).subscribe();

@@ -1,17 +1,17 @@
 import { createAction, props } from '@ngrx/store';
 import { UserProfile } from '@interfaces';
 
-const initProfiles = createAction(
-    `[Profile] Init Profiles`,
+const fetchProfiles = createAction(
+    `[Profile] Fetch Profiles`,
     props<{ count: number}>()
 );
 
-const initProfilesSuccess = createAction(
-    '[Profile] Init Profiles Success',
+const fetchProfilesSuccess = createAction(
+    '[Profile] Fetch Profiles Success',
     props<{ profiles: UserProfile[]}>()
 );
 
-const initProfilesFailure = createAction('[Profile] Init Profiles Failure');
+const fetchProfilesFailure = createAction('[Profile] Fetch Profiles Failure');
 
 const selectUser = createAction(
     `[Profile] Select User`,
@@ -19,8 +19,8 @@ const selectUser = createAction(
 );
 
 export const profileActions = {
-    initProfiles,
-    initProfilesFailure,
-    initProfilesSuccess,
+    fetchProfiles,
+    fetchProfilesFailure,
+    fetchProfilesSuccess,
     selectUser
 };
