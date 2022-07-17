@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { profilesFeatureKey, ProfileStore, UserProfile } from '../interfaces';
-import { profileEntityAdapter } from '@features/profile/store/profile.reducer';
+import { profileEntityAdapter } from './profile.reducer';
 import { getParams } from '@core/routing/store';
 import { Dictionary } from '@ngrx/entity';
 
