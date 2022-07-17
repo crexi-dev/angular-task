@@ -8,5 +8,7 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
 
     @Input() pageTitle = '';
+    @Input() backLink = '';
+    @Input() backLinkTitle = '';
 
 }

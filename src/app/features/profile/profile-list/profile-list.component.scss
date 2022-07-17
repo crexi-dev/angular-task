@@ -1,9 +1,12 @@
 :host {
     display: block;
 
-    .example-container {
-        height: 400px;
+    .table-container {
+        height: 536px;
         overflow: auto;
+
+        width: 90%;
+        margin: 5%;
     }
 
     table {

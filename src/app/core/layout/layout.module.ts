@@ -6,6 +6,7 @@ import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
 import { PageComponent } from './page';
 import { PageNotFoundComponent } from './page-not-found';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,9 @@ import { PageNotFoundComponent } from './page-not-found';
     ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        MatIconModule
     ]
 })
-export class LayoutModule {}
+export class LayoutModule {
+}

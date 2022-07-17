@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     height: $headerHeight;
-    min-width:320px;
+    min-width: 320px;
     background-color: $white;
     width: 100%;
     z-index: 1035;
@@ -16,6 +16,25 @@
     color: $darkGray;
     flex-direction: row;
     justify-content: flex-end;
+
+    a.back-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        position: absolute;
+        left: 20px;
+        top: 16px;
+
+        span {
+            margin-left: 0;
+        }
+
+        &:visited {
+            color: black;
+        }
+    }
 }
 
 .title {

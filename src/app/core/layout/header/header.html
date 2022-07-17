@@ -2,3 +2,7 @@
     <crx-app-logo routerLink="/"></crx-app-logo>
     <span>{{ pageTitle }}</span>
 </div>
+<a routerLink="{{backLink}}" class="back-link" *ngIf="backLink.length">
+    <mat-icon>arrow_back_ios</mat-icon>
+    <span>{{backLinkTitle}}</span></a
+>
