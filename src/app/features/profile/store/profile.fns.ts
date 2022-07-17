@@ -5,7 +5,11 @@ import { Action } from '@ngrx/store';
 
 const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nove', 'Dec'];
 
-function daySuffix (d: number): string {
+/**
+ * https://stackoverflow.com/questions/15397372/javascript-new-date-ordinal-st-nd-rd-th
+ * @param d
+ */
+export function daySuffix (d: number): string {
 
     if (d > 3 && d < 21) {
 

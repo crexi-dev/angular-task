@@ -28,7 +28,7 @@ export interface ProfileLocation {
     city: string;
     state: string;
     country: string;
-    postcode: number;
+    postcode: string;
     coordinates: ProfileCoordinates;
     timezone: ProfileTimezone;
 }
@@ -44,12 +44,12 @@ export interface ProfileLogin {
 }
 
 export interface ProfileDOB {
-    date: Date;
+    date: string;
     age: number;
 }
 
 export interface ProfileRegistered {
-    date: Date;
+    date: string;
     age: number;
 }
 
