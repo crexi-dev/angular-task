@@ -1,14 +1,9 @@
-// globalThis.ngJest = {
-//     // skipNgcc: true,
-//     tsconfig: 'tsconfig.spec.json', // this is the project root tsconfig
-// };
-
 module.exports = {
     preset: 'jest-preset-angular',
     setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
     globalSetup: 'jest-preset-angular/global-setup',
     testEnvironmentOptions: {
-        url: "http://localhost/"
+        url: "http://localhost/" // this is not removing the warning for some reason
     },
     globals: {
         'ts-jest': {
