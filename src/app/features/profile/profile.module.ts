@@ -6,7 +6,12 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
-import { getProfileReducer } from './store/profile.reducers';
+import { getProfileReducer } from './store/profile.reducer';
+import { profilesFeatureKey } from './interfaces';
+import { ProfileListModule } from './profile-list/profile-list.module';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileEffects } from './store/profile-effects.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,10 +23,16 @@ import { getProfileReducer } from './store/profile.reducers';
     imports: [
         CommonModule,
         LayoutModule,
+
+        HttpClientModule,
+
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer)
+        ProfileListModule,
+        StoreModule.forFeature(profilesFeatureKey, getProfileReducer),
+        EffectsModule.forFeature([ProfileEffects])
     ]
 })
-export class ProfileModule { }
+export class ProfileModule {
+}

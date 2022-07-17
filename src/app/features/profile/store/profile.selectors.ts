@@ -1,6 +1,4 @@
-import { ProfileState } from '@interfaces';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector } from '@ngrx/store';
+import { ProfileStore } from '../interfaces';
 
-export const getProfileState = createFeatureSelector<ProfileState>('profile');
-
-export const getUserProfile = createSelector(getProfileState, ({ user }) => user);
+export const getProfileState = createFeatureSelector<ProfileStore>('profile');

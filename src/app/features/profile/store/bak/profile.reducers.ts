@@ -1,7 +1,7 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
+import { UserProfile } from '../../interfaces';
 
 const dummyProfile: UserProfile = {
     cellNumber: '888-888-8888',
