@@ -17,7 +17,7 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     private onDestroy$: Subject<boolean> = new Subject();
 
     dataSource: UserProfile[] = [];
-    displayedColumns = ['firstName', 'lastName', 'email', 'phoneNumber'];
+    displayedColumns = ['firstName', 'lastName', 'email', 'phoneNumber', 'action'];
 
     constructor (private store: Store, private cd: ChangeDetectorRef) {
     }

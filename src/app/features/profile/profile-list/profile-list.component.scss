@@ -11,5 +11,13 @@
 
     table {
         width: 100%;
+
+        tr.profile-list-row {
+            cursor: pointer;
+        }
+
+        tr.profile-list-row:hover {
+            background: whitesmoke;
+        }
     }
 }

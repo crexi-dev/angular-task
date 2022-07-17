@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ProfileListComponent } from './profile-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { LayoutModule } from '@core/layout/layout.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -14,7 +16,9 @@ import { LayoutModule } from '@core/layout/layout.module';
     imports: [
         CommonModule,
         MatTableModule,
-        LayoutModule
+        LayoutModule,
+        MatIconModule,
+        MatButtonModule
     ]
 })
 export class ProfileListModule {
