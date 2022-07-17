@@ -2,11 +2,8 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "outDir": "./out-tsc/spec",
-        "allowJs": true,
-        "emitDecoratorMetadata": true,
         "types": [
-            "jest",
-            "node"
+            "jest"
         ],
         "module": "CommonJs"
     },

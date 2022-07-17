@@ -102,7 +102,8 @@
                 },
                 "test": {
                     "options": {
-                        "passWithNoTests": true
+                        "passWithNoTests": true,
+                        "tsConfig": "tsconfig.spec.json"
                     },
                     "builder": "@angular-builders/jest:run"
                 }
