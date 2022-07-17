@@ -8,7 +8,7 @@ const currentRouteName = (state: State): string => state.name;
 
 const inProgress = (state: State): boolean => state.inProgress;
 
-const params = (state: State): Record<string, string> => state.params;
+const params = (state: State): Record<string, string> => state?.params;
 
 const prevRoute = (state: State): ActivatedRouteSnapshot => state.prevRoute;
 

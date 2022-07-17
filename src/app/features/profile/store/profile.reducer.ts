@@ -14,26 +14,26 @@ export const profileEntityAdapter: EntityAdapter<UserProfile> = createEntityAdap
 });
 
 export const initialState: ProfileStore = profileEntityAdapter.getInitialState({
-    // additional entity state properties
+    isLoaded: false
 });
 
 export const reducer = createReducer(
     initialState,
     on(
         ProfileActions.addProfile,
-        (state, action) => profileEntityAdapter.addOne(action.profile, state)
+        (state, action) => profileEntityAdapter.addOne(action.profile, { ...state, isLoaded: true })
     ),
     on(
         ProfileActions.upsertProfile,
-        (state, action) => profileEntityAdapter.upsertOne(action.profile, state)
+        (state, action) => profileEntityAdapter.upsertOne(action.profile, { ...state, isLoaded: true })
     ),
     on(
         ProfileActions.addProfiles,
-        (state, action) => profileEntityAdapter.addMany(action.profiles, state)
+        (state, action) => profileEntityAdapter.addMany(action.profiles, { ...state, isLoaded: true })
     ),
     on(
         ProfileActions.upsertProfiles,
-        (state, action) => profileEntityAdapter.upsertMany(action.profiles, state)
+        (state, action) => profileEntityAdapter.upsertMany(action.profiles, { ...state, isLoaded: true })
     ),
     on(
         ProfileActions.updateProfile,
@@ -45,19 +45,29 @@ export const reducer = createReducer(
     ),
     on(
         ProfileActions.deleteProfile,
-        (state, action) => profileEntityAdapter.removeOne(action.id, state)
+        (state, action) => {
+
+            const _state: ProfileStore = profileEntityAdapter.removeOne(action.id, state);
+            return _state.ids.length ? { ..._state, isLoaded: true } : { ..._state, isLoaded: false };
+
+        }
     ),
     on(
         ProfileActions.deleteProfiles,
-        (state, action) => profileEntityAdapter.removeMany(action.ids, state)
+        (state, action) => {
+
+            const _state: ProfileStore = profileEntityAdapter.removeMany(action.ids, state);
+            return _state.ids.length ? { ..._state, isLoaded: true } : { ..._state, isLoaded: false };
+
+        }
     ),
     on(
         ProfileActions.loadProfiles,
-        (state, action) => profileEntityAdapter.setAll(action.profiles, state)
+        (state, action) => profileEntityAdapter.setAll(action.profiles, { ...state, isLoaded: true })
     ),
     on(
         ProfileActions.clearProfiles,
-        (state) => profileEntityAdapter.removeAll(state)
+        (state) => profileEntityAdapter.removeAll({ ...state, isLoaded: false })
     )
 );
 

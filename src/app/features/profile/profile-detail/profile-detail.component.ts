@@ -1,26 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+import { Component } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { AppState } from '@store/reducers';
-
-// import { getUserProfile } from '@store/selectors';
+import { getProfileByRouteId } from '@features/profile/store/profile.selectors';
+import { UserProfile } from '@interfaces';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'crx-profile-detail',
     styleUrls: ['./profile-detail.component.scss'],
     templateUrl: './profile-detail.component.html'
 })
-export class ProfileDetailComponent implements OnInit {
+export class ProfileDetailComponent {
 
-    // user$ = this.store.select(getUserProfile);
+    user$ = this.store.pipe(select(getProfileByRouteId), filter((p: UserProfile | null) => p !== null));
 
     constructor (private store: Store<AppState>) {
-    }
-
-    ngOnInit () {
-
-        this.store.dispatch(profileActions.initProfile());
-
     }
 
 }

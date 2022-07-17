@@ -153,7 +153,8 @@ export class RoutingService {
         private router: Router,
         private route: ActivatedRoute,
         private store: Store<AppState>
-    ) {}
+    ) {
+    }
 
     getQueryParam (key: string): string {
 
@@ -227,7 +228,7 @@ export class RoutingService {
 
                 // connect to ngrx
                 this.store.dispatch(routingActions.success({
-                    currentRoute: this.childRoute,
+                    // currentRoute: this.childRoute,
                     history: this.history,
                     name: this.currentName,
                     params: this.routeParams,

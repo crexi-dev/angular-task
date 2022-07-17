@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { routingActions } from '@store/actions';
 import { map, tap } from 'rxjs/operators';
 import { RoutingService } from '../routing.service';
 
 @Injectable()
 export class RoutingEffects {
+
+    init$ = createEffect(() => this.actions$.pipe(
+        ofType(ROOT_EFFECTS_INIT),
+        map(() => {
+
+            this.routingService.init();
+
+        })
+    ), { dispatch: false });
 
     go$ = createEffect(() => this.actions$.pipe(
         ofType(routingActions.go),
@@ -41,6 +50,7 @@ export class RoutingEffects {
         })
     ), { dispatch: false });
 
-    constructor (private actions$: Actions, private routingService: RoutingService) {}
+    constructor (private actions$: Actions, private routingService: RoutingService) {
+    }
 
 }
