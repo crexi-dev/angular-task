@@ -73,7 +73,7 @@ describe('ProfileEffects', () => {
             imports: [HttpClientTestingModule],
             providers: [
                 ProfileEffects,
-                { provide: ProfileService, useValue: MockProfileService },
+                { provide: ProfileService, useClass: MockProfileService },
                 provideMockStore(),
                 provideMockActions(() => actions$)
             ]
