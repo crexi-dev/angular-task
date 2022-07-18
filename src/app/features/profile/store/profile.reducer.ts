@@ -13,12 +13,12 @@ export const profileEntityAdapter: EntityAdapter<UserProfile> = createEntityAdap
     selectId: selectUserId
 });
 
-export const initialState: ProfileStore = profileEntityAdapter.getInitialState({
+export const initialProfileStoreState: ProfileStore = profileEntityAdapter.getInitialState({
     isLoaded: false
 });
 
 export const reducer = createReducer(
-    initialState,
+    initialProfileStoreState,
     on(
         ProfileActions.addProfile,
         (state, action) => profileEntityAdapter.addOne(action.profile, { ...state, isLoaded: true })
