@@ -11,23 +11,23 @@
         <mat-card-content>
             <mat-list>
                 <mat-list-item>
-                    <span>Phone: </span><span>{{ user.phoneNumber }}</span>
+                    <span>Phone:</span>&nbsp;<span>{{ user.phoneNumber }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Cell: </span><span>{{ user.cellNumber }}</span>
+                    <span>Cell:</span>&nbsp;<span>{{ user.cellNumber }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>City: </span><span>{{ user.city }}, {{ user.state }}</span>
+                    <span>City:</span>&nbsp;<span>{{ user.city }}, {{ user.state }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Email: </span><span>{{ user.email }}</span>
+                    <span>Email:</span>&nbsp;<span>{{ user.email }}</span>
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
+                    <span>Date of Birth:</span>&nbsp;<span>{{ user.dateOfBirth | crxDate }}</span>
                 </mat-list-item>
             </mat-list>
         </mat-card-content>

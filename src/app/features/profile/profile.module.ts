@@ -12,6 +12,7 @@ import { ProfileListModule } from './profile-list/profile-list.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from './store/profile-effects.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CrxDateModule } from '@core/pipes/date';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     imports: [
         CommonModule,
+        CrxDateModule,
         LayoutModule,
 
         HttpClientModule,
