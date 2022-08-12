@@ -2,6 +2,9 @@
     <div class="header">
         <crx-header pageTitle="Home"></crx-header>
     </div>
-    <h1> Welcome to Crexi! </h1>
+    <h1>Welcome to Crexi!</h1>
+    <div [ngStyle]="{ textAlign: 'center' }">
+        <a class="list-link" routerLink="/profiles">LIST OF PROFILES</a>
+    </div>
     <crx-footer></crx-footer>
 </crx-page>

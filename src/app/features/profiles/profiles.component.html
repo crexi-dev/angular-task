@@ -1,0 +1,14 @@
+<a class="list-link" routerLink="/">BACK</a>
+<h3>First 10 Profiles</h3>
+<table [width]="'1000px'">
+    <tr>
+        <th class="table-col">NAME</th>
+        <th class="table-col">ID</th>
+    </tr>
+    <tbody *ngIf="profiles$ | async as profiles">
+        <!--    <tr *ngFor="let profile of profiles!">-->
+        <!--        <th><a [routerLink]="profile.id">{{profile.name}}</a></th>-->
+        <!--        <td>{{profile.id}}</td>-->
+        <!--    </tr>-->
+    </tbody>
+</table>
