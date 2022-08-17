@@ -6,11 +6,13 @@ import { AppStoreModule } from '@store/store.module';
 import { LayoutModule } from './layout/layout.module';
 import { moduleImportGuard } from './module-import-guard';
 import { RoutingModule } from './routing/routing.module';
+import { UserDisplayNameModule } from './pipes/user-display-name/user-display-name.module';
 
 @NgModule({
     declarations: [],
     exports: [
-        RoutingModule
+        RoutingModule,
+        UserDisplayNameModule
     ],
     imports: [
         AngularLayoutModule,
@@ -19,7 +21,8 @@ import { RoutingModule } from './routing/routing.module';
         HttpClientJsonpModule,
         HttpClientModule,
         LayoutModule,
-        RoutingModule
+        RoutingModule,
+        UserDisplayNameModule
     ],
     providers: [
         Location,

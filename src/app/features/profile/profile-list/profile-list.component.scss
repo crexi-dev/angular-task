@@ -1,0 +1,28 @@
+@import '../../../../scss/utils/variables/sizes.scss';
+
+$list-item-devider-padding: 18px;
+
+.card {
+    width: 90%;
+    margin: 5%;
+
+    .mat-list {
+        &.mat-list-base {
+            padding-top: 0;
+        }
+    
+        .mat-divider-horizontal {
+            left: $list-item-devider-padding;
+            width: calc(100% - $list-item-devider-padding * 2);
+        }
+
+        .mat-list-item label {
+            font-weight: bold;
+            padding-right: calc($gapDefault / 2);
+        }
+    }
+}
+
+.circle {
+    border-radius: 100%;
+}

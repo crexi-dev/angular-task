@@ -1,29 +1,29 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
-import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
+import * as profileActions from '@store/actions';
 
-const dummyProfile: UserProfile = {
-    cellNumber: '888-888-8888',
-    city: 'Los Angeles',
-    dateOfBirth: 'Jan 1st, 1966',
-    email: 'test@crexi.com',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    phoneNumber: '999-999-9999',
-    picture: '/content/img/default_user.png',
-    state: 'CA'
-};
+const profileInitialState: ProfileState = {};
 
-const initialState: ProfileState = {};
+const userReducer = createReducer(
+    
+    profileInitialState,
 
-const reducer = createReducer(
-    initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.fetchAllSuccess, (state, { users }) => ({ ...state, users })),
+
+    on(profileActions.fetchAllFailure, (state, { message }) => ({ ...state, message })),
+
+    on(profileActions.fetchSuccess, (state, { user }) => ({ ...state, user })),
+    
+    on(profileActions.fetchFailure, (state, { message }) => ({ ...state, message })),
+    
+    on(profileActions.findByIdSuccess, (state, { user }) => ({ ...state, user })),
+    
+    on(profileActions.findByIdFailure, (state, { message }) => ({ ...state, message }))
+
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
 
-    return reducer(state, action);
+    return userReducer(state, action);
 
 }

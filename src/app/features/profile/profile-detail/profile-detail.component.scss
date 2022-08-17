@@ -1,3 +1,5 @@
+@import '../../../../scss/utils/variables/sizes.scss';
+
 .card {
     width: 90%;
     margin: 5%;
@@ -5,4 +7,10 @@
 
 .circle {
     border-radius: 100%;
+}
+
+.mat-list-item label {
+    font-weight: bold;
+    padding-right: calc($gapDefault / 2);
+    width: calc($gapLarge * 10);
 }

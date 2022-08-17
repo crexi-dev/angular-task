@@ -5,4 +5,7 @@
     <div class="page-wrapper" [ngClass]="{ 'with-background': showBackground }">
         <ng-content></ng-content>
     </div>
+    <div class="footer-wrapper">
+        <ng-content select=".footer"></ng-content>
+    </div>
 </div>

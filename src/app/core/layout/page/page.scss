@@ -7,7 +7,7 @@
 
 .page-wrapper {
     background-color: $background-light-gray;
-    min-height: calc(100vh - $headerHeight + 1px);
+    height: calc(100vh - ($headerHeight * 2) + 1px);
     position: relative;
     overflow: auto;
     transition: opacity .25s ease-in;
@@ -40,5 +40,23 @@
         background: no-repeat center/contain url(/content/img/spinner.svg);
 
         @include absolute(50%, 50%);
+    }
+}
+
+.footer-wrapper {
+    height: $headerHeight;
+    border-top: solid 1px $colorBorder;
+    background-color: $lightGray;
+}
+
+@media #{$mobile} {
+    .page-wrapper {
+        height: calc(100vh - ($headerHeight * 3) + 1px);
+    }
+}
+
+@media #{$desktop} {
+    .page-wrapper {
+        height: calc(100vh - ($headerHeight * 2) + 1px);
     }
 }

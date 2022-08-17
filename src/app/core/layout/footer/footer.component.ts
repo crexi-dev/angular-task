@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'crx-footer',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
     templateUrl: './footer.html'
 })
 export class FooterComponent {
+
+    @Input() hideNavigation = false;
 
     date: Date = new Date();
     facebookUri = '//www.facebook.com/CREXinc/';

@@ -1,0 +1,26 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profiles List"></crx-header>
+    </div>
+    <mat-card *ngIf="users$ | async as users" class="card">
+        <mat-card-title-group>
+            <mat-card-title>Profiles</mat-card-title>
+            <mat-card-subtitle>Click individual profile to see details.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <mat-list *ngFor="let user of users$ | async as users" role="list">
+                <mat-divider></mat-divider>
+                <mat-list-item
+                    class="mat-list-item mat-list-option mat-focus-indicator"
+                    (click)="onProfileClicked($event, user.id)"
+                    role="listitem"
+                >
+                    <label>{{ user | crxUserDisplayName }}</label> <span>(DOB: {{ user.dateOfBirth | date }})</span>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <div class="footer">
+        <crx-footer [hideNavigation]="true"></crx-footer>
+    </div>
+</crx-page>
