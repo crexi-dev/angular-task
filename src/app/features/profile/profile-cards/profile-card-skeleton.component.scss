@@ -1,0 +1,33 @@
+.card {
+    .mat-card-subtitle {
+        display: block;
+        height: 3ch;
+        width: 130%;
+    }
+}
+
+.mat-card-content {
+    margin-top: 10px;
+
+    .mat-list {
+        .skeleton {
+            display: block;
+            min-height: 4ch;
+            margin-bottom: 10px;
+            margin-left: 16px;
+            width: 45%;
+
+            &:first-of-type {
+                margin-bottom: 20px;
+            }
+
+            &:last-of-type {
+                margin-top: 20px;
+            }
+        }
+
+        .mat-divider:first-of-type {
+            margin-top: -10px;
+        }
+    }
+}

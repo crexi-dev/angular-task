@@ -1,0 +1,37 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+
+    <div class="new-menu">
+        <a routerLink="/">Home</a>
+        <span class="new-menu-divider"></span>
+        <span class="new-menu-current">Profile List</span>
+    </div>
+
+    <div id="listContainer">
+        <ng-container *ngIf="users$ | async as users; else loading">
+            <mat-list *ngFor="let user of users">
+                <mat-list-item (click)="goToProfile(user.id)">
+                    <span>{{ [user.lastName, user.firstName].join(', ') }}</span>
+                    <span>
+                        <img
+                            alt="User thumbnail"
+                            class="circle"
+                            [src]="user.thumbnail || '/content/img/default_user.png'"
+                        />
+                    </span>
+                </mat-list-item>
+            </mat-list>
+        </ng-container>
+
+        <ng-template #loading>
+            <mat-list *ngFor="let user of skeletonEntries">
+                <mat-list-item>
+                    <span class="skeleton"></span>
+                    <span aria-label="User thumbnail" class="skeleton circle"></span>
+                </mat-list-item>
+            </mat-list>
+        </ng-template>
+    </div>
+</crx-page>

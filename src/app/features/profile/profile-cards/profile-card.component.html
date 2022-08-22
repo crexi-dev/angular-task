@@ -1,0 +1,35 @@
+<mat-card class="card">
+    <mat-card-title-group>
+        <mat-card-title>User Profile</mat-card-title>
+        <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+        <img
+            alt="User image"
+            class="circle"
+            mat-card-md-image
+            [src]="user.picture || '/content/img/default_user.png'"
+        />
+    </mat-card-title-group>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                <span>Phone:&nbsp;</span><span>{{ user.phoneNumber }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>Cell:&nbsp;</span><span>{{ user.cellNumber }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>City:&nbsp;</span><span>{{ [user.city, user.state].join(', ') }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>Email:&nbsp;</span><span>{{ user.email }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>Date of Birth:&nbsp;</span><span>{{ user.dateOfBirth }}</span>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
