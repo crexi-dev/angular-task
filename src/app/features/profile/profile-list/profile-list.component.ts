@@ -4,7 +4,7 @@ import { UserProfile } from '@interfaces';
 import { Router } from '@angular/router';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./profile-list.component.scss'],
     templateUrl: './profile-list.component.html'
 })
