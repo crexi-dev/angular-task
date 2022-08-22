@@ -2,7 +2,7 @@
 
 #listContainer {
     width: 90%;
-    margin: 2% 5%;
+    margin: 30px 5%;
 
     // not mobile screen size
     @media not screen and (max-width: 767px) {
@@ -35,7 +35,7 @@
         display: flex;
         align-items: center;
 
-        &:hover {
+        &:hover, &:active {
             span {
                 text-decoration: underline;
             }
