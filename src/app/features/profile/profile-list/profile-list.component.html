@@ -1,0 +1,16 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile Listing"></crx-header>
+    </div>
+    <ng-container *ngIf="(loading$ | async) === false; else loading">
+        <mat-card *ngFor="let profile of profileList$ | async" class="card">
+            <div [routerLink]="['/profile', profile.id]">
+                {{ profile.email }}
+            </div>
+        </mat-card>
+    </ng-container>
+    <ng-template #loading>
+        <!-- TODO: Skeleton Screen -->
+        Loading list
+    </ng-template>
+</crx-page>

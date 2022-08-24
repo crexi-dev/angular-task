@@ -4,6 +4,7 @@ export interface UserProfile {
     dateOfBirth: string;
     email: string;
     firstName: string;
+    id: string;
     lastName: string;
     phoneNumber: string;
     picture: string;

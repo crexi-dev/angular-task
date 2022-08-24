@@ -1,25 +1,87 @@
 import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
 
-const dummyProfile: UserProfile = {
-    cellNumber: '888-888-8888',
-    city: 'Los Angeles',
-    dateOfBirth: 'Jan 1st, 1966',
-    email: 'test@crexi.com',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    phoneNumber: '999-999-9999',
-    picture: '/content/img/default_user.png',
-    state: 'CA'
+const initialState: ProfileState = {
+    profileDetailState: {
+        status: 'loading'
+    },
+    profileListState: {
+        profileList: [],
+        status: 'loading'
+    }
 };
-
-const initialState: ProfileState = {};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.getProfile, (state, { userId }) => {
+
+        const currentUser = state.profileListState.profileList.find((profile) => profile.id === userId);
+
+        return {
+            ...state,
+            profileDetailState: {
+                ...state.profileDetailState,
+                errorMessage: '',
+                status: 'success',
+                user: currentUser
+            }
+        };
+
+    }),
+    on(profileActions.loadRandomProfile, (state) => ({
+        ...state,
+        profileDetailState: {
+            ...state.profileDetailState,
+            errorMessage: '',
+            status: 'loading',
+            user: null
+        }
+    })),
+    on(profileActions.loadRandomProfileSuccess, (state, { userProfile }) => ({
+        ...state,
+        profileDetailState: {
+            ...state.profileDetailState,
+            errorMessage: '',
+            status: 'success',
+            user: userProfile
+        }
+    })),
+    on(profileActions.loadRandomProfileError, (state, { errorMessage }) => ({
+        ...state,
+        profileDetailState: {
+            ...state.profileDetailState,
+            errorMessage,
+            status: 'error'
+        }
+    })),
+    on(profileActions.loadProfileList, (state) => ({
+        ...state,
+        profileListState: {
+            ...state.profileListState,
+            errorMessage: '',
+            profileList: [], // TODO: Skeleton Screen
+            status: 'loading'
+        }
+    })),
+    on(profileActions.loadProfileListSuccess, (state, { profileList }) => ({
+        ...state,
+        profileListState: {
+            ...state.profileListState,
+            errorMessage: '',
+            profileList,
+            status: 'success'
+        }
+    })),
+    on(profileActions.loadProfileListError, (state, { errorMessage }) => ({
+        ...state,
+        profileListState: {
+            ...state.profileListState,
+            errorMessage,
+            profileList: [],
+            status: 'error'
+        }
+    }))
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
