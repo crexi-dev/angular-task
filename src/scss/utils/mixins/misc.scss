@@ -1,0 +1,22 @@
+@mixin alt_card{
+  mat-card{
+    width: 50%;
+  }
+
+  mat-card-content{
+    flex-direction: column;
+
+    img{
+      margin:-3rem 0 1rem 0;
+      border-radius: 100%;
+    }
+
+    .index{
+      display: none;
+    }
+
+    mat-card-subtitle{
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="profileList.pageTitle"></crx-header>
+    </div>
+
+    <div *ngIf="(users$ | async).length !== 0" class="container">
+        <div class="misc">
+            <button routerLink="/profile" mat-raised-button color="primary">
+                {{ 'profileList.selectRandomUser' | translate }}
+            </button>
+            <span>{{ 'profileList.instructions' | translate }}</span>
+        </div>
+
+        <lib-profile-detail-card
+            [routerLink]="'/profile/' + (+index + 1)"
+            [index]="index + 1"
+            [user]="user"
+            *ngFor="let user of users$ | async; let index = index"
+        ></lib-profile-detail-card>
+    </div>
+</crx-page>

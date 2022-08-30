@@ -12,6 +12,7 @@
     overflow: auto;
     transition: opacity .25s ease-in;
     opacity: 1;
+    padding-bottom: $gapLarge;
     &.with-background {
         background: url(/content/img/Los-Angeles-1600.jpg) no-repeat center;
         background-size: cover;
@@ -19,16 +20,20 @@
 }
 
 :host-context(.loading) .page-wrapper {
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
     transition: opacity .25s ease-out;
     opacity: 0;
+    // position: fixed;
 }
 
 :host-context(.loading) .page {
-    width: 100vw;
-    height: 100vh;
+
+    background-color: $white;
+    position: fixed;
+    overflow: hidden;
+    inset:0;
 
     @include relative();
     &::before {
@@ -39,6 +44,6 @@
         transform: translate(50%, -50%);
         background: no-repeat center/contain url(/content/img/spinner.svg);
 
-        @include absolute(50%, 50%);
+        @include fixed(50%, 50%);
     }
 }

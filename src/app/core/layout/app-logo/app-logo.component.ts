@@ -14,7 +14,7 @@ export class AppLogoComponent implements OnInit {
     @Output() logoClick$ = new EventEmitter<void>();
 
     hasHandler: boolean;
-    logoUrl = '/content/img/CREXi-logo-black.svg';
+    logoUrl =  '/content/img/CREXi-logo-black.svg'
     target = '_self';
 
     ngOnInit () {

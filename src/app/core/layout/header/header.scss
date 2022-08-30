@@ -7,7 +7,7 @@
     min-width:320px;
     background-color: $white;
     width: 100%;
-    z-index: 1035;
+    
     padding: 0 12px 0 28px;
     display: flex;
     flex-wrap: nowrap;
@@ -15,18 +15,22 @@
     align-items: center;
     color: $darkGray;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
+
+
 .title {
-    align-items: baseline;
+    align-items: center;
     display: flex;
     flex-direction: row;
     left: 50%;
     margin: 0;
-    position: absolute;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    max-width: 70rem;
+    justify-content: space-evenly;
+    
 
     span {
         color: $darkGray;
@@ -39,6 +43,16 @@
     }
 }
 
+.i18nButtons{
+    button{
+        margin:0 $gapDefault 0 0;
+    }
+}
+
+.mobileI18nOptions{
+    display: none;
+}
+
 @media #{$tabletPortraitDown} {
     :host {
         justify-content: space-between;
@@ -46,18 +60,11 @@
     }
 
     .title {
-        justify-content: center;
-        width: 100%;
+        
 
         span {
             font-size: 16px;
-            margin-left: 8px;
         }
     }
 }
 
-@media #{$mobile} {
-    .title {
-        width: auto;
-    }
-}

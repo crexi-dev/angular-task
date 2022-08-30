@@ -1,35 +1,38 @@
 <crx-page>
     <div class="header">
-        <crx-header pageTitle="Profile Details"></crx-header>
+        <crx-header pageTitle="profileDetail.pageTitle"></crx-header>
     </div>
-    <mat-card *ngIf="user$ | async as user" class="card">
-        <mat-card-title-group>
-            <mat-card-title>User Profile</mat-card-title>
-            <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture" />
-        </mat-card-title-group>
-        <mat-card-content>
-            <mat-list>
-                <mat-list-item>
-                    <span>Phone: </span><span>{{ user.phoneNumber }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Cell: </span><span>{{ user.cellNumber }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>City: </span><span>{{ user.city }}, {{ user.state }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Email: </span><span>{{ user.email }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
-    </mat-card>
+    <div class="container">
+        <button [routerLink]="'/profiles'" mat-raised-button color="primary">
+            {{ 'profileDetail.back' | translate }}
+        </button>
+        <mat-card *ngIf="user$ | async as user" class="card">
+            <mat-card-title-group>
+                <mat-card-title>{{ 'profileDetail.profileTitle' | translate }}</mat-card-title>
+                <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+                <img
+                    class="circle"
+                    mat-card-md-image
+                    [src]="user.picture"
+                    [alt]="user.firstName + ' ' + user.lastName"
+                />
+            </mat-card-title-group>
+            <mat-card-content>
+                <mat-list>
+                    <ng-container *ngFor="let metadata of user.profileDetailDisplay">
+                        <mat-list-item [ngSwitch]="metadata.type">
+                            <span>{{ metadata.detailKey | translate }} &nbsp; </span>
+
+                            <span class="detailValue" *ngSwitchCase="'single'">{{ metadata.value[0] }}</span>
+                            <span class="detailValue" *ngSwitchCase="'date'">{{ metadata.value[0] | date }}</span>
+                            <span class="detailValue" *ngSwitchCase="'double'"
+                                >{{ metadata.value[0] }}, {{ metadata.value[1] }}</span
+                            >
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </ng-container>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </crx-page>

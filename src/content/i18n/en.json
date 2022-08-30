@@ -1,0 +1,34 @@
+{
+  "overlayLoading":{
+    "initalLoading":"Loading ..."
+  },
+  "homePage":{
+    "pageTitle":"Home",
+    "title":"Welcome to Crexi!",
+    "viewUserProfiles":"View User Profiles",
+    "viewRandomProfile":"View A Random Profile"
+  },
+  "profileDetail":{
+    "back":"Back To Profiles",
+    "pageTitle":"Profile Details",
+    "profileTitle":"User Profile",
+    "initialLoading":"Retrieving User Information",
+    "patienceLoading":"The system is retrieving user informatiom please be patient",
+    "errorLoading":"The system was unable to retrieve the user information at this time. Please try again later",
+    "detailKeys":["Phone:","Cell: ","City: ","Email: ","Date of Birth: "]
+  },
+  "profileList":{
+    "selectRandomUser":"Select Random User",
+    "instructions":"Scroll down to view more users",
+    "pageTitle":"Profile List",
+    "initialLoading":"Retrieving Users",
+    "errorLoading":"The system was unable to retrieve the users at this time. Please try again later"
+  },
+  "snackBarContent":{
+    "crossIconAriaLabel":"Dismiss Snackbar"
+  },
+  "page":{
+    "selectLanguage":"Select Language",
+    "i18nButtons":["English","Spanish","German"]
+  }
+}

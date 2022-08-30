@@ -1,0 +1,24 @@
+@import "utils";
+.container{
+  width: 90%;
+  max-width: 40rem;
+  margin: auto;
+  overflow: auto;
+  padding: $gapLarge 0 ;
+}
+
+.misc{
+  display: flex;
+  justify-content: space-between;
+  flex-flow:row wrap;
+  * {
+    margin:0 $gapLarge $gapLarge 0
+  }
+}
+
+span{
+  color:$white;
+}
+
+
+

@@ -21,12 +21,19 @@
         "@auth/*": ["src/app/core/auth/*"],
         "@core/*": ["src/app/core/*"],
         "@features/*": ["src/app/features/*"],
+        "@profile/*": ["src/app/features/profile*"],
         "@interfaces": ["src/app/app.interfaces"],
         "@store/*": ["src/app/store/*"],
-        "content/*": ["src/content/*"]
+        "content/*": [
+          "src/content/*"
+        ],
+        "profile-detail-card": [
+          "dist/profile-detail-card/profile-detail-card",
+          "dist/profile-detail-card"
+        ]
     },
     "sourceMap": true,
-    "target": "es2015"
+    "target": "es2020"
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

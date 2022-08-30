@@ -1,3 +1,11 @@
+@import 'utils';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// layout
+@import "src/app/core/layout/header/header.phone.scss";
+// profile 
+@import "src/app/features/profile/profile-detail/profile-detail.component.phone.scss";
+
 /* You can add global styles to this file, and also import other style files */
 html, body {
     height: 100%;
@@ -5,3 +13,13 @@ html, body {
     padding: 0;
     margin: 0;
 }
+
+p{
+    margin: 0;
+}
+
+.error-snackbar{
+    background-color: $colorError;
+    width: 100%;
+}
+

@@ -1,0 +1,44 @@
+{
+    "overlayLoading": {
+        "initalLoading": "Wird geladen ..."
+    },
+    "homePage": {
+        "pageTitle": "Heim",
+        "title": "Willkommen bei Crexi!",
+        "viewUserProfiles": "Benutzerprofile anzeigen",
+        "viewRandomProfile": "Ein zuf\u00e4lliges Profil anzeigen"
+    },
+    "profileDetail": {
+        "back": "Zur\u00fcck zu Profilen",
+        "pageTitle": "Profildetails",
+        "profileTitle": "Benutzerprofil",
+        "initialLoading": "Abrufen von Benutzerinformationen",
+        "patienceLoading": "Das System ruft Benutzerinformationen ab, bitte sei geduldig",
+        "errorLoading": "Das System konnte die Benutzerinformationen zu diesem Zeitpunkt nicht abrufen.Bitte versuchen Sie es sp\u00e4ter erneut",
+        "detailKeys": [
+            "Telefon:",
+            "Zelle:",
+            "Stadt:",
+            "Email:",
+            "Geburtsdatum:"
+        ]
+    },
+    "profileList": {
+        "selectRandomUser": "W\u00e4hlen Sie zuf\u00e4lligen Benutzer",
+        "instructions": "Scrollen Sie nach unten, um mehr Benutzer anzuzeigen",
+        "pageTitle": "Profilliste",
+        "initialLoading": "Benutzer abrufen",
+        "errorLoading": "Das System konnte die Benutzer zu diesem Zeitpunkt nicht abrufen.Bitte versuchen Sie es sp\u00e4ter erneut"
+    },
+    "snackBarContent": {
+        "crossIconAriaLabel": "Snackbar entlassen"
+    },
+    "page": {
+        "selectLanguage": "Sprache ausw\u00e4hlen",
+        "i18nButtons": [
+            "Englisch",
+            "Spanisch",
+            "Deutsch"
+        ]
+    }
+}

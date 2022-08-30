@@ -52,4 +52,6 @@ $colorFormBorderHover:#bbb;
 $newColorBorder: #979797;
 
 // backgrounds
-$background-light-gray: #e8e8e8;
+// $background-light-gray: #e8e8e8;
+$background-light-gray:transparentize($darkGray,.5);
+$background-indian-red: transparentize(#d26666, .5); 

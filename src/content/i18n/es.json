@@ -1,0 +1,44 @@
+{
+    "overlayLoading": {
+        "initalLoading": "Cargando ..."
+    },
+    "homePage": {
+        "pageTitle": "Hogar",
+        "title": "\u00a1Bienvenido a Crexi!",
+        "viewUserProfiles": "Ver perfiles de usuario",
+        "viewRandomProfile": "Ver un perfil aleatorio"
+    },
+    "profileDetail": {
+        "back": "Volver a los perfiles",
+        "pageTitle": "detalles del perfil",
+        "profileTitle": "Perfil del usuario",
+        "initialLoading": "Recuperar informaci\u00f3n del usuario",
+        "patienceLoading": "El sistema est\u00e1 recuperando la informaci\u00f3n del usuario, sea paciente",
+        "errorLoading": "El sistema no pudo recuperar la informaci\u00f3n del usuario en este momento.Por favor, int\u00e9ntelo de nuevo m\u00e1s tarde",
+        "detailKeys": [
+            "Tel\u00e9fono:",
+            "C\u00e9lula:",
+            "Ciudad:",
+            "Correo electr\u00f3nico:",
+            "Fecha de nacimiento:"
+        ]
+    },
+    "profileList": {
+        "selectRandomUser": "Seleccione un usuario aleatorio",
+        "instructions": "Despl\u00e1cese hacia abajo para ver m\u00e1s usuarios",
+        "pageTitle": "Lista de perfil",
+        "initialLoading": "Recuperando usuarios",
+        "errorLoading": "El sistema no pudo recuperar a los usuarios en este momento.Por favor, int\u00e9ntelo de nuevo m\u00e1s tarde"
+    },
+    "snackBarContent": {
+        "crossIconAriaLabel": "Despedir bocadillos"
+    },
+    "page": {
+        "selectLanguage": "Seleccione el idioma",
+        "i18nButtons": [
+            "ingl\u00e9s",
+            "espa\u00f1ol",
+            "Alem\u00e1n"
+        ]
+    }
+}

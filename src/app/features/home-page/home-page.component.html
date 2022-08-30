@@ -1,7 +1,7 @@
 <crx-page [showBackground]="true">
     <div class="header">
-        <crx-header pageTitle="Home"></crx-header>
+        <crx-header [pageTitle]="'homePage.pageTitle' | translate"></crx-header>
     </div>
-    <h1> Welcome to Crexi! </h1>
+    <h1>{{ 'homePage.title' | translate }}</h1>
     <crx-footer></crx-footer>
 </crx-page>

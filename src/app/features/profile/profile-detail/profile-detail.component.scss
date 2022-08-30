@@ -1,8 +1,19 @@
-.card {
-    width: 90%;
-    margin: 5%;
-}
+
 
 .circle {
     border-radius: 100%;
 }
+
+.container{
+    padding: 1rem  20% 0 20% ;
+    max-width: 120rem;
+    margin: auto;
+}
+
+.card{
+    margin: 1rem 0 0 0;
+}
+
+mat-card{
+    background-color: transparentize($color: #ffffff, $amount: .5);
+  }

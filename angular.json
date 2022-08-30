@@ -17,7 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-task",
+            
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -44,6 +45,9 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "docs",
+              "baseHref": "/crexi_take_home/",
+              "deployUrl":"/crexi_take_home/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -101,10 +105,40 @@
           }
         }
       }
+    },
+    "profile-detail-card": {
+      "projectType": "library",
+      "root": "projects/profile-detail-card",
+      "sourceRoot": "projects/profile-detail-card/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/profile-detail-card/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/profile-detail-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/profile-detail-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/profile-detail-card/src/test.ts",
+            "tsConfig": "projects/profile-detail-card/tsconfig.spec.json",
+            "karmaConfig": "projects/profile-detail-card/karma.conf.js"
+          }
+        }
+      }
     }
   },
-  "defaultProject": "angular-task",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "analytics": false
   }
 }

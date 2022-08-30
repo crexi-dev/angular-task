@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 import * as fromRouting from '@core/routing/store/routing.reducers';
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 
-export interface AppState {
+export class AppState {
     routing: fromRouting.State;
 }
 

@@ -1,5 +1,8 @@
+
 import { UserProfile } from './user-profile';
 
-export interface ProfileState {
-    user?: UserProfile;
+export class ProfileState  {
+    currentUser?: UserProfile;
+    users:UserProfile[] = []
+    currentUserId:number= null
 }
