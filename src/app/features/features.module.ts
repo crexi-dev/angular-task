@@ -5,10 +5,10 @@ import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
     declarations: [
-        HomePageComponent
+        HomePageComponent,
     ],
     exports: [
-        HomePageComponent
+        HomePageComponent,
     ],
     imports: [
         LayoutModule,

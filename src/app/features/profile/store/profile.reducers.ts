@@ -15,11 +15,19 @@ const dummyProfile: UserProfile = {
     state: 'CA'
 };
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    user: dummyProfile,
+    profileList:[]
+};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.initProfile, (state) => ({ ...state })),
+    on(profileActions.fetchProfile, (state) => ({...state})),
+    on(profileActions.fetchProfileSuccess, (state, result) => ({...state, user:result})),
+    on(profileActions.fetchProfileList, (state) => ({...state})),
+    on(profileActions.fetchProfileSuccessList, (state, result) => ({...state, profileList:result})),
+    on(profileActions.loadedProfile, (state, result)=> ({...state, user: result.user}))
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
