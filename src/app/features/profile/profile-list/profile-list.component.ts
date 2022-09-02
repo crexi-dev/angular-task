@@ -14,14 +14,17 @@ export class ProfileListComponent implements OnInit {
 
     users$ = this.store.select(getProfileList);
 
-    constructor (private store: Store<AppState>, private route:Router) {}
+    constructor (private store: Store<AppState>, private route: Router) { }
 
     ngOnInit () {
-            this.store.dispatch(profileActions.fetchProfileList());
+
+        this.store.dispatch(profileActions.fetchProfileList());
+
     }
 
-    profileClicked(user:any){
-        let mappedUser = {
+    profileClicked (user: any) {
+
+        const mappedUser = {
             cellNumber: user.cell,
             city: user.location.city,
             dateOfBirth: new Date(user.dob.date).toDateString(),
@@ -31,9 +34,10 @@ export class ProfileListComponent implements OnInit {
             phoneNumber: user.phone,
             picture: user.picture.medium,
             state: user.location.state
-        }
-        this.store.dispatch(profileActions.loadedProfile({user : mappedUser}))
-        this.route.navigate([`./profile/${user.id.value}`])
+        };
+        this.store.dispatch(profileActions.loadedProfile({ user: mappedUser }));
+        this.route.navigate([`./profile/${user.id.value}`]);
+        
     }
 
 }

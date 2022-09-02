@@ -14,12 +14,16 @@ export class ProfileDetailComponent implements OnInit {
 
     user$ = this.store.select(getUserProfile);
 
-    constructor (private store: Store<AppState>, private route:ActivatedRoute) {}
+    constructor (private store: Store<AppState>, private route: ActivatedRoute) { }
 
     ngOnInit () {
-        if(!this.route.snapshot.params['id']){
+
+        if (!this.route.snapshot.params['id']) {
+
             this.store.dispatch(profileActions.fetchProfile());
+            
         }
+
     }
 
 }
