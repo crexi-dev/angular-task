@@ -1,0 +1,18 @@
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    33% { transform: rotate(3deg); }
+    66% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+mat-grid-list {
+    margin: 16px 0;
+    mat-grid-tile:hover {
+        overflow: visible;
+        crx-user-card {
+            animation: wiggle 0.5s linear 0s;
+            box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+    }
+}

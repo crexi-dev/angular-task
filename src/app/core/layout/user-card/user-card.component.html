@@ -1,0 +1,30 @@
+<mat-card *ngIf="user" class="card">
+    <mat-card-title-group>
+        <mat-card-title>User Profile</mat-card-title>
+        <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+        <img class="circle" mat-card-md-image [src]="user.picture" alt="" />
+    </mat-card-title-group>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                <strong>Phone:&nbsp;</strong><span>{{ user.phoneNumber }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Cell:&nbsp;</strong><span>{{ user.cellNumber }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>City:&nbsp;</strong><span>{{ user.city }}, {{ user.state }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Email:&nbsp;</strong><span>{{ user.email }}</span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Date of Birth:&nbsp;</strong><span>{{ user.dateOfBirth }}</span>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

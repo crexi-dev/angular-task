@@ -8,4 +8,5 @@ export interface UserProfile {
     phoneNumber: string;
     picture: string;
     state: string;
+    uuid: string;
 }

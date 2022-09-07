@@ -6,6 +6,9 @@ import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
 import { PageComponent } from './page';
 import { PageNotFoundComponent } from './page-not-found';
+import { UserCardComponent } from './user-card';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -13,18 +16,22 @@ import { PageNotFoundComponent } from './page-not-found';
         FooterComponent,
         HeaderComponent,
         PageComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        UserCardComponent
     ],
     exports: [
         AppLogoComponent,
         FooterComponent,
         HeaderComponent,
         PageComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        UserCardComponent
     ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        MatCardModule,
+        MatListModule
     ]
 })
 export class LayoutModule {}

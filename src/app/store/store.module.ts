@@ -4,10 +4,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { APP_REDUCER_TOKEN, metaReducers } from './reducers';
+import { ProfileEffects } from '@features/profile/store/profile.effects';
 
 @NgModule({
     imports: [
-        EffectsModule.forRoot([RoutingEffects]),
+        EffectsModule.forRoot([RoutingEffects, ProfileEffects]),
         StoreModule.forRoot(APP_REDUCER_TOKEN, { metaReducers }),
         StoreDevtoolsModule.instrument({ maxAge: 25 })
     ]
