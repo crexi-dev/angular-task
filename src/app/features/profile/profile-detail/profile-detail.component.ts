@@ -17,8 +17,8 @@ export class ProfileDetailComponent implements OnInit {
     user$!: Observable<UserProfile>;
 
     constructor (
-        private store: Store<AppState>,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private store: Store<AppState>
     ) {}
 
     ngOnInit () {

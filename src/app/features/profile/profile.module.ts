@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
@@ -22,11 +20,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     imports: [
         CommonModule,
         LayoutModule,
-        MatCardModule,
-        MatDividerModule,
+        MatGridListModule,
         MatListModule,
-        StoreModule.forFeature('profile', profileReducer),
-        MatGridListModule
+        StoreModule.forFeature('profile', profileReducer)
     ]
 })
 export class ProfileModule { }

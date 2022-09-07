@@ -2,7 +2,7 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <div class="profile-detail">
-        <crx-user-card *ngIf="user$ | async as user" [user]="user$ | async"></crx-user-card>
+    <div class="profile-detail" *ngIf="user$ | async as user">
+        <crx-user-card [user]="user$ | async"></crx-user-card>
     </div>
 </crx-page>

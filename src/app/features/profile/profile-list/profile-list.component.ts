@@ -4,6 +4,8 @@ import { AppState } from '@store/reducers';
 import { Store } from '@ngrx/store';
 import { getUsers } from '@features/profile/store/profile.selectors';
 import { Router } from '@angular/router';
+import { UserProfile } from '@interfaces';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'crx-profile-list',
@@ -12,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileListComponent implements OnInit {
 
-    users$ = this.store.select(getUsers);
+    users$: Observable<UserProfile[]> = this.store.select(getUsers);
 
     constructor (
         private router: Router,
