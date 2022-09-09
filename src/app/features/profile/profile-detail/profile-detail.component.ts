@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions, generateRandomProfiles } from '@store/actions';
+import { initProfile, generateRandomProfiles } from '@store/actions';
 import { AppState } from '@store/reducers';
-import { getRandomUsers, getSelectedUserProfile } from '@store/selectors';
+import { getSelectedUserProfile, getUserName, getRandomUsers } from '@store/selectors';
 import { Observable } from 'rxjs';
 import { UserProfile } from 'src/app/shared/profile/interfaces';
+import { ProfileService } from 'src/app/shared/profile/store/profile.service';
 
 @Component({
     selector: 'crx-profile-detail',
@@ -14,18 +15,22 @@ import { UserProfile } from 'src/app/shared/profile/interfaces';
 export class ProfileDetailComponent implements OnInit {
     user$: Observable<UserProfile>;
     randomUsers$: Observable<UserProfile[]>;
+    name: Observable<string>;
 
     constructor (
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        public profileService: ProfileService
         ) {}
 
     ngOnInit () {
-        this.store.dispatch(profileActions.initProfile());
+        this.store.dispatch(initProfile());
         this.user$ = this.store.select(getSelectedUserProfile);
-        console.dir(this.user$);
 
         this.store.dispatch(generateRandomProfiles());
         this.randomUsers$ = this.store.select(getRandomUsers);
-        console.dir(this.randomUsers$);
+
+        this.name = this.store.select(getUserName);
+
+        this.randomUsers$ = this.profileService.getRandomUsersAsUserProfiles();
     }
 }

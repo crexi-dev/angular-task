@@ -7,4 +7,6 @@ export const getSelectedUserProfile = createSelector(getProfileState, ({ selecte
 
 export const getRandomUsers = createSelector(getProfileState, ({ randomUsers }) => randomUsers);
 
-export const getUserName = createSelector(getSelectedUserProfile, ( user ) => {user.firstName + ' ' + user.lastName})
+export const getUserName = createSelector(getSelectedUserProfile, ( user ) => user.firstName + ' ' + user.lastName)
+
+export const getSelectedId = createSelector(getSelectedUserProfile, ({ id }) => id);

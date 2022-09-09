@@ -6,4 +6,5 @@
     <ng-container *ngFor="let randomUser$ of randomUsers$ | async">
         <crx-profile-card [user$]="randomUser$"></crx-profile-card>
     </ng-container>
+    {{ name | async }}
 </crx-page>
