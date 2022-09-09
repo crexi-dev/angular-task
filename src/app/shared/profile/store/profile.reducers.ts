@@ -54,7 +54,7 @@ const reducer = createReducer(
     on(initProfile, (state) => ({ ...state, selectedUser: dummyProfile })),
     on(generateRandomSuccess, (state, payload) => ({ ...state, randomUsers: dummyRandomUsers })),
     // on(generateRandomSuccess, (state, payload) => ({ ...state, randomUsers: payload.users })),
-    // on(setUserAsSelected), (state,payload) => ({...state, selectedID: payload })),
+    // on(setSelectedUser), (state,payload) => ({...state, selectedID: payload })),
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
