@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+import { profileActions, generateRandomProfiles } from '@store/actions';
 import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { getRandomUsers, getSelectedUserProfile } from '@store/selectors';
+import { Observable } from 'rxjs';
+import { UserProfile } from 'src/app/shared/profile/interfaces';
 
 @Component({
     selector: 'crx-profile-detail',
@@ -10,15 +12,20 @@ import { getUserProfile } from '@store/selectors';
     templateUrl: './profile-detail.component.html'
 })
 export class ProfileDetailComponent implements OnInit {
+    user$: Observable<UserProfile>;
+    randomUsers$: Observable<UserProfile[]>;
 
-    user$ = this.store.select(getUserProfile);
-
-    constructor (private store: Store<AppState>) {}
+    constructor (
+        private store: Store<AppState>
+        ) {}
 
     ngOnInit () {
-
         this.store.dispatch(profileActions.initProfile());
+        this.user$ = this.store.select(getSelectedUserProfile);
+        console.dir(this.user$);
 
+        this.store.dispatch(generateRandomProfiles());
+        this.randomUsers$ = this.store.select(getRandomUsers);
+        console.dir(this.randomUsers$);
     }
-
 }

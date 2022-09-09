@@ -4,6 +4,7 @@ import { profileActions } from '@store/actions';
 import { UserProfile } from '../interfaces';
 
 const dummyProfile: UserProfile = {
+    id: '1',
     cellNumber: '888-888-8888',
     city: 'Los Angeles',
     dateOfBirth: 'Jan 1st, 1966',
@@ -15,15 +16,17 @@ const dummyProfile: UserProfile = {
     state: 'CA'
 };
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    selectedUser: null,
+    randomUsers: [dummyProfile]
+};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(profileActions.initProfile, (state) => ({ ...state, selectedUser: dummyProfile })),
+    on(profileActions.generateRandomSuccess, (state, payload) => ({ ...state, randomProfiles: payload })),
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
-
     return reducer(state, action);
-
 }
