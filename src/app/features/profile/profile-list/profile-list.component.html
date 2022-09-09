@@ -1,0 +1,34 @@
+<crx-page>
+    <!-- Header -->
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+
+    <table *ngIf="userList$ | async" mat-table [dataSource]="userList$ | async" class="user-list-table">
+        <!-- Profile picture Column -->
+        <ng-container matColumnDef="profile-picture">
+            <th mat-header-cell *matHeaderCellDef>-</th>
+            <td mat-cell *matCellDef="let user"><img [src]="user.picture" class="profile-picture" /></td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let user; index as i">{{ user.firstName }} {{ user.lastName }}</td>
+        </ng-container>
+
+        <!-- View profile Column -->
+        <ng-container matColumnDef="view-profile">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let user; index as i" class="text-align-right">
+                <button mat-flat-button [routerLink]="['/profile', i]" color="primary">View Profile</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <!-- Loading Spinner -->
+    <mat-spinner *ngIf="!(userList$ | async)" class="loading-spinner"></mat-spinner>
+</crx-page>

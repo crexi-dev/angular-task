@@ -1,0 +1,36 @@
+.card {
+    width: 90%;
+    margin: 5%;
+}
+
+.circle {
+    border-radius: 100%;
+}
+
+.user-list-table {
+    width: 90%;
+    margin: 5%;
+}
+
+.profile-picture {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border-width: 1pt;
+}
+
+.mat-column-profile-picture {
+    width: 96px;
+    border-right: 1px solid currentColor;
+    padding: 12px;
+    text-align: center;
+}
+
+.mat-column-name {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
+.text-align-right {
+    text-align: right;
+}

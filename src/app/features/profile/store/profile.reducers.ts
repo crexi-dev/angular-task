@@ -1,27 +1,31 @@
-import { ProfileState } from '@interfaces';
+// Interfaces
+import { ProfileState, UserProfile } from '@interfaces';
+
+// NGRX
 import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
-import { UserProfile } from '../interfaces';
 
-const dummyProfile: UserProfile = {
-    cellNumber: '888-888-8888',
-    city: 'Los Angeles',
-    dateOfBirth: 'Jan 1st, 1966',
-    email: 'test@crexi.com',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    phoneNumber: '999-999-9999',
-    picture: '/content/img/default_user.png',
-    state: 'CA'
-};
-
+// Initial profile store state
 const initialState: ProfileState = {};
 
+// Build reducers for each action
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => ({ ...state, user: dummyProfile }))
+    on(
+        profileActions.PROFILE_API_GET_ONE_PROFILE_SUCCESS,
+        (state: ProfileState, user: UserProfile) => ({ ...state, user })
+    ),
+    on(
+        profileActions.PROFILE_API_GET_LIST_OF_PROFILES_SUCCESS,
+        (state: ProfileState, params: {results: UserProfile[] }) =>  ({ ...state, userProfileList: params.results })
+    ),
+    on(
+        profileActions.PROFILE_PAGE_GET_ONE_PROFILE_BY_ARRAY_INDEX,
+        (state: ProfileState, param: { id: number }) => ({ ...state, user: state.userProfileList[param.id] })
+    )
 );
 
+// Build profile feature reducer
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
 
     return reducer(state, action);

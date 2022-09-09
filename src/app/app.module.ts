@@ -1,20 +1,27 @@
+// Angular
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from '@core/core.module';
-import { FeaturesModule } from '@features/features.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Components
 import { AppComponent } from './app.component';
+
+// Modules
+import { FeaturesModule } from '@features/features.module';
 
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
         CoreModule,
-        FeaturesModule
+        FeaturesModule,
+        BrowserAnimationsModule
     ]
 })
 export class AppModule { }
