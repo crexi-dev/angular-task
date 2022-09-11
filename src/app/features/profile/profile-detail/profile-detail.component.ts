@@ -16,7 +16,7 @@ export class ProfileDetailComponent implements OnInit {
     users$ = this.store.select(getProfiles);
     loading$ = this.store.select(isLoading);
     error$ = this.store.select(error);
-    showBackButton$ = Boolean(this.activeRoute.snapshot.params['id']);
+    backToList$ = Boolean(this.activeRoute.snapshot.params['id']);
     id$: number;
 
     constructor (private store: Store<AppState>, private activeRoute: ActivatedRoute) {}
