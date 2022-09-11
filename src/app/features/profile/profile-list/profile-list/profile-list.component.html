@@ -2,10 +2,24 @@
     <div class="header">
         <crx-header pageTitle="All Profiles"></crx-header>
     </div>
+    <crx-back-button link="/"></crx-back-button>
     <mat-card *ngIf="loading$ | async" class="card">
         <mat-spinner class="spinner"></mat-spinner>
     </mat-card>
     <mat-card *ngIf="error$ | async" class="card">
         <span class="error">Error loading data</span>
     </mat-card>
+    <section *ngIf="users$ | async" class="list-page">
+        <mat-card *ngFor="let user of users$ | async; index as i" class="card list-card">
+            <mat-card-content>
+                <div class="list-card-body">
+                    <div class="list-card-tile-image">
+                        <img class="circle" mat-card-sm-image [src]="user.picture" />
+                        <span>{{ user.firstName }} {{ user.lastName }}</span>
+                    </div>
+                    <button mat-flat-button color="primary" [routerLink]="['/profile', i]">View Profile</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </section>
 </crx-page>

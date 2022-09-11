@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from './store/profile.effects';
 import { AppState } from '@store/reducers';
 import { profileActions } from './store/profile.actions';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { profileActions } from './store/profile.actions';
         MatDividerModule,
         MatListModule,
         MatProgressSpinnerModule,
+        RouterModule,
         StoreModule.forFeature('profile', getProfileReducer),
         EffectsModule.forFeature([ProfileEffects])
     ],

@@ -1,0 +1,21 @@
+.list-page {
+    margin: 5%;
+}
+
+.list-card {
+    margin: 2.5% 0;
+    width: auto;
+    .list-card-tile-image,
+    .list-card-body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            margin-left: 20px;
+            border-left: 1px solid #80808029;
+        }
+    }
+}

@@ -2,6 +2,7 @@
     <div class="header">
         <crx-header pageTitle="One Random Profile"></crx-header>
     </div>
+    <crx-back-button *ngIf="showBackButton$" link="/profile-list"></crx-back-button>
     <mat-card class="card">
         <ng-container *ngIf="user$ | async as user">
             <mat-card-title-group>

@@ -5,7 +5,10 @@ import { AppLogoComponent } from './app-logo';
 import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
 import { PageComponent } from './page';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { PageNotFoundComponent } from './page-not-found';
+import { BackButtonComponent } from './back-button/back-button/back-button.component';
 
 @NgModule({
     declarations: [
@@ -13,18 +16,23 @@ import { PageNotFoundComponent } from './page-not-found';
         FooterComponent,
         HeaderComponent,
         PageComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        BackButtonComponent
     ],
     exports: [
         AppLogoComponent,
         FooterComponent,
         HeaderComponent,
         PageComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        BackButtonComponent,
+        MatButtonModule
     ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        MatButtonModule,
+        MatIconModule
     ]
 })
 export class LayoutModule {}
