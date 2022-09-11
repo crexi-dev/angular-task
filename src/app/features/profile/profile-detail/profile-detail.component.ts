@@ -23,7 +23,6 @@ export class ProfileDetailComponent implements OnInit {
 
     ngOnInit () {
 
-        console.log(this.activeRoute.snapshot);
         this.users$.subscribe((users) => {
 
             if (users.length) {
