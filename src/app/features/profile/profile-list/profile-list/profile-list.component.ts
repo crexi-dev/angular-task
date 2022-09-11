@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { profileActions } from '@store/actions';
+import { AppState } from '@store/reducers';
 
 @Component({
-  selector: 'app-profile-list',
-  templateUrl: './profile-list.component.html',
-  styleUrls: ['./profile-list.component.scss']
+    selector: 'crx-profile-list',
+    styleUrls: ['./profile-list.component.scss'],
+    templateUrl: './profile-list.component.html'
 })
 export class ProfileListComponent implements OnInit {
 
-  constructor() { }
+    constructor (private store: Store<AppState>) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit (): void {
+
+        this.store.dispatch(profileActions.loadProfileList());
+
+    }
 
 }

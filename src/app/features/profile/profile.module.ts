@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
 import { ProfileListComponent } from './profile-list/profile-list/profile-list.component';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileEffects } from './store/profile.effects';
 
 @NgModule({
     declarations: [
@@ -15,7 +17,8 @@ import { ProfileListComponent } from './profile-list/profile-list/profile-list.c
         ProfileListComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListComponent
     ],
     imports: [
         CommonModule,
@@ -23,7 +26,8 @@ import { ProfileListComponent } from './profile-list/profile-list/profile-list.c
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer)
+        StoreModule.forFeature('profile', getProfileReducer),
+        EffectsModule.forFeature([ProfileEffects])
     ]
 })
 export class ProfileModule { }
