@@ -1,1 +1,11 @@
-<p>profile-list works!</p>
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="All Profiles"></crx-header>
+    </div>
+    <mat-card *ngIf="loading$ | async" class="card">
+        <mat-spinner class="spinner"></mat-spinner>
+    </mat-card>
+    <mat-card *ngIf="error$ | async" class="card">
+        <span class="error">Error loading data</span>
+    </mat-card>
+</crx-page>
