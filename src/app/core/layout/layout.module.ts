@@ -6,6 +6,7 @@ import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
 import { PageComponent } from './page';
 import { PageNotFoundComponent } from './page-not-found';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { PageNotFoundComponent } from './page-not-found';
     ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        MatButtonModule
     ]
 })
 export class LayoutModule {}

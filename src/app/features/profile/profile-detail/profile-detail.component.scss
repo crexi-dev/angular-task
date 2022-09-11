@@ -1,3 +1,5 @@
+@import 'utils';
+
 .card {
     width: 90%;
     margin: 5%;
@@ -5,4 +7,16 @@
 
 .circle {
     border-radius: 100%;
+}
+
+.error-msg {
+    text-align: center;
+    color: red;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - $headerHeight);
 }

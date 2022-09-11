@@ -27,6 +27,7 @@
     position: absolute;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
+    align-items: center;
 
     span {
         color: $darkGray;
@@ -36,6 +37,13 @@
         margin: 0 0 0 20px;
         min-width: 110px; // prevent multiline
         transform: translateY(-1px);
+    }
+    
+    .button-container {
+        display: flex;
+        width: 250px;
+        gap: 15px;
+        justify-content: end;
     }
 }
 

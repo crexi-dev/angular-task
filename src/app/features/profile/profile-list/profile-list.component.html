@@ -1,0 +1,25 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+
+    <div *ngIf="profiles$ | async as profiles; else loading" class="card-container">
+        <mat-card *ngFor="let profile of profiles" class="profile-card" [routerLink]="['/profile', profile.id]">
+            <mat-card-header class="card-header">
+                <img class="circle" mat-card-md-image src="{{ profile.picture }}" alt="Profile Image" />
+                <mat-card-title>{{ profile.firstName }} {{ profile.lastName }}</mat-card-title>
+                <mat-card-subtitle>{{ profile.city }}, {{ profile.state }}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+
+    <p *ngIf="errorMessage$ | async" class="error-msg">
+        An error occured. Please try again. See the console for more information.
+    </p>
+
+    <ng-template #loading>
+        <div *ngIf="(errorMessage$ | async) === ''" class="spinner-container">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
+</crx-page>
