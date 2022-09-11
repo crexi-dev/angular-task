@@ -16,8 +16,8 @@ export class ProfileDetailComponent implements OnInit {
     users$ = this.store.select(getProfiles);
     loading$ = this.store.select(isLoading);
     error$ = this.store.select(error);
-    backToList$ = Boolean(this.activeRoute.snapshot.params['id']);
-    id$: number;
+    backToList = this.activeRoute.snapshot.params['id'] ? '/profile-list' : '/';
+    id: number;
 
     constructor (private store: Store<AppState>, private activeRoute: ActivatedRoute) {}
 
@@ -29,14 +29,14 @@ export class ProfileDetailComponent implements OnInit {
 
                 if (this.activeRoute.snapshot.params['id']) {
 
-                    this.id$ = this.activeRoute.snapshot.params['id'];
+                    this.id = this.activeRoute.snapshot.params['id'];
 
                 } else {
 
-                    this.id$ = Math.floor(Math.random() * users.length);
+                    this.id = Math.floor(Math.random() * users.length);
 
                 }
-                this.store.dispatch(profileActions.getProfileById({ id: this.id$ }));
+                this.store.dispatch(profileActions.getProfileById({ id: this.id }));
 
             }
 
