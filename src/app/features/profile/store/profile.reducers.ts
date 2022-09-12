@@ -11,16 +11,12 @@ export interface State {
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.getUserDataSuccessResult, (state, result) => {
-        return result;
-    })
+    on(profileActions.getUserDataSuccessResult, (state, result) => result)
 );
 
 const topUserReducer = createReducer(
     profileListState,
-    on(profileActions.getTopUserDataSuccessResult, (state, result) =>{ 
-        console.log('lllllllllllll', result)
-        return result})
+    on(profileActions.getTopUserDataSuccessResult, (state, result) => result)
 );
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
@@ -30,7 +26,7 @@ export function getProfileReducer (state: ProfileState | undefined, action: Acti
 }
 
 export function getTopUserReducer (state: ProfileState | undefined, action: Action) {
-    console.log(state, action)
+
     return topUserReducer(state, action);
 
 }

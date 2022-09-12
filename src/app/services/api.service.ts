@@ -7,16 +7,24 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
     constructor (private http: HttpClient) { }
-    getRandomUsers () {
+    getRandomUsers (id?: string) {
 
-        return this.http.get('https://randomuser.me/api');
+        if (id !== undefined) {
+
+            return this.http.get('https://randomuser.me/api' + '?id=' + id);
+        
+        } else {
+
+            return this.http.get('https://randomuser.me/api');
+        
+        }
     
     }
 
-    getTenRandomUsers ():Observable<any> {
+    getTenRandomUsers (): Observable<any> {
 
         return this.http.get('https://randomuser.me/api/?results=10');
-    
+
     }
 
 }

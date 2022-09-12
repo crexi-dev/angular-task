@@ -1,34 +1,7 @@
-<h1>Profile List Header</h1>
-
 <div *ngFor="let user of (user$ | async)?.profileList?.results; let i = index">
-    <mat-card class="card">
-        <mat-card-title-group>
-            <mat-card-title>User Profile</mat-card-title>
-            <mat-card-subtitle>{{ user?.name?.first }} {{ user?.name?.last }}</mat-card-subtitle>
-            <img class="circle" mat-card-md-image [src]="user.picture?.thumbnail" />
-        </mat-card-title-group>
-        <mat-card-content>
-            <mat-list>
-                <mat-list-item>
-                    <span>Phone: </span><span>{{ user.phone }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Cell: </span><span>{{ user.cell }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>City: </span><span>{{ user.location.city }}, {{ user.location.state }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Email: </span><span>{{ user?.email }}</span>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dob.date }}</span>
-                </mat-list-item>
-            </mat-list>
-        </mat-card-content>
+    <mat-card>
+        <a (click)="navigateToUserDetails(user.id.value)">
+            <mat-card-title>{{ user?.name?.first }} {{ user?.name?.last }}</mat-card-title>
+        </a>
     </mat-card>
 </div>

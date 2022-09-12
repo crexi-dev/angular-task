@@ -5,7 +5,7 @@ export const GET_USER_TOP = ' [Profile] Get User top';
 export const GET_USER_SUCCESS = ' [ProfileList] Get User Success';
 export const GET_TOP_USER_SUCCESS = ' [ProfileList] Get Top User Success';
 
-export const getUserData = createAction(GET_USER);
+export const getUserData = createAction(GET_USER, props<{id:string | undefined}>());
 
 export const getTopUserData = createAction(GET_USER_TOP);
 

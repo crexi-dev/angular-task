@@ -9,7 +9,7 @@ import { profileActions } from './profile.actions';
 
 export class UserEffects {
 
-    constructor(
+    constructor (
         private action$: Actions,
         private apiService: ApiService
     ) {
@@ -17,8 +17,8 @@ export class UserEffects {
     }
 
     getUsers$ = createEffect(() =>
-        this.action$.pipe(ofType(profileActions.getUserData), exhaustMap(() =>
-            this.apiService.getRandomUsers().pipe(
+        this.action$.pipe(ofType(profileActions.getUserData), exhaustMap((action) =>
+            this.apiService.getRandomUsers(action.id).pipe(
                 map((response: any) => profileActions.getUserDataSuccessResult(response))
                 , catchError((error: any) => of(error))
             ))));
