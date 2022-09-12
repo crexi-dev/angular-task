@@ -4,6 +4,4 @@ export interface ProfileState {
     user?: UserProfile;
 }
 
-export interface UserState {
-    user?: UserProfile;
-}
+

@@ -3,7 +3,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { profileActions } from '@store/actions';
 
 const initialState: ProfileState = {};
-// const profileListState: ProfileState = {};
+const profileListState: ProfileState = {};
 
 export interface State {
     user: [];
@@ -12,19 +12,16 @@ export interface State {
 const reducer = createReducer(
     initialState,
     on(profileActions.getUserDataSuccessResult, (state, result) => {
-
-        console.log(result);
         return result;
-    
     })
 );
 
-// const topUserReducer = createReducer(
-//     profileListState,
-//     on(profileActions.getTopUserDataSuccessResult, (state, result) =>{ 
-//         console.log('lllllllllllll', result)
-//         return result})
-// );
+const topUserReducer = createReducer(
+    profileListState,
+    on(profileActions.getTopUserDataSuccessResult, (state, result) =>{ 
+        console.log('lllllllllllll', result)
+        return result})
+);
 
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
 
@@ -32,8 +29,8 @@ export function getProfileReducer (state: ProfileState | undefined, action: Acti
 
 }
 
-// export function getTopUserReducer (state: ProfileState | undefined, action: Action) {
-//     console.log(state, action)
-//     return topUserReducer(state, action);
+export function getTopUserReducer (state: ProfileState | undefined, action: Action) {
+    console.log(state, action)
+    return topUserReducer(state, action);
 
-// }
+}

@@ -9,7 +9,7 @@ import { profileActions } from './profile.actions';
 
 export class UserEffects {
 
-    constructor (
+    constructor(
         private action$: Actions,
         private apiService: ApiService
     ) {
@@ -22,5 +22,13 @@ export class UserEffects {
                 map((response: any) => profileActions.getUserDataSuccessResult(response))
                 , catchError((error: any) => of(error))
             ))));
-    
+
+    getTopUsers$ = createEffect(() =>
+        this.action$.pipe(ofType(profileActions.getTopUserData), exhaustMap(() =>
+            this.apiService.getTenRandomUsers().pipe(
+                map((response: any) => 
+                    profileActions.getTopUserDataSuccessResult(response))
+                , catchError((error: any) => of(error))
+            ))));
+
 }
